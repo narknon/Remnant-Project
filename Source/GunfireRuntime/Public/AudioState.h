@@ -2,8 +2,7 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "WorldSound.h"
-#include "Sound/AudioVolume.h"
-#include "Sound/ReverbSettings.h"
+#include "Engine/Classes/Sound/AudioVolume.h"
 #include "AudioState.generated.h"
 
 class UAudioStateID;
@@ -32,7 +31,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FReverbSettings Reverb;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
     FInteriorSettings AmbientZone;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

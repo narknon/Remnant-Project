@@ -14,7 +14,7 @@ class UActorComponent;
 class UBlueprint;
 class UActionBase;
 
-UCLASS(Blueprintable, DefaultConfig)
+UCLASS(Blueprintable, DefaultConfig, Config = Engine)
 class GUNFIRERUNTIME_API UGunfireSettings : public UObject {
     GENERATED_BODY()
 public:

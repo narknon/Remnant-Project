@@ -40,10 +40,10 @@ public:
     
     UItemType();
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
-    static TArray<FItemQueryResult> QueryRelevantItems(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, EItemQuerySortMethod SortMethod) const;
+    static TArray<FItemQueryResult> QueryRelevantItems(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, EItemQuerySortMethod SortMethod);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static TArray<UInventoryComponent*> GetRelevantInventoriesForType(AActor* Actor, TSubclassOf<UItemType> Type) const;
+    static TArray<UInventoryComponent*> GetRelevantInventoriesForType(AActor* Actor, TSubclassOf<UItemType> Type);
     
 };
 

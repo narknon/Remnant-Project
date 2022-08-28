@@ -1,4 +1,4 @@
-#include "Attribute.h"
+#include "Public/Attribute.h"
 
 FAttribute::FAttribute() {
     this->Level = 0;

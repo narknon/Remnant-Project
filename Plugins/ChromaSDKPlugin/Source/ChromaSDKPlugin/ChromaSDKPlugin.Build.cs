@@ -13,8 +13,7 @@ namespace UnrealBuildTool.Rules
 			PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs; //___HACK_UE4_VERSION_4_16_OR_GREATER
 
 			PublicIncludePaths.AddRange(
-				new string[] {
-                    "ChromaSDKPlugin/Public",				
+				new string[] {				
 					// ... add public include paths required here ...
 				}
 				);

@@ -8,7 +8,7 @@
 
 class UAINavArea;
 
-UCLASS(Blueprintable, DefaultConfig)
+UCLASS(Blueprintable, DefaultConfig, Config = Engine)
 class GUNFIRERUNTIME_API UAIDataGenerationSettings : public UObject {
     GENERATED_BODY()
 public:

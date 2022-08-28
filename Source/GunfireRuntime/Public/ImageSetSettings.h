@@ -4,7 +4,7 @@
 #include "UObject/NoExportTypes.h"
 #include "ImageSetSettings.generated.h"
 
-UCLASS(Blueprintable, DefaultConfig)
+UCLASS(Blueprintable, DefaultConfig, Config = Engine)
 class GUNFIRERUNTIME_API UImageSetSettings : public UObject {
     GENERATED_BODY()
 public:

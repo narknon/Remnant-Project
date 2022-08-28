@@ -5,8 +5,8 @@
 
 class UTexture2D;
 
-UCLASS(Abstract, Blueprintable, Const, MinimalAPI)
-class UItemCategory : public UObject {
+UCLASS(Abstract, Blueprintable, Const)
+class GUNFIRERUNTIME_API UItemCategory : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

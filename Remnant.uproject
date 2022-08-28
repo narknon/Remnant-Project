@@ -22,11 +22,6 @@
 				"CoreUObject",
 				"UMG"
 			]
-		},
-		{
-			"Name": "ClothingSystemRuntime",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [
@@ -117,8 +112,6 @@
 		}
 	],
 	"TargetPlatforms": [
-		"PS4",
-		"WindowsNoEditor",
-		"XboxOne"
+		"WindowsNoEditor"
 	]
 }

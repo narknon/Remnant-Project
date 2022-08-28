@@ -1,0 +1,34 @@
+version: 1.2.0.{build}
+
+environment:
+  PYTHON: "C:\\Python33-x64"
+
+image:
+- Visual Studio 2015
+- Visual Studio 2017
+
+configuration:
+  - Debug
+  - Release
+
+install:
+- cmd: >-
+    git submodule update --init --recursive
+
+build_script:
+- cmd: >-
+    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" (SET COMPILER=vs2015)
+
+    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" (SET COMPILER=vs2017)
+
+    %PYTHON%\\python.exe make.py -build -unit_test -compiler %COMPILER% -config %configuration% -cpu x86 -clean
+
+    %PYTHON%\\python.exe make.py -build -unit_test -compiler %COMPILER% -config %configuration% -cpu x86 -nosimd
+
+    %PYTHON%\\python.exe make.py -build -unit_test -compiler %COMPILER% -config %configuration% -cpu x64 -clean
+
+    %PYTHON%\\python.exe make.py -build -unit_test -compiler %COMPILER% -config %configuration% -cpu x64 -nosimd
+
+    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" %PYTHON%\\python.exe make.py -build -compiler %COMPILER% -config %configuration% -cpu arm64 -clean
+
+    IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" %PYTHON%\\python.exe make.py -build -compiler %COMPILER% -config %configuration% -cpu arm64 -nosimd

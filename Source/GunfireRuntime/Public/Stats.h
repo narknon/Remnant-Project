@@ -8,7 +8,7 @@ UCLASS(Abstract, Blueprintable, Const, MinimalAPI)
 class UStats : public UObject {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true), Category = "GunFire")
     TArray<FStatInfo> Stats;
     
     UStats();
