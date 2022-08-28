@@ -12,7 +12,7 @@ class REMNANT_API ARemnantMeleeWeapon : public AMeleeWeapon {
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UWeaponAffinityComponent* WeaponAffinity;
     
 public:

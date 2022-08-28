@@ -21,7 +21,7 @@ public:
     FLinearColor BackgroundColor;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UContentWidget* CachedFocusButton;
     
 public:

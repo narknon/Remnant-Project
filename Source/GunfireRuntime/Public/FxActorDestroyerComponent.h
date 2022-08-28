@@ -21,7 +21,7 @@ protected:
     float ForceDestroyTimer;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     TArray<UActorComponent*> ActiveComponents;
     
 public:

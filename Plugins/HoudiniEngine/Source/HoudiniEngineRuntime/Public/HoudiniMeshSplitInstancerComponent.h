@@ -12,7 +12,7 @@ class HOUDINIENGINERUNTIME_API UHoudiniMeshSplitInstancerComponent : public USce
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, SkipSerialization, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SkipSerialization, meta=(AllowPrivateAccess=true))
     TArray<UStaticMeshComponent*> Instances;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SkipSerialization, meta=(AllowPrivateAccess=true))

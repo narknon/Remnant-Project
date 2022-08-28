@@ -10,7 +10,7 @@ class GUNFIRERUNTIME_API USilhouetteManager : public UActorComponent {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USilhouetteComponent*> SilhouetteComponents;
     
 public:

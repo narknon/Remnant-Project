@@ -99,7 +99,7 @@ protected:
     TArray<TWeakObjectPtr<UMiniMapPanel>> MiniMapPanels;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
     UMiniMapManager* MiniMapManager;
     
 public:

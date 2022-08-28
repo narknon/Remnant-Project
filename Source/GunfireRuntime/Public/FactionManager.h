@@ -15,7 +15,7 @@ public:
     float FactionOverridePropogationRadius;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UFactionComponent*> FactionComponents;
     
 public:

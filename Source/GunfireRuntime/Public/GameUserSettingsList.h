@@ -10,7 +10,7 @@ UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UGameUserSettingsList : public UObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UUserSetting*> Settings;
     
     UGameUserSettingsList();

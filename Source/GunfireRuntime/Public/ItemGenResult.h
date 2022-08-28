@@ -15,7 +15,7 @@ public:
     UPROPERTY(EditAnywhere)
     uint8 Quantity;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UItemInstanceData* InstanceData;
     
     GUNFIRERUNTIME_API FItemGenResult();
