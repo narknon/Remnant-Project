@@ -1,0 +1,26 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "CachedMaterialState.generated.h"
+
+class UMeshComponent;
+class UMaterialInterface;
+
+USTRUCT(BlueprintType)
+struct GUNFIRERUNTIME_API FCachedMaterialState {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* OriginalMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* NewMaterial;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 OriginalMaterialIndex;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
+    UMeshComponent* Component;
+    
+    FCachedMaterialState();
+};
+

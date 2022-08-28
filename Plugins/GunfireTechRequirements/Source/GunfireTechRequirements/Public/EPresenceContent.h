@@ -1,0 +1,33 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "EPresenceContent.generated.h"
+
+UENUM(BlueprintType)
+enum class EPresenceContent : uint8 {
+    MENU,
+    TUTORIAL,
+    CITY_ADVENTURE,
+    CITY_CAMPAIGN,
+    CITY_SURVIVAL,
+    CORSUS_ADVENTURE,
+    CORSUS_CAMPAIGN,
+    CORSUS_SURVIVAL,
+    RHOM_ADVENTURE,
+    RHOM_CAMPAIGN,
+    RHOM_SURVIVAL,
+    YAESHA_ADVENTURE,
+    YAESHA_CAMPAIGN,
+    YAESHA_SURVIVAL,
+    RURAL_ADVENTURE,
+    RURAL_CAMPAIGN,
+    RURAL_SURVIVAL,
+    REISUM_ADVENTURE,
+    REISUM_CAMPAIGN,
+    REISUM_SURVIVAL,
+    LABYRINTH_CAMPAIGN,
+    LABYRINTH_SURVIVAL,
+    WARD13,
+    WARD17,
+    WARD_PRIME,
+};
+

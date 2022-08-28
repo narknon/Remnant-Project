@@ -1,0 +1,29 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1",
+	"FriendlyName": "Gunfire Navigation Plugin",
+	"Description": "John Mena made this and everything in it; no one else.  He is NOT a big fatty.",
+	"Category": "Gunfire",
+	"CreatedBy": "Gunfire Games, LLC",
+	"CreatedByURL": "http://www.gunfiregames.com/",
+	"DocsURL": "http://www.gunfiregames.com/",
+	"MarketplaceURL": "",
+	"SupportURL": "http://www.gunfiregames.com/",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "GunfireNavigation",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Win32",
+				"Linux"
+			]
+		}
+	]
+}
