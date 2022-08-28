@@ -2,13 +2,14 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "HierarchicalEditInterface.h"
+#include "VisualSetSlot.h"
+#include "VisualID.h"
+#include "VisualFX.h"
 #include "VisualSet.generated.h"
 
 class UObject;
-class UVisualSet;
-class UVisualSetNode;
-class UVisualFX;
-class UVisualID;
+
+
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UVisualSet : public UDataAsset, public IHierarchicalEditInterface {

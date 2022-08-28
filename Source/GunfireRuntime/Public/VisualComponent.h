@@ -3,9 +3,10 @@
 #include "Components/ActorComponent.h"
 #include "OnStreamedVisualAppliedDelegate.h"
 #include "VisualSlot.h"
+#include "VisualSet.h"
 #include "VisualComponent.generated.h"
 
-class UVisualSet;
+
 class UVisualSetSlot;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

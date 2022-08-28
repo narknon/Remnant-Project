@@ -9,6 +9,7 @@
 #include "PersistentBuff.h"
 #include "UObject/NoExportTypes.h"
 #include "PersistenceKey.h"
+#include "VisualComponent.h"
 #include "RemnantCharacter.generated.h"
 
 class USkeletalMesh;
@@ -18,7 +19,6 @@ class AActor;
 class UItemType;
 class UVisualComponent;
 class UAnimInstance;
-class UVisualSet;
 class ACheckpoint;
 class ARemnantPlayerController;
 class APawn;

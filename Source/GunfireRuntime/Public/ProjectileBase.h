@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
 #include "ReplicatedHit.h"
+#include "ImpactEffect.h"
 #include "ProjectileBase.generated.h"
 
 class UAudioComponent;
@@ -17,7 +18,6 @@ class UActionBase;
 class UDamageTypeGunfire;
 class UCameraShake;
 class USoundBase;
-class AImpactEffect;
 class UParticleSystem;
 class UWorld;
 class AProjectileBase;
