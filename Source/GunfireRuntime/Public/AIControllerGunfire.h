@@ -132,7 +132,7 @@ protected:
     AAIPathPoint* PathPoint;
     
 public:
-    AAIControllerGunfire();
+    AAIControllerGunfire(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     void UpdateAwareness(float DeltaSeconds);
     
