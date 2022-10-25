@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AchievementId.h"
 #include "AchievementUpdateCallbackProxy.h"
+#include "AchievementId.h"
 #include "AchievementIncrementCallbackProxy.generated.h"
 
 class UAchievementIncrementCallbackProxy;
@@ -13,7 +13,7 @@ class UAchievementIncrementCallbackProxy : public UAchievementUpdateCallbackProx
     GENERATED_BODY()
 public:
     UAchievementIncrementCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAchievementIncrementCallbackProxy* IncrementAchievementProgress(UObject* WorldContextObject, APlayerController* PlayerController, FAchievementId AchievementName, int32 Progress);
     
 };

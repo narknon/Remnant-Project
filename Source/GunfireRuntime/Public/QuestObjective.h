@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "QuestVoidDelegateDelegate.h"
 #include "Components/ActorComponent.h"
+#include "QuestVoidDelegateDelegate.h"
 #include "EQuestResult.h"
 #include "EQuestState.h"
 #include "QuestObjectiveDelegateDelegate.h"

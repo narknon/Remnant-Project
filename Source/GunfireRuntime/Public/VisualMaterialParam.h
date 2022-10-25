@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EParamApply.h"
 #include "EVisualMaterialParameterType.h"
 #include "UObject/NoExportTypes.h"
 #include "EEaseType.h"
+#include "EParamApply.h"
 #include "VisualMaterialParam.generated.h"
 
 class UTexture;

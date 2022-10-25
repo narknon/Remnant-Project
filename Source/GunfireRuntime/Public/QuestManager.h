@@ -6,10 +6,10 @@
 #include "QuestManagerQuestDelegateDelegate.h"
 #include "QuestManager.generated.h"
 
-class UEventTreeComponent;
 class UQuestManager;
 class AQuest;
 class ULevel;
+class UEventTreeComponent;
 class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -42,13 +42,13 @@ protected:
     void NotifyQuestsUpdated();
     
 public:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool NotifyQuestByName(UObject* WorldContextObject, FName QuestNameID, FName EventName);
     
     UFUNCTION(BlueprintCallable)
     AQuest* GetQuestByType(TSubclassOf<AQuest> QuestBP);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UQuestManager* GetInstance(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

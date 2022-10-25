@@ -1,30 +1,30 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
 #include "UObject/Object.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/LatentActionManager.h"
-#include "DamageInfo.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "EAffiliation.h"
 #include "ProjectileParams.h"
 #include "EFireOutExec.h"
+#include "Engine/LatentActionManager.h"
+#include "DamageInfo.h"
 #include "UObject/NoExportTypes.h"
 #include "CustomWeaponSpread.h"
 #include "CombatUtil.generated.h"
 
-class AImpactEffect;
 class AActor;
-class UDamageTypeGunfire;
-class ACharacter;
-class UDamageType;
 class UFaction;
 class UDamageClass;
-class APawn;
+class AImpactEffect;
+class UDamageTypeGunfire;
+class ACharacter;
 class UCurveFloat;
+class UDamageType;
+class APawn;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UCombatUtil : public UObject {
@@ -34,7 +34,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FHitResult WeaponTrace(AActor* Cause, const FVector& StartTrace, const FVector& EndTrace);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SpawnOverlapImpactEffects(UObject* WorldContextObject, TSubclassOf<AImpactEffect> Effect, UPARAM(Ref) FHitResult& Hit, const FTransform& SpawnTransform);
     
     UFUNCTION(BlueprintCallable)
@@ -103,7 +103,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static EAffiliation GetAffiliation(const AActor* Actor1, const AActor* Actor2);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(Latent, LatentInfo="LatentInfo", WorldContext="WorldContextObject"))
     static void FireProjectileAsync(UObject* WorldContextObject, TSubclassOf<AActor> ProjectileBP, const FProjectileParams& Params, EFireOutExec& Exec, FHitResult& HitResult, FLatentActionInfo LatentInfo);
     
     UFUNCTION(BlueprintCallable)
@@ -124,7 +124,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static TArray<FVector> ApplyWeaponSpread(AActor* Cause, const FVector& Origin, const FVector& End, int32 SprayCount, float Spread, UPARAM(Ref) FRandomStream& RandomStream);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ApplyDamageInfo(UObject* WorldContextObject, FDamageInfo DamageInfo, FDamageInfo& Result);
     
     UFUNCTION(BlueprintCallable)

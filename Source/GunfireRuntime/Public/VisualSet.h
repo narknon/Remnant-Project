@@ -2,14 +2,13 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "HierarchicalEditInterface.h"
-#include "VisualSetSlot.h"
-#include "VisualID.h"
-#include "VisualFX.h"
 #include "VisualSet.generated.h"
 
+class UVisualSet;
+class UVisualSetNode;
+class UVisualFX;
+class UVisualID;
 class UObject;
-
-
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UVisualSet : public UDataAsset, public IHierarchicalEditInterface {
@@ -28,7 +27,7 @@ public:
     TArray<UVisualID*> VisualIDs;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, Transient, meta=(AllowPrivateAccess=true))
     TMap<FName, UVisualFX*> VisualFXMap;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

@@ -4,8 +4,8 @@
 #include "ActorStateDecorator.h"
 #include "UseItemStateDecorator.generated.h"
 
-class UStaticMesh;
 class AItem;
+class UStaticMesh;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UUseItemStateDecorator : public UActorStateDecorator {

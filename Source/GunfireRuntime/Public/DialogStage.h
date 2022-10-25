@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EventTreeStage.h"
 #include "GameFramework/Actor.h"
 #include "UObject/NoExportTypes.h"
+#include "EventTreeStage.h"
 #include "DialogStage.generated.h"
 
-class UCameraComponent;
-class UDialogComponent;
 class APlayerController;
+class UDialogComponent;
+class UCameraComponent;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API ADialogStage : public AActor {

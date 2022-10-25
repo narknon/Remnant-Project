@@ -43,7 +43,7 @@ public:
     UFUNCTION(BlueprintCallable)
     float GetPlayerRangeToVolume(ALODVolume* Volume);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static ULODVolumeManager* GetInstance(UObject* WorldContextObject);
     
 };

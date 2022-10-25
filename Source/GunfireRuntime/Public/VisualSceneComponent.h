@@ -3,8 +3,8 @@
 #include "VisualSceneComponent.generated.h"
 
 class AActor;
-class UActorVisual;
 class USceneComponent;
+class UActorVisual;
 
 USTRUCT(BlueprintType)
 struct FVisualSceneComponent {

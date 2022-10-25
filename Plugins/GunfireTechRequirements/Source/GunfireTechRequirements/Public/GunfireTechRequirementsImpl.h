@@ -1,28 +1,28 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "NetworkConnChangedDelegate.h"
-#include "EAlternateLoginType.h"
+#include "ActiveProfileSetDelegate.h"
+#include "OnDLCEntitlementsUpdatedDelegate.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "ETechReqStatusChange.h"
 #include "ControllerConnChangedDelegate.h"
 #include "OnShowStatusEventMessageDelegate.h"
 #include "FullGameAvailableEventDelegateDelegate.h"
 #include "ActiveControllerSetDelegate.h"
-#include "ActiveProfileSetDelegate.h"
+#include "NetworkConnChangedDelegate.h"
 #include "OnlinePrivilegeCheckedDelegateDelegate.h"
 #include "OnMainMenuLoadedDelegate.h"
 #include "OnWaitDialogDelegate.h"
-#include "ELicensedContent.h"
-#include "ETechReqStatusChange.h"
 #include "ActiveProfileLostDelegate.h"
 #include "OnDLCInstallFinishedDelegate.h"
 #include "OnLegalCompleteDelegate.h"
-#include "OnDLCEntitlementsUpdatedDelegate.h"
 #include "Net/OnlineBlueprintCallProxyBase.h"
 #include "EPresenceContent.h"
+#include "ELicensedContent.h"
+#include "EAlternateLoginType.h"
 #include "GunfireTechRequirementsImpl.generated.h"
 
-class UCameraComponent;
 class APlayerController;
+class UCameraComponent;
 class UGunfireTechRequirementsImpl;
 class UObject;
 
@@ -171,7 +171,7 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<ELicensedContent> GetLicensedContent();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UGunfireTechRequirementsImpl* GetGunfireTechRequirementsImpl(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

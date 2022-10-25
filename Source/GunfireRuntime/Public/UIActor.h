@@ -6,8 +6,8 @@
 #include "UIActor.generated.h"
 
 class AUIActor;
-class AUIHud;
 class UUserWidget;
+class AUIHud;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AUIActor : public AActor {

@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "QuestComponent.h"
 #include "DialogProviderInterface.h"
-#include "QuestActorDelegateDelegate.h"
 #include "EQuestEntityOwnerContext.h"
 #include "QuestEntityEventTree.h"
+#include "QuestActorDelegateDelegate.h"
 #include "QuestNoActorDelegateDelegate.h"
 #include "QuestEntity.generated.h"
 

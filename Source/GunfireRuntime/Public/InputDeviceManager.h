@@ -6,8 +6,8 @@
 #include "EInputDevice.h"
 #include "InputDeviceManager.generated.h"
 
-class UInputDeviceManager;
 class UImageSet;
+class UInputDeviceManager;
 
 UCLASS(Blueprintable, Transient)
 class GUNFIRERUNTIME_API UInputDeviceManager : public UObject {

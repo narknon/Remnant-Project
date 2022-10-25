@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "SetMiniMapDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "OnMiniMapSelectDelegateDelegate.h"
+#include "SetMiniMapDelegateDelegate.h"
 #include "OnMiniMapVisibilityDelegateDelegate.h"
 #include "MiniMapActor.generated.h"
 

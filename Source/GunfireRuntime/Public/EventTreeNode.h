@@ -3,8 +3,8 @@
 #include "EventTreeNode_Base.h"
 #include "EventTreeNode.generated.h"
 
-class UEventTreeComponent;
 class APlayerController;
+class UEventTreeComponent;
 
 UCLASS(Abstract, Blueprintable)
 class GUNFIRERUNTIME_API UEventTreeNode : public UEventTreeNode_Base {

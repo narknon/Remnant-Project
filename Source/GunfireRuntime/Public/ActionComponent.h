@@ -7,8 +7,8 @@
 #include "Engine/EngineTypes.h"
 #include "ActionComponent.generated.h"
 
-class UDamageType;
 class UActionBase;
+class UDamageType;
 class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

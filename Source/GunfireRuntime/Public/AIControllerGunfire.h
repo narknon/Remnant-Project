@@ -2,20 +2,20 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "AIController.h"
-#include "EventOnPawnUnpossessedDelegate.h"
 #include "ENodePathStatus.h"
+#include "EventOnPawnUnpossessedDelegate.h"
 #include "AITacticalPoint.h"
 #include "UObject/NoExportTypes.h"
 #include "EAwarenessSignal.h"
 #include "AIControllerGunfire.generated.h"
 
-class AActor;
 class UNavigationQueryFilter;
 class UAITargetSelector;
+class AAIControllerGunfire;
+class AActor;
 class AAIGoalActor;
 class AAIPathPoint;
 class ACharacterGunfire;
-class AAIControllerGunfire;
 class UObject;
 
 UCLASS(Blueprintable, Config=Game)
@@ -132,7 +132,7 @@ protected:
     AAIPathPoint* PathPoint;
     
 public:
-    AAIControllerGunfire(const FObjectInitializer& ObjectInitializer);
+    AAIControllerGunfire();
     UFUNCTION(BlueprintCallable)
     void UpdateAwareness(float DeltaSeconds);
     
@@ -201,7 +201,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AAIPathPoint* GetPathPoint() const;
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static TArray<AAIControllerGunfire*> GetNearbyAI(const UObject* WorldContextObject, FVector Origin, float Radius, TArray<AAIControllerGunfire*> IgnoreList);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

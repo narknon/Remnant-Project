@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "EExperienceReason.h"
+#include "Components/ActorComponent.h"
 #include "LevelUpDelegateDelegate.h"
 #include "ProgressionComponent.generated.h"
 

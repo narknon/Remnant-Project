@@ -1,8 +1,8 @@
 #include "StateMachineComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UActorState;
 class AActor;
+class UActorState;
 
 void UStateMachineComponent::SetWindow(const FName& Name) {
 }

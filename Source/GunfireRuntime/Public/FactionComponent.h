@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
 #include "FactionAffiliationEventDelegate.h"
-#include "FactionDamageTracker.h"
-#include "FactionOverride.h"
+#include "Components/ActorComponent.h"
 #include "DamageInfo.h"
+#include "FactionOverride.h"
+#include "FactionDamageTracker.h"
 #include "EAffiliation.h"
 #include "FactionComponent.generated.h"
 

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "EGfeSDKPermission.h"
 #include "GfeSDKCreateResponse.h"
+#include "EGfeSDKPermission.h"
 #include "HighlightsFunctionLibrary.generated.h"
 
 UCLASS(Blueprintable)

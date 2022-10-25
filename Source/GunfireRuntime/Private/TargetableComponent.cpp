@@ -1,7 +1,7 @@
 #include "TargetableComponent.h"
 
-class AActor;
 class ACharacterGunfire;
+class AActor;
 
 void UTargetableComponent::SetCanBeTargeted(bool bNewCanBeTargeted) {
 }

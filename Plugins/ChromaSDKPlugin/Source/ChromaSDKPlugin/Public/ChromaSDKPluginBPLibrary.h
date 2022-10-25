@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EChromaSDKDevice1DEnum.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=LinearColor -FallbackName=LinearColor
-#include "EChromaSDKDevice2DEnum.h"
-#include "EChromaSDKMouseLed.h"
-#include "EChromaSDKDeviceEnum.h"
-#include "EChromaSDKKeyboardKey.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
 #include "ChromaSDKColors.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=InputCore -ObjectName=Key -FallbackName=Key
+#include "UObject/NoExportTypes.h"
+#include "EChromaSDKKeyboardKey.h"
+#include "EChromaSDKDevice2DEnum.h"
+#include "EChromaSDKDeviceEnum.h"
+#include "EChromaSDKMouseLed.h"
+#include "EChromaSDKDevice1DEnum.h"
+#include "InputCoreTypes.h"
 #include "ChromaSDKGuid.h"
 #include "ChromaSDKEffectResult.h"
 #include "ChromaSDKPluginBPLibrary.generated.h"

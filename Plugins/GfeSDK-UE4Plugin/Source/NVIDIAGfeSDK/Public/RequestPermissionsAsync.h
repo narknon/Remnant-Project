@@ -18,7 +18,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     URequestPermissionsAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URequestPermissionsAsync* GFERequestPermissions(UObject* WorldContextObject, const bool Video, const bool Screenshots);
     
 };

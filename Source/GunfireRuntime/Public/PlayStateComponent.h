@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "PlayStateChangedEventDelegate.h"
 #include "Components/ActorComponent.h"
 #include "PlayStateTransitionedEventDelegate.h"
-#include "PlayStateChangedEventDelegate.h"
 #include "PlayStateContext.h"
 #include "PlayStateComponent.generated.h"
 
-class UPlayState;
-class UPlayStateSet;
 class APlayerControllerGunfire;
+class UPlayStateSet;
+class UPlayState;
 class UPlayStateEffect;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -1,7 +1,7 @@
 #include "HighlightsSummaryAsync.h"
 
-class UHighlightsSummaryAsync;
 class UObject;
+class UHighlightsSummaryAsync;
 
 UHighlightsSummaryAsync* UHighlightsSummaryAsync::HighlightsOpenSummary(UObject* WorldContextObject, const FGfeSDKHighlightSummaryParams& Params) {
     return NULL;

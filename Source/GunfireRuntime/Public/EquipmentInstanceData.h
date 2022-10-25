@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EquipmentMods.h"
 #include "ItemInstanceData.h"
+#include "EquipmentMods.h"
 #include "EquipmentInstanceData.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

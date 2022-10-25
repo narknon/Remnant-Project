@@ -3,12 +3,12 @@
 #include "Components/StaticMeshComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "FogOfWarChangedEventDelegate.h"
-#include "UObject/NoExportTypes.h"
 #include "VisibleCoordinate.h"
+#include "UObject/NoExportTypes.h"
 #include "FogOfWarComponent.generated.h"
 
-class UTexture2D;
 class UMaterialInstanceDynamic;
+class UTexture2D;
 class ACharacter;
 
 UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

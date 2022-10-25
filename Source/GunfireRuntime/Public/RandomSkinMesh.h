@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "VisualMaterialParam.h"
 #include "VisualMaterialReplacement.h"
+#include "VisualMaterialParam.h"
 #include "RandomSkinMesh.generated.h"
 
 class USkeletalMesh;

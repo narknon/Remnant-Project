@@ -2,29 +2,29 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "Components/ActorComponent.h"
-#include "VisualLogger/VisualLoggerDebugSnapshotInterface.h"
-#include "UObject/NoExportTypes.h"
-#include "TileVisibleDelegateDelegate.h"
 #include "TileActiveDelegateDelegate.h"
+#include "VisualLogger/VisualLoggerDebugSnapshotInterface.h"
+#include "TileVisibleDelegateDelegate.h"
+#include "TileBase.h"
+#include "UObject/NoExportTypes.h"
 #include "MapGenVoidDelegateDelegate.h"
 #include "Tile.h"
-#include "TileBase.h"
 #include "MapGenAttribute.h"
 #include "EMapGenState.h"
 #include "EMapGenAttributeScope.h"
 #include "UObject/NoExportTypes.h"
 #include "MapGenComponent.generated.h"
 
-class AAudioCustomVolume;
-class UWorld;
 class AMapGenSettings;
+class UWorld;
 class APlayerController;
 class ULevelStreaming;
 class ARuntimeNavMeshBoundsVolume;
+class UTileSet;
+class AAudioCustomVolume;
 class AMapTileInfo;
 class AMapTileEdge;
 class AActor;
-class UTileSet;
 class ULevel;
 class UMapGenComponent;
 

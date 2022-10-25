@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EAwarenessSignal.h"
 #include "ConditionalAnimNotify.h"
 #include "EAwarenessSource.h"
-#include "EAwarenessSignal.h"
 #include "AnimNotify_Awareness.generated.h"
 
 UCLASS(Blueprintable, CollapseCategories)

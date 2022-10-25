@@ -11,7 +11,7 @@ class REMNANT_API URemnantSpawnFilterManager : public USpawnFilterManager {
     GENERATED_BODY()
 public:
     URemnantSpawnFilterManager();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URemnantSpawnFilterManager* GetManagerInstance(const UObject* WorldContextObject);
     
 };

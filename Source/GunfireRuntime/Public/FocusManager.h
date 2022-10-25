@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "FocusInfo.h"
 #include "TabFocusInfo.h"
+#include "FocusInfo.h"
 #include "FocusManager.generated.h"
 
 class UInputComponent;
-class UUserWidget;
 class APlayerController;
+class UUserWidget;
 class UFocusManInputHandler;
 class UFocusManInputAxisHandler;
 class UWidget;

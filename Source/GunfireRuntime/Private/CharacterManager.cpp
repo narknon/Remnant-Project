@@ -1,9 +1,9 @@
 #include "CharacterManager.h"
 
-class AActor;
-class UCharacterManager;
-class UObject;
 class ACharacterGunfire;
+class AActor;
+class UObject;
+class UCharacterManager;
 
 void UCharacterManager::KillAllCharactersForOwner(AActor* Owner) {
 }

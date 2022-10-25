@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "UObject/NoExportTypes.h"
-#include "QuestCompleteDelegateDelegate.h"
 #include "EQuestResult.h"
 #include "EQuestState.h"
+#include "GameFramework/Actor.h"
+#include "QuestCompleteDelegateDelegate.h"
+#include "UObject/NoExportTypes.h"
 #include "Quest.generated.h"
 
-class AQuest;
 class UTexture2D;
 class UQuestObjective;
+class AQuest;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AQuest : public AActor {

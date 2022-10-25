@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/Actor.h"
-#include "PhysicsBoundsInterface.h"
-#include "OnAffectCharacterDelegateDelegate.h"
 #include "EPhysicsBoundsForceType.h"
+#include "OnAffectCharacterDelegateDelegate.h"
+#include "PhysicsBoundsInterface.h"
 #include "PhysicsBounds.generated.h"
 
 class UCurveFloat;

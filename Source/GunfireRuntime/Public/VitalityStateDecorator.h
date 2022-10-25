@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActorStateDecorator.h"
 #include "StatValue.h"
+#include "ActorStateDecorator.h"
 #include "Conditions.h"
 #include "VitalityStateDecorator.generated.h"
 

@@ -1,7 +1,7 @@
 #include "RemnantQuestWaveEncounter.h"
 
-class AActor;
 class UEncounterInstance;
+class AActor;
 
 void URemnantQuestWaveEncounter::WaveComplete(UEncounterInstance* Instance) {
 }

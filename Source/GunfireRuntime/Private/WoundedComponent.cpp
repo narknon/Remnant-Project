@@ -1,8 +1,8 @@
 #include "WoundedComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class AActor;
 class ULevelSequence;
+class AActor;
 class UWoundedComponent;
 
 void UWoundedComponent::StopReviveActor_Implementation() {

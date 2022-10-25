@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EItemQuerySortMethod.h"
 #include "UObject/Object.h"
 #include "ItemQueryResult.h"
+#include "EItemQuerySortMethod.h"
 #include "ItemQueryFilter.h"
 #include "ItemType.generated.h"
 
-class AActor;
+class UTexture2D;
 class UItemType;
 class UStats;
 class UInventoryComponent;
-class UTexture2D;
+class AActor;
 
 UCLASS(Abstract, Blueprintable, Const)
 class GUNFIRERUNTIME_API UItemType : public UObject {

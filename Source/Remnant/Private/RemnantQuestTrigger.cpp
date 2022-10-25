@@ -1,7 +1,7 @@
 #include "RemnantQuestTrigger.h"
 
-class AActor;
 class AQuestTrigger;
+class AActor;
 class ARemnantCharacter;
 
 void URemnantQuestTrigger::OnActorRegistered(AActor* Actor) {

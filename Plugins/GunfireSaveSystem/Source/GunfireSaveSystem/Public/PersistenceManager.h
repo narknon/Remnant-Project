@@ -4,9 +4,9 @@
 #include "BackgroundWorkDelegate.h"
 #include "PersistenceManager.generated.h"
 
+class USaveGameWorld;
 class ULevel;
 class USaveGameProfile;
-class USaveGameWorld;
 
 UCLASS(Blueprintable, DefaultConfig)
 class GUNFIRESAVESYSTEM_API UPersistenceManager : public UGameInstanceSubsystem {

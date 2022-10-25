@@ -6,6 +6,7 @@ namespace UnrealBuildTool.Rules
 	{
 		public PrefabricatorEditor(ReadOnlyTargetRules Target) : base(Target)
         {
+            bFasterWithoutUnity = true;
             PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
             PublicIncludePaths.AddRange(
 				new string[] {
@@ -38,7 +39,6 @@ namespace UnrealBuildTool.Rules
                     "Kismet",
                     "PlacementMode",
                     "EditorWidgets",
-                    "RHI"
                 }
 				);
 

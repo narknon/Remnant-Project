@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "WorldResetInterface.h"
+#include "Quest.h"
 #include "ERemnantQuestType.h"
+#include "EQuestMode.h"
 #include "ERemnantQuestDebugState.h"
 #include "ERemnantQuestRarity.h"
-#include "Quest.h"
-#include "WorldResetInterface.h"
-#include "EQuestMode.h"
 #include "ELicensedContent.h"
 #include "UObject/NoExportTypes.h"
 #include "ERemnantQuestStatus.h"
@@ -14,17 +14,17 @@
 #include "ZoneLinkInfo.h"
 #include "RemnantQuest.generated.h"
 
-class UInventoryComponent;
-class URemnantQuestComponent;
+class UDataTable;
 class USpawnTable;
 class UPersistenceComponent;
 class UPersistenceKeysComponent;
-class ULevelStreaming;
 class UWorld;
-class UDataTable;
+class URemnantQuestComponent;
+class ULevelStreaming;
 class ARemnantPlayerController;
 class ARemnantCharacter;
 class ARemnantQuest;
+class UInventoryComponent;
 
 UCLASS(Blueprintable)
 class REMNANT_API ARemnantQuest : public AQuest, public IWorldResetInterface {

@@ -3,9 +3,9 @@
 #include "Components/ActorComponent.h"
 #include "SpawnFilterManager.generated.h"
 
+class USpawnFilterManager;
 class USpawnFilter;
 class UObject;
-class USpawnFilterManager;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API USpawnFilterManager : public UActorComponent {
@@ -17,16 +17,16 @@ protected:
     
 public:
     USpawnFilterManager();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetSpawnFilter(const UObject* WorldContextObject, USpawnFilter* SpawnFilter);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void RemoveSpawnFilter(const UObject* WorldContextObject, USpawnFilter* SpawnFilter);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static USpawnFilterManager* GetInstance(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ClearAllSpawnFilters(const UObject* WorldContextObject);
     
 };

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "VisualMaterialReplacement.h"
 #include "SceneVisual.h"
 #include "VisualMaterialParam.h"
-#include "VisualMaterialReplacement.h"
 #include "SkinnedMeshVisual.generated.h"
 
 class USkeletalMesh;

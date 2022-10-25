@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EquipmentModSlot.h"
 #include "Item.h"
 #include "EquipmentAttachment.h"
-#include "EquipmentModSlot.h"
-#include "AnimationHandle.h"
 #include "EquipmentDelegateDelegate.h"
+#include "AnimationHandle.h"
 #include "DamageInfo.h"
 #include "Equipment.generated.h"
 
 class ACharacterGunfire;
 class USoundCue;
-class UVisualComponent;
 class UStatsComponent;
-class AUIHud;
-class UInventoryComponent;
 class AEquipmentMod;
+class UVisualComponent;
+class UInventoryComponent;
+class AUIHud;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AEquipment : public AItem {

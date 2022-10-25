@@ -1,8 +1,8 @@
 #include "AIDirector.h"
 
 class UEncounterGroupInstance;
-class AActor;
 class UEncounterInstance;
+class AActor;
 
 void UAIDirector::Suspend() {
 }

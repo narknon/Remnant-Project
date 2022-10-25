@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SaveEventDelegate.h"
-#include "Engine/GameInstance.h"
 #include "OnLocalPlayerPawnControlledDelegate.h"
+#include "Engine/GameInstance.h"
+#include "SaveEventDelegate.h"
 #include "OnFadeIntoLevelCompletedDelegateDelegate.h"
 #include "OnGameInstanceStartDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "EFadeDirection.h"
 #include "GameInstanceGunfire.generated.h"
 
-class UAssetCache;
 class UWorld;
 class UMapLoader;
+class UAssetCache;
 class APawn;
 class UAmbientAudioManager;
 class UPathSharingManager;
@@ -78,10 +78,10 @@ public:
     UFUNCTION(BlueprintCallable)
     bool ImmediatelyFadeScreen(bool bIsFaded, FLinearColor FadeColor, bool bFadeAudio);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static APawn* GetLocalPlayerPawn(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="pWorldContextObject"))
     static UGameInstanceGunfire* GetInstance(const UObject* pWorldContextObject);
     
     UFUNCTION(BlueprintCallable)

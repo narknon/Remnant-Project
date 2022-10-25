@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnStartedVisualLoggerDelegate.h"
 #include "GameFramework/PlayerController.h"
+#include "OnStartedVisualLoggerDelegate.h"
+#include "ELevelTransition.h"
 #include "SpectateTargetChangedDelegateDelegate.h"
 #include "CinematicDelegateDelegate.h"
-#include "ELevelTransition.h"
 #include "PlayerControllerGunfire.generated.h"
 
+class ULevelSequence;
 class AActor;
 class UPlayStateComponent;
-class ULevelSequence;
 class APawn;
 
 UCLASS(Blueprintable)

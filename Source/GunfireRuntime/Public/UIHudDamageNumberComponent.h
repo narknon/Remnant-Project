@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "DamageInfo.h"
 #include "UIHudComponent.h"
 #include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "DamageNumberParameters.h"
-#include "DamageInfo.h"
 #include "UIHudDamageNumberComponent.generated.h"
 
 class ACharacterGunfire;

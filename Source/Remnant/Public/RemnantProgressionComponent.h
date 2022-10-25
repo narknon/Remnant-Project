@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnExperienceGainedDelegate.h"
 #include "ProgressionComponent.h"
 #include "ProgressionValidationInfo.h"
+#include "OnExperienceGainedDelegate.h"
 #include "RemnantProgressionComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

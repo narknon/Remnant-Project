@@ -1,7 +1,7 @@
 #include "InputDeviceManager.h"
 
-class UObject;
 class UInputDeviceManager;
+class UObject;
 
 void UInputDeviceManager::ResetKeyboardIconCache() {
 }

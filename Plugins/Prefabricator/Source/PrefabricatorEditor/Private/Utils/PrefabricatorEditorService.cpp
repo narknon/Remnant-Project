@@ -1,4 +1,4 @@
-//$ Copyright 2015-20, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
+//$ Copyright 2015-19, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
 
 #include "Utils/PrefabricatorEditorService.h"
 
@@ -8,10 +8,7 @@
 #include "Prefab/PrefabComponent.h"
 #include "Utils/PrefabEditorTools.h"
 
-#include "ActorFactories/ActorFactory.h"
-#include "ActorFactories/ActorFactoryBoxVolume.h"
 #include "AssetToolsModule.h"
-#include "ComponentAssetBroker.h"
 #include "Editor.h"
 #include "Editor/EditorEngine.h"
 #include "EditorViewportClient.h"
@@ -24,40 +21,9 @@
 
 void FPrefabricatorEditorService::ParentActors(AActor* ParentActor, AActor* ChildActor)
 {
-	/*
 	if (GEditor) {
 		GEditor->ParentActors(ParentActor, ChildActor, NAME_None);
 	}
-	*/
-
-	USceneComponent* ChildRoot = ChildActor->GetRootComponent();
-	USceneComponent* ParentRoot = ParentActor->GetDefaultAttachComponent();
-
-	check(ChildRoot);	// CanParentActors() call should ensure this
-	check(ParentRoot);	// CanParentActors() call should ensure this
-
-	// modify parent and child
-	// TODO: Check if we need to modify
-	ChildActor->Modify();
-	ParentActor->Modify();
-
-	// If child is already attached to something, modify the old parent and detach
-	if (ChildRoot->GetAttachParent() != nullptr)
-	{
-		AActor* OldParentActor = ChildRoot->GetAttachParent()->GetOwner();
-		OldParentActor->Modify();
-		ChildRoot->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-	}
-
-	// If the parent is already attached to this child, modify its parent and detach so we can allow the attachment
-	if (ParentRoot->IsAttachedTo(ChildRoot))
-	{
-		ParentRoot->GetAttachParent()->GetOwner()->Modify();
-		ParentRoot->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-	}
-
-	// Snap to socket if a valid socket name was provided, otherwise attach without changing the relative transform
-	ChildRoot->AttachToComponent(ParentRoot, FAttachmentTransformRules::KeepWorldTransform, NAME_None);
 }
 
 void FPrefabricatorEditorService::SelectPrefabActor(AActor* PrefabActor)
@@ -114,44 +80,12 @@ FVector FPrefabricatorEditorService::SnapToGrid(const FVector& InLocation)
 
 void FPrefabricatorEditorService::SetDetailsViewObject(UObject* InObject)
 {
-	if (!InObject) return;
-
 	FPropertyEditorModule& PropertyEditorModule = FModuleManager::GetModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	static const FName LevelEditorDetailsId = TEXT("LevelEditorSelectionDetails");
-	TSharedPtr<IDetailsView> LevelEditorDetailsView = PropertyEditorModule.FindDetailView(LevelEditorDetailsId);
-	if (LevelEditorDetailsView.IsValid()) {
-		LevelEditorDetailsView->SetObject(InObject, true);
-	}
+	TArray<UObject*> ObjectList;
+	ObjectList.Add(InObject);
+	PropertyEditorModule.UpdatePropertyViews(ObjectList);
 }
 
-
-void FPrefabricatorEditorService::RefreshDetailsViewObject(UObject* InObject)
-{
-	if (!InObject) return;
-
-	FPropertyEditorModule& PropertyEditorModule = FModuleManager::GetModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	static const FName LevelEditorDetailsId = TEXT("LevelEditorSelectionDetails");
-	TSharedPtr<IDetailsView> LevelEditorDetailsView = PropertyEditorModule.FindDetailView(LevelEditorDetailsId);
-	if (LevelEditorDetailsView.IsValid()) {
-		TArray<TWeakObjectPtr<UObject>> CurrentSelection = LevelEditorDetailsView->GetSelectedObjects();
-		if (CurrentSelection.Num() == 1 && CurrentSelection[0].Get() == InObject) {
-			LevelEditorDetailsView->SetObject(InObject, true);
-		}
-	}
-}
-
-AActor* FPrefabricatorEditorService::SpawnActor(TSubclassOf<AActor> InActorClass, const FTransform& InTransform, ULevel* InLevel, AActor* InTemplate)
-{
-	if (GEditor && !InTemplate) {
-		UActorFactory* ActorFactory = GEditor->FindActorFactoryByClassForActorClass(UActorFactoryBoxVolume::StaticClass(), InActorClass);
-		if (ActorFactory) {
-			FAssetData AssetData(InActorClass);
-			return ActorFactory->CreateActor(AssetData.GetAsset(), InLevel, InTransform);
-		}
-	}
-
-	return IPrefabricatorService::SpawnActor(InActorClass, InTransform, InLevel, InTemplate);
-}
 
 namespace {
 	/**
@@ -193,16 +127,5 @@ void FPrefabricatorEditorService::BeginTransaction(const FText& Description)
 void FPrefabricatorEditorService::EndTransaction()
 {
 	PrefabEndTransaction();
-}
-
-void FPrefabricatorEditorService::RunGC()
-{
-	CollectGarbage(GARBAGE_COLLECTION_KEEPFLAGS);
-}
-
-void FPrefabricatorEditorService::CaptureThumb(UPrefabricatorAsset* PrefabAsset)
-{
-	// Save the thumbnail
-	FPrefabEditorTools::CapturePrefabAssetThumbnail(PrefabAsset);
 }
 

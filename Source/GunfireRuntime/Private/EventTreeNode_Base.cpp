@@ -6,6 +6,6 @@ FString UEventTreeNode_Base::GetEditorLabel_Implementation() const {
 
 UEventTreeNode_Base::UEventTreeNode_Base() {
     this->Enabled = true;
-    this->Seed = 22369;
+    this->Seed = 575;
 }
 

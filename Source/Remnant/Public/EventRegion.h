@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "EventRegionPlayerDelegateDelegate.h"
-#include "EventRegionCharacter.h"
 #include "EventRegionDelegateDelegate.h"
+#include "EventRegionCharacter.h"
+#include "EventRegionPlayerDelegateDelegate.h"
 #include "EventRegion.generated.h"
 
-class URemnantQuestComponent;
+class APlayerController;
 class UPersistenceComponent;
 class UMusicSet;
-class APlayerController;
+class URemnantQuestComponent;
 class ARemnantCharacter;
 class ACharacterGunfire;
 class AEventRegion;

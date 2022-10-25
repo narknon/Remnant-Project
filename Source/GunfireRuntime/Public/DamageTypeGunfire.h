@@ -7,11 +7,11 @@
 #include "DamageTypeGunfire.generated.h"
 
 class UDamageClass;
-class UForceFeedbackEffect;
-class UParticleSystem;
-class ATracer;
 class UActionBase;
 class UHapticFeedbackEffect_Base;
+class UParticleSystem;
+class ATracer;
+class UForceFeedbackEffect;
 class UCameraShake;
 
 UCLASS(Blueprintable, Config=Game)

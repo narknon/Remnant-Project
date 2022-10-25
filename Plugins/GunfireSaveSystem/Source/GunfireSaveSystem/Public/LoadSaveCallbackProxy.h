@@ -18,7 +18,7 @@ public:
     FBlueprintLoadSaveResultDelegate OnFailure;
     
     ULoadSaveCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static ULoadSaveCallbackProxy* LoadSave(UObject* WorldContextObject, int32 Slot);
     
 };

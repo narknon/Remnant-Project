@@ -3,11 +3,11 @@
 #include "QuestComponent.h"
 #include "RemnantQuestComponent.generated.h"
 
-class APlayerController;
 class ARemnantQuest;
 class URemnantQuestTile;
 class URemnantQuestZone;
 class AZoneActor;
+class APlayerController;
 class URemnantQuestEntity;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

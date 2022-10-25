@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
 #include "CameraState.h"
 #include "ECameraFollow.h"
-#include "UObject/NoExportTypes.h"
 #include "MoveDetachedCameraState.generated.h"
 
 class UStateCameraComponent;

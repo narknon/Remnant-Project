@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TileCoord.h"
 #include "UObject/Object.h"
+#include "TileCoord.h"
 #include "Tile.h"
 #include "Zone.generated.h"
 

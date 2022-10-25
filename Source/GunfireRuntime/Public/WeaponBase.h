@@ -6,8 +6,8 @@
 #include "WeaponBase.generated.h"
 
 class UDamageTypeGunfire;
-class AImpactEffect;
 class AActor;
+class AImpactEffect;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AWeaponBase : public AEquipment, public IDamageSourceInterface {

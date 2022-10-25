@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "PhysicsImpactSoundInfo.generated.h"
 
-class USoundBase;
 class UCurveFloat;
+class USoundBase;
 
 USTRUCT(BlueprintType)
 struct FPhysicsImpactSoundInfo {

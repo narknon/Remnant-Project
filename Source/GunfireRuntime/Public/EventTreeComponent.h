@@ -3,13 +3,13 @@
 #include "Components/ActorComponent.h"
 #include "EventTreeNodeEventDelegate.h"
 #include "DialogVoidDelegateDelegate.h"
+#include "EventTreeStage.h"
 #include "EventTreeStageEventDelegate.h"
 #include "EventTreeContext.h"
-#include "EventTreeStage.h"
 #include "EventTreeComponent.generated.h"
 
-class UEventTreeNode;
 class UObject;
+class UEventTreeNode;
 class UEventTree;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -92,6 +92,14 @@
 			"Type": "SymbolFile"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UE4Editor-HoudiniEngineEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UE4Editor-HoudiniEngineEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Developer/RenderDocPlugin/Binaries/Win64/UE4Editor-RenderDocPlugin.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -153,22 +161,6 @@
 		},
 		{
 			"Path": "$(ProjectDir)/Plugins/Prefabricator/Binaries/Win64/UE4Editor-PrefabricatorEditorPostInit.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Prefabricator/Binaries/Win64/UE4Editor-ConstructionSystemRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Prefabricator/Binaries/Win64/UE4Editor-ConstructionSystemRuntime.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Prefabricator/Binaries/Win64/UE4Editor-ConstructionSystemEditor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Prefabricator/Binaries/Win64/UE4Editor-ConstructionSystemEditor.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -1129,14 +1121,6 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/Runtime/WindowsMoviePlayer/Binaries/Win64/UE4Editor-WindowsMoviePlayer.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor-ClothingSystemRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor-ClothingSystemRuntime.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -2209,6 +2193,14 @@
 		},
 		{
 			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor-ClothingSystemRuntimeInterface.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor-ClothingSystemRuntime.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor-ClothingSystemRuntime.pdb",
 			"Type": "SymbolFile"
 		},
 		{
@@ -4184,11 +4176,11 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor.modules",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor.modules",
+			"Path": "$(EngineDir)/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
 		{

@@ -4,8 +4,8 @@
 #include "HierarchicalEditInterface.h"
 #include "VisualID.generated.h"
 
-class UTexture2D;
 class UActorVisual;
+class UTexture2D;
 
 UCLASS(Blueprintable, DefaultToInstanced, EditInlineNew)
 class GUNFIRERUNTIME_API UVisualID : public UObject, public IHierarchicalEditInterface {

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "SubtitleInfo.generated.h"
 
-class AActor;
 class USoundBase;
+class AActor;
 
 USTRUCT(BlueprintType)
 struct GUNFIRERUNTIME_API FSubtitleInfo {

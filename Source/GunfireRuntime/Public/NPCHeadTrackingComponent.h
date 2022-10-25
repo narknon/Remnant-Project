@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "ETrackingMode.h"
 #include "LookTarget.h"
+#include "Components/ActorComponent.h"
 #include "ELookTargetType.h"
+#include "ETrackingMode.h"
 #include "NPCHeadTrackingComponent.generated.h"
 
 class AActor;

@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/EngineTypes.h"
 #include "StateTransientAnimNotify.h"
-#include "EAnimImpactTraceDirection.h"
 #include "EAnimImpactType.h"
+#include "EAnimImpactTraceDirection.h"
+#include "Engine/EngineTypes.h"
 #include "AnimNotify_ImpactEffect.generated.h"
 
 UCLASS(Blueprintable, CollapseCategories)

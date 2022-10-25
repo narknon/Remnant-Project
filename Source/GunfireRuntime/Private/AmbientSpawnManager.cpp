@@ -1,7 +1,7 @@
 #include "AmbientSpawnManager.h"
 
-class ACharacterGunfire;
 class AActor;
+class ACharacterGunfire;
 
 void UAmbientSpawnManager::OnUninitialize() {
 }

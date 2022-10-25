@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "UObject/Object.h"
-#include "Engine/EngineTypes.h"
+#include "EHitPauseMode.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "EHitPauseMode.h"
+#include "UObject/NoExportTypes.h"
 #include "EAmbientPriorityPolicy.h"
 #include "GunfireSettings.generated.h"
 
-class AActor;
 class UActorComponent;
+class AActor;
 class UBlueprint;
 class UActionBase;
 
-UCLASS(Blueprintable, DefaultConfig, Config = Engine)
+UCLASS(Blueprintable, DefaultConfig, Config=Engine)
 class GUNFIRERUNTIME_API UGunfireSettings : public UObject {
     GENERATED_BODY()
 public:

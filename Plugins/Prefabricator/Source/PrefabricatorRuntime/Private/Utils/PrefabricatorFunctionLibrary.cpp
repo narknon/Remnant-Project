@@ -1,4 +1,4 @@
-//$ Copyright 2015-20, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
+//$ Copyright 2015-19, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
 
 #include "Utils/PrefabricatorFunctionLibrary.h"
 
@@ -27,20 +27,15 @@ APrefabActor* UPrefabricatorBlueprintLibrary::SpawnPrefab(const UObject* WorldCo
 			PrefabActor->PrefabComponent->PrefabAssetInterface = Prefab;
 
 			FRandomStream Random(Seed);
-			RandomizePrefab(PrefabActor, Random);
+			PrefabActor->RandomizeSeed(Random);
+
+			FPrefabLoadSettings LoadSettings;
+			LoadSettings.bRandomizeNestedSeed = true;
+			LoadSettings.Random = &Random;
+			FPrefabTools::LoadStateFromPrefabAsset(PrefabActor, LoadSettings);
 		}
 	}
 	return PrefabActor;
-}
-
-void UPrefabricatorBlueprintLibrary::RandomizePrefab(APrefabActor* PrefabActor, const FRandomStream& InRandom)
-{
-	PrefabActor->RandomizeSeed(InRandom);
-
-	FPrefabLoadSettings LoadSettings;
-	LoadSettings.bRandomizeNestedSeed = true;
-	LoadSettings.Random = &InRandom;
-	FPrefabTools::LoadStateFromPrefabAsset(PrefabActor, LoadSettings);
 }
 
 void UPrefabricatorBlueprintLibrary::GetAllAttachedActors(AActor* Prefab, TArray<AActor*>& AttachedActors)

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LevelInstanceStateDelegateDelegate.h"
 #include "GameFramework/Actor.h"
 #include "UObject/NoExportTypes.h"
+#include "LevelInstanceStateDelegateDelegate.h"
 #include "EPlayableVisibleState.h"
 #include "EPlayableLoadState.h"
 #include "PlayableLevel.generated.h"

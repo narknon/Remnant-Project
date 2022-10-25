@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "ETailType.h"
 #include "UObject/NoExportTypes.h"
 #include "EPingType.h"
-#include "ETailType.h"
 #include "Engine/EngineTypes.h"
 #include "ActionPing.generated.h"
 
 class UPingSubContext;
-class UEmote;
 class AActor;
+class UEmote;
 
 USTRUCT(BlueprintType)
 struct REMNANT_API FActionPing {

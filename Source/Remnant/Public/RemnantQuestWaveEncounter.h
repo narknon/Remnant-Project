@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EventRegionCharacter.h"
 #include "RemnantQuestComponent.h"
 #include "EncounterWave.h"
 #include "QuestNameDelegateDelegate.h"
 #include "QuestVoidDelegateDelegate.h"
-#include "EventRegionCharacter.h"
 #include "RemnantQuestWaveEncounter.generated.h"
 
 class UEncounterInstance;
-class AActor;
 class USpawnTable;
+class AActor;
 class AEventRegion;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

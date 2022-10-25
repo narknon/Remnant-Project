@@ -18,7 +18,7 @@ public:
     FBlueprintSaveNoRetDelegate OnFailure;
     
     URestoreSlotBackupCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URestoreSlotBackupCallbackProxy* RestoreSlotBackup(UObject* WorldContextObject, int32 Slot);
     
 };

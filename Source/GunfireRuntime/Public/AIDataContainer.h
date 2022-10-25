@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "AINavigationLink.h"
 #include "UObject/Object.h"
 #include "AITacticalPoint.h"
-#include "AINavigationLink.h"
 #include "SpawnPointList.h"
 #include "OwnedAIData.h"
 #include "AIDataContainer.generated.h"

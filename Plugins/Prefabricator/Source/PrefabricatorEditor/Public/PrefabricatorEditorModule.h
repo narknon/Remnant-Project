@@ -1,9 +1,7 @@
-//$ Copyright 2015-20, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
+//$ Copyright 2015-19, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
 
 #pragma once
 #include "CoreMinimal.h"
-#include "PrefabEditorTypes.h"
-
 #include "AssetTypeCategories.h"
 #include "Modules/ModuleInterface.h"
 #include "Modules/ModuleManager.h"
@@ -40,7 +38,5 @@ public:
 	}
 
 	virtual EAssetTypeCategories::Type GetPrefabricatorAssetCategoryBit() const = 0;
-	virtual FPrefabDetailsExtend& GetPrefabActorDetailsExtender() = 0;
-	virtual void UpgradePrefabAssets() = 0;
 };
 

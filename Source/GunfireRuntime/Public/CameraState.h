@@ -4,8 +4,8 @@
 #include "Camera/CameraTypes.h"
 #include "CameraState.generated.h"
 
-class AActor;
 class UCameraState;
+class AActor;
 class UStateCameraComponent;
 
 UCLASS(Blueprintable, Config=Game)

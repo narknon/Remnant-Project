@@ -1,8 +1,8 @@
 #include "CharacterMovementComponentGunfire.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class APhysicsBounds;
+class AActor;
 class UPhysicsBoundsType;
 
 void UCharacterMovementComponentGunfire::SetSwingConstraint(bool Enabled, const FVector& SwingPoint, float RopeLength) {

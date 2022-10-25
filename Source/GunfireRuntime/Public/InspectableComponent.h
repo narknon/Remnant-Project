@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InspectablePlayerEventDelegate.h"
 #include "Components/ActorComponent.h"
 #include "Camera/PlayerCameraManager.h"
 #include "InspectableEventDelegate.h"
+#include "InspectablePlayerEventDelegate.h"
 #include "InspectableComponent.generated.h"
 
 class APlayerController;

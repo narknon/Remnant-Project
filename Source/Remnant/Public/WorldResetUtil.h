@@ -8,7 +8,7 @@ class REMNANT_API UWorldResetUtil : public UObject {
     GENERATED_BODY()
 public:
     UWorldResetUtil();
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsWorldResetInProgress(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintPure)

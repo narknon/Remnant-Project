@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EventRegionCharacter.generated.h"
 
-class ARemnantCharacter;
 class APlayerController;
+class ARemnantCharacter;
 
 USTRUCT(BlueprintType)
 struct REMNANT_API FEventRegionCharacter {

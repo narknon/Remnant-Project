@@ -4,8 +4,8 @@
 #include "ShowEquipmentAbstractDecorator.h"
 #include "ShowEquipmentDecorator.generated.h"
 
-class AEquipment;
 class UItemType;
+class AEquipment;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UShowEquipmentDecorator : public UShowEquipmentAbstractDecorator {

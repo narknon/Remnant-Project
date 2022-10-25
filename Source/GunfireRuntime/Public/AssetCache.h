@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PreloadedCompleteDelegate.h"
 #include "UObject/Object.h"
+#include "PreloadedCompleteDelegate.h"
 #include "EAssetCachePreloadMethod.h"
 #include "AssetCache.generated.h"
 

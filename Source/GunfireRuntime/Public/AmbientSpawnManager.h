@@ -2,13 +2,13 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "AmbientActorDelegateDelegate.h"
-#include "DamageInfo.h"
 #include "TileAmbientSpawns.h"
+#include "DamageInfo.h"
 #include "AmbientSpawnManager.generated.h"
 
+class AActor;
 class ACharacterGunfire;
 class AAmbientSpawnRegion;
-class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UAmbientSpawnManager : public UActorComponent {

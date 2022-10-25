@@ -5,8 +5,8 @@
 #include "ELicensedContent.h"
 #include "Trait.generated.h"
 
-class UTraitType;
 class UTrait;
+class UTraitType;
 class UConditionList;
 
 UCLASS(Blueprintable, Config=Game)

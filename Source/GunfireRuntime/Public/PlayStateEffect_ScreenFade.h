@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "PlayStateEffect.h"
 #include "UObject/NoExportTypes.h"
+#include "PlayStateEffect.h"
 #include "PlayStateEffect_ScreenFade.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

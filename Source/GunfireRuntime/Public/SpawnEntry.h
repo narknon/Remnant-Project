@@ -4,8 +4,8 @@
 #include "ESpawnType.h"
 #include "SpawnEntry.generated.h"
 
-class USpawnTableEntry;
 class AActor;
+class USpawnTableEntry;
 class UFaction;
 
 USTRUCT(BlueprintType)

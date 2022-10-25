@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "CharacterSpawnedEventDelegate.h"
 #include "SpawnPointBase.h"
+#include "CharacterSpawnedEventDelegate.h"
 #include "SpawnPointEnabledEventDelegate.h"
 #include "CharacterDiedEventDelegate.h"
-#include "ESpawnDelayType.h"
 #include "Engine/EngineTypes.h"
+#include "ESpawnDelayType.h"
 #include "Engine/EngineTypes.h"
 #include "CharacterSpawnPoint.generated.h"
 

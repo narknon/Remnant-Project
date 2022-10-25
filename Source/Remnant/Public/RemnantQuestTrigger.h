@@ -4,9 +4,9 @@
 #include "QuestTriggerPlayerDelegateDelegate.h"
 #include "RemnantQuestTrigger.generated.h"
 
+class ARemnantCharacter;
 class AActor;
 class AQuestTrigger;
-class ARemnantCharacter;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URemnantQuestTrigger : public URemnantQuestComponent {

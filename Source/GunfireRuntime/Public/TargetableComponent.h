@@ -6,9 +6,9 @@
 #include "ETargetType.h"
 #include "TargetableComponent.generated.h"
 
-class AActor;
 class ACharacterGunfire;
 class UTargetingComponent;
+class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UTargetableComponent : public UHeuristicBoundsComponent {

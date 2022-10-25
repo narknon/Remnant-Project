@@ -1,16 +1,15 @@
 #include "CharacterGunfire.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
+#include "HitLogComponent.h"
 #include "StatsComponent.h"
 #include "ActionComponent.h"
-#include "CharacterMovementComponentGunfire.h"
-#include "HitLogComponent.h"
 #include "ReplicatedMovementComponent.h"
 
 class UShapeComponent;
+class UImpactDirection;
 class AActor;
 class UDamageTypeGunfire;
-class UImpactDirection;
 class AImpactEffect;
 class UFaction;
 class UPrimitiveComponent;
@@ -255,7 +254,7 @@ void ACharacterGunfire::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(ACharacterGunfire, AimTarget);
 }
 
-ACharacterGunfire::ACharacterGunfire() : Super(FObjectInitializer::Get().SetDefaultSubobjectClass<UCharacterMovementComponentGunfire>(ACharacter::CharacterMovementComponentName)) {
+ACharacterGunfire::ACharacterGunfire() {
     this->StatsComp = CreateDefaultSubobject<UStatsComponent>(TEXT("StatsComp"));
     this->ActionComp = CreateDefaultSubobject<UActionComponent>(TEXT("ActionComp"));
     this->HitLogComp = CreateDefaultSubobject<UHitLogComponent>(TEXT("HitLogComp"));

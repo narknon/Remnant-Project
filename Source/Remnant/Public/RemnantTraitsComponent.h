@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SpentTraitPointValidationInfo.h"
-#include "TraitsComponent.h"
 #include "TraitInfo.h"
-#include "TraitValidationInfo.h"
+#include "TraitsComponent.h"
 #include "TraitPointValidationInfo.h"
+#include "TraitValidationInfo.h"
+#include "SpentTraitPointValidationInfo.h"
 #include "RemnantTraitsComponent.generated.h"
 
 class UTrait;

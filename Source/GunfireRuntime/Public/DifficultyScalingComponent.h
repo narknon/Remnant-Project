@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "DifficultyScalingDelegateDelegate.h"
 #include "Components/ActorComponent.h"
+#include "DifficultyScalingDelegateDelegate.h"
 #include "DifficultyScalingComponent.generated.h"
 
-class UDataTable;
-class UDifficultyScalingComponent;
 class AActor;
 class UObject;
+class UDataTable;
+class UDifficultyScalingComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UDifficultyScalingComponent : public UActorComponent {
@@ -91,7 +91,7 @@ public:
     UFUNCTION(BlueprintCallable)
     float GetEnemyDamageScalar(AActor* Actor, FName Prefix);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UDifficultyScalingComponent* GetDifficultyScalingComponent(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

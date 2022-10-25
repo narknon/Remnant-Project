@@ -3,10 +3,10 @@
 #include "Components/ActorComponent.h"
 #include "CharacterManager.generated.h"
 
-class ACharacterGunfire;
 class AActor;
-class UObject;
+class ACharacterGunfire;
 class UCharacterManager;
+class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UCharacterManager : public UActorComponent {
@@ -21,7 +21,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void KillAllCharactersForOwner(AActor* Owner);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UCharacterManager* GetInstance(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

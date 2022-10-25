@@ -5,8 +5,8 @@
 #include "SubtitleInfo.h"
 #include "SubtitlesComponent.generated.h"
 
-class USoundBase;
 class USubtitleInstance;
+class USoundBase;
 class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

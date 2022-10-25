@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "QuestCompleteDelegateDelegate.h"
 #include "RemnantQuestComponent.h"
 #include "ERemnantQuestType.h"
 #include "EQuestResult.h"
-#include "QuestCompleteDelegateDelegate.h"
 #include "RemnantQuestSubQuest.generated.h"
 
 class UQuestComponent;

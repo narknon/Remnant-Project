@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "RemnantQuestComponent.h"
-#include "QuestVoidDelegateDelegate.h"
-#include "QuestZonePlayerDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "TileSpawnList.h"
+#include "QuestVoidDelegateDelegate.h"
+#include "QuestZonePlayerDelegateDelegate.h"
 #include "RemnantQuestZone.generated.h"
 
+class UTileSet;
 class UZoneDef;
 class UWorld;
-class UTileSet;
 class URemnantQuestTile;
 class USpawnTable;
 class APlayerController;

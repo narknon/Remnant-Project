@@ -9,9 +9,9 @@
 #include "UObject/NoExportTypes.h"
 #include "TweenComponent.generated.h"
 
-class ULightComponent;
 class AActor;
 class USceneComponent;
+class ULightComponent;
 class UObject;
 class UPrimitiveComponent;
 class UMaterialInterface;

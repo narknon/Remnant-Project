@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LocalPlayerTargetChangedDelegate.h"
 #include "PlayerStateGunfire.h"
 #include "ChatRestrictionChangedDelegate.h"
+#include "LocalPlayerTargetChangedDelegate.h"
 #include "PlayerStateRemnant.generated.h"
 
 UCLASS(Blueprintable)

@@ -1,50 +1,50 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "OnTargetChangedDelegateDelegate.h"
 #include "GameFramework/Character.h"
+#include "FocusChangedDelegateDelegate.h"
 #include "DamageableInterface.h"
-#include "OnFactionChangeDelegateDelegate.h"
+#include "EDecalReceiverType.h"
 #include "DamageSourceInterface.h"
 #include "EventHandlerInterface.h"
+#include "Engine/EngineTypes.h"
+#include "OnFactionChangeDelegateDelegate.h"
 #include "Engine/DataTable.h"
-#include "WeaponPhantomProvider.h"
-#include "UObject/NoExportTypes.h"
-#include "ActiveRagdollInfo.h"
-#include "EDecalReceiverType.h"
-#include "OnTargetChangedDelegateDelegate.h"
-#include "InspectStat.h"
 #include "OnTargetedDelegateDelegate.h"
+#include "OnDeadDelegateDelegate.h"
+#include "ActiveRagdollInfo.h"
 #include "SpectateChangeEventDelegate.h"
 #include "DamageEventDelegateDelegate.h"
 #include "OnHealthChangedDelegateDelegate.h"
-#include "OnDeadDelegateDelegate.h"
 #include "EventDelegateDelegate.h"
-#include "FocusChangedDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "EEffectSpawnDirection.h"
-#include "Engine/EngineTypes.h"
+#include "WeaponPhantomProvider.h"
+#include "UObject/NoExportTypes.h"
 #include "EDeadReason.h"
+#include "InspectStat.h"
 #include "InspectInfo.h"
 #include "CharacterGunfire.generated.h"
 
-class UStatsComponent;
-class UDataTable;
-class UActionComponent;
 class UReplicatedMovementComponent;
+class UObject;
+class UStatsComponent;
+class UActionComponent;
+class AActor;
 class UHitLogComponent;
-class UImpactDirection;
+class UDataTable;
 class UStateMachineComponent;
 class UStats;
 class UFaction;
 class UDamageTypeGunfire;
+class UCharacterManager;
 class AImpactEffect;
 class UInventoryComponent;
-class AActor;
 class ACharacterGunfire;
-class UCharacterManager;
 class UShapeComponent;
+class UImpactDirection;
 class UPrimitiveComponent;
-class UObject;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API ACharacterGunfire : public ACharacter, public IDamageableInterface, public IDamageSourceInterface, public IEventHandlerInterface {
@@ -324,7 +324,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void ModifyStat(FName Stat, float Value);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void MarkActorHit(UObject* WorldContextObject, UShapeComponent* Shape, AActor* Actor);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -342,7 +342,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void HitPause(float Duration, float Dilation, float EaseInTime, float EaseOutTime);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     bool HasRecentlyHitActor(UObject* WorldContextObject, UShapeComponent* Shape, AActor* Actor) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

@@ -17,7 +17,7 @@ protected:
     
 public:
     UAIPointOfInterestManager();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAIPointOfInterestManager* GetInstance(UObject* WorldContextObject);
     
 };

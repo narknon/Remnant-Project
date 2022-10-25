@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AchievementId.h"
 #include "SpawnTableEntry.h"
+#include "AchievementId.h"
 #include "EAchievementUpdateType.h"
 #include "SpawnTableAchievement.generated.h"
 

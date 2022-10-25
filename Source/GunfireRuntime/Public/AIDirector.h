@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EncounterGroupNamedEventDelegate.h"
+#include "EncounterGroupEventDelegate.h"
 #include "Components/ActorComponent.h"
 #include "AIDirectorParams.h"
 #include "EncounterGroupSpawnEventDelegate.h"
-#include "EncounterGroupEventDelegate.h"
-#include "AIDirectorPlayer.h"
 #include "EIntensityState.h"
+#include "EncounterGroupNamedEventDelegate.h"
 #include "EncounterGroup.h"
+#include "AIDirectorPlayer.h"
 #include "DamageInfo.h"
 #include "AIDirector.generated.h"
 

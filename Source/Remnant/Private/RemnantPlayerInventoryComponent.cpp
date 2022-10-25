@@ -1,8 +1,8 @@
 #include "RemnantPlayerInventoryComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AItem;
 class AActor;
+class AItem;
 
 void URemnantPlayerInventoryComponent::ServerOnClientExceptionUpdate_Implementation(TSubclassOf<AItem> ItemBP, int32 Quantity) {
 }

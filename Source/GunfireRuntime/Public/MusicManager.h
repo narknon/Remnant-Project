@@ -5,8 +5,8 @@
 #include "MusicManager.generated.h"
 
 class UMusicSet;
-class UObject;
 class UMusicManager;
+class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UMusicManager : public UActorComponent {
@@ -32,7 +32,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool IsMusicSetActive(UMusicSet* Set);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UMusicManager* GetMusicManager(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ActorState.h"
+#include "EAnchorFaceOtherMethod.h"
 #include "EInteractiveType.h"
 #include "EInteractiveInitiator.h"
 #include "EInteractArcValidationType.h"
-#include "EAnchorFaceOtherMethod.h"
 #include "ActorStateID.h"
 #include "Conditions.h"
 #include "InteractiveState.generated.h"

@@ -4,8 +4,8 @@
 #include "ActorStateDecorator.h"
 #include "DamageStateDecorator.generated.h"
 
-class UDamageTypeGunfire;
 class UImpactDirection;
+class UDamageTypeGunfire;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UDamageStateDecorator : public UActorStateDecorator {

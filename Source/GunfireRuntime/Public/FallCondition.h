@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EFallConditionCheck.h"
 #include "Condition.h"
+#include "EFallConditionCheck.h"
 #include "FallCondition.generated.h"
 
 UCLASS(Blueprintable)

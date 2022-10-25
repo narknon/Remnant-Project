@@ -1,8 +1,8 @@
 #include "ItemUtil.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class AItem;
+class AActor;
 class UInventoryComponent;
 class USpawnTable;
 

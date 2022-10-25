@@ -1,8 +1,8 @@
 #include "MusicManager.h"
 
 class UMusicSet;
-class UMusicManager;
 class UObject;
+class UMusicManager;
 
 void UMusicManager::SetMusicState(UMusicSet* Set, FName State) {
 }

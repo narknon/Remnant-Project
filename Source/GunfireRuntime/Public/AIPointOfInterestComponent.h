@@ -4,8 +4,8 @@
 #include "Components/ActorComponent.h"
 #include "AIPointOfInterestComponent.generated.h"
 
-class AAIPointOfInterest;
 class UAIPOIType;
+class AAIPointOfInterest;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UAIPointOfInterestComponent : public UActorComponent {

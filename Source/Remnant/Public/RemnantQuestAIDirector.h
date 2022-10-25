@@ -2,11 +2,11 @@
 #include "CoreMinimal.h"
 #include "RemnantQuestComponent.h"
 #include "WorldResetInterface.h"
-#include "QuestAIDirectorNamedEventDelegate.h"
-#include "EventRegionCharacter.h"
 #include "EncounterGroup.h"
 #include "QuestActorDelegateDelegate.h"
 #include "QuestManagerVoidDelegateDelegate.h"
+#include "QuestAIDirectorNamedEventDelegate.h"
+#include "EventRegionCharacter.h"
 #include "RemnantQuestAIDirector.generated.h"
 
 class USpawnTable;

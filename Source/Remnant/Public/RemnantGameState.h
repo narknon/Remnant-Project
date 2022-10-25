@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameStateGunfire.h"
-#include "FinishTravelEventDelegate.h"
 #include "OnZoneTravelStateChangedDelegate.h"
+#include "FinishTravelEventDelegate.h"
 #include "ZoneTravelState.h"
 #include "EZoneTravelLock.h"
 #include "RemnantGameState.generated.h"
 
-class AActor;
 class ACheckpoint;
 class URemnantPingManager;
+class AActor;
 class URemnantSpawnFilterManager;
 class UObject;
 
@@ -68,13 +68,13 @@ protected:
     void OnRep_ActivatedCheckpoint();
     
 public:
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsZoneTravelPending(const UObject* WorldContextObject, float& OutTimeRemaining);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsZoneTravelAvailable(const UObject* WorldContextObject, EZoneTravelLock& OutReason, AActor* Source, bool bIsTravelMenu, float AdditionalDistance);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static ACheckpoint* GetActivatedCheckpoint(const UObject* WorldContextObject, bool bIncludeDeactivatingCheckpoint);
     
 };

@@ -1,7 +1,7 @@
 #include "RemnantWeaponMod.h"
 
-class UObject;
 class ARemnantRangedWeapon;
+class UObject;
 
 bool ARemnantWeaponMod::ShowReticule_Implementation() {
     return false;

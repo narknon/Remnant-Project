@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class UFaction;
+class AActor;
 
 void UFactionComponent::TakeDamage(const FDamageInfo& DamageInfo) {
 }

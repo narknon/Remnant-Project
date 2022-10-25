@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
-#include "Components/ContentWidget.h"
+#include "Components/Button.h"
 #include "AdvButtonStyle.h"
-#include "Components/Button.h"
-#include "Components/Button.h"
+#include "Components/ContentWidget.h"
 #include "OnTabFocusDelegateDelegate.h"
+#include "UObject/NoExportTypes.h"
+#include "Components/Button.h"
 #include "TabButton.generated.h"
 
-class UFocusManager;
 class UWidget;
 class UFocusWidget;
+class UFocusManager;
 class UTexture2D;
 
 UCLASS(Blueprintable)

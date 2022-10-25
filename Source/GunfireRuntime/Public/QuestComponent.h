@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "QuestDebugProperty.h"
-#include "Components/SceneComponent.h"
-#include "QuestActivateDelegateDelegate.h"
 #include "EQuestResult.h"
+#include "QuestActivateDelegateDelegate.h"
+#include "Components/SceneComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "QuestComponent.generated.h"
 

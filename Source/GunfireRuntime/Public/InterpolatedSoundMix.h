@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Sound/SoundMix.h"
-#include "Sound/SoundMix.h"
 #include "InterpolatedSoundClassAdjuster.h"
+#include "Sound/SoundMix.h"
 #include "InterpolatedSoundMix.generated.h"
 
 class UCurveFloat;

@@ -1,8 +1,8 @@
 #include "EncounterManager.h"
 
-class UEncounterInstance;
 class AActor;
 class USpawnTable;
+class UEncounterInstance;
 
 void UEncounterManager::StopEncounter(int32 encounterid) {
 }

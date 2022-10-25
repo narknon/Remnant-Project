@@ -2,12 +2,12 @@
 #include "Templates/SubclassOf.h"
 
 class UObject;
-class USavedCharacter;
 class UAccountAward;
 class URemnantCharacterManager;
-class URemnantArchetype;
-class APlayerController;
+class USavedCharacter;
 class AItem;
+class APlayerController;
+class URemnantArchetype;
 
 bool URemnantCharacterManager::ShouldAwardHardcoreRewards(const UObject* WorldContextObject) {
     return false;

@@ -5,9 +5,9 @@
 #include "EZoneLinkType.h"
 #include "RemnantQuestZoneLink.generated.h"
 
-class AActor;
 class AZoneActor;
 class UTexture2D;
+class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URemnantQuestZoneLink : public URemnantQuestComponent {

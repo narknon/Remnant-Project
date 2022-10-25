@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/EngineTypes.h"
-#include "MovieSceneSequenceID.h"
-#include "Engine/EngineTypes.h"
 #include "MovieSceneObjectBindingID.h"
 #include "UObject/NoExportTypes.h"
+#include "MovieSceneSequenceID.h"
+#include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "LevelSequencePossession.generated.h"
 
 class AActor;

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "ELicensedContent.h"
-#include "OnLicenseCheckedDelegate.h"
 #include "ERevokeType.h"
+#include "OnLicenseCheckedDelegate.h"
 #include "OnLicenseRevokedDelegate.h"
 #include "EntitlementComponent.generated.h"
 
@@ -32,7 +32,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void RevokeLicense();
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool HasEntitlement(UObject* WorldContextObject, UObject* Object, bool NotifyIfUnlicensed);
     
     UFUNCTION(BlueprintCallable)

@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "MathUtil.generated.h"
 
-class AActor;
 class UBoxComponent;
+class AActor;
 class USplineComponent;
 
 UCLASS(Blueprintable)

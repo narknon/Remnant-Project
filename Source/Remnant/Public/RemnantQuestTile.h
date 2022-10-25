@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "RemnantQuestComponent.h"
-#include "QuestTileActiveDelegateDelegate.h"
 #include "TileSpawnList.h"
 #include "QuestTileDependency.h"
-#include "MapGenAttribute.h"
+#include "QuestTileActiveDelegateDelegate.h"
 #include "TileCoord.h"
+#include "MapGenAttribute.h"
 #include "RemnantQuestTile.generated.h"
 
-class AActor;
 class UTileSet;
+class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URemnantQuestTile : public URemnantQuestComponent {

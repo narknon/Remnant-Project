@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "ActorState.h"
+#include "ERootMotionVelocityMethod.h"
 #include "StatValue.h"
 #include "CharacterFacing.h"
-#include "ERootMotionVelocityMethod.h"
 #include "AnimActorState.generated.h"
 
 class UStateMachineComponent;

@@ -1,8 +1,8 @@
 #include "DialogManager.h"
 
-class UDialogInstance;
-class AActor;
 class USoundBase;
+class AActor;
+class UDialogInstance;
 class UObject;
 class UDialogManager;
 

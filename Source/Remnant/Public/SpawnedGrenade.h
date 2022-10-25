@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
 #include "SpawnedGrenadeRepData.h"
+#include "GameFramework/Actor.h"
 #include "SpawnedGrenade.generated.h"
 
 class AGrenade;

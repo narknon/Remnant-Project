@@ -1,7 +1,7 @@
 #include "ReadSaveCallbackProxy.h"
 
-class UReadSaveCallbackProxy;
 class UObject;
+class UReadSaveCallbackProxy;
 
 UReadSaveCallbackProxy* UReadSaveCallbackProxy::ReadSave(UObject* WorldContextObject, int32 Slot) {
     return NULL;

@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "CameraState.h"
-#include "EAdhesionActivateMode.h"
 #include "ETPSAimType.h"
+#include "CameraState.h"
 #include "UObject/NoExportTypes.h"
+#include "EAdhesionActivateMode.h"
 #include "ThirdPersonCameraState.generated.h"
 
 class UUserWidget;
+class AActor;
 class UTargetingComponent;
 class UItemType;
-class AActor;
 class ARangedWeapon;
 class UMaterialInterface;
 

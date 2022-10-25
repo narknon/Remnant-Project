@@ -3,12 +3,12 @@
 #include "TileBase.h"
 #include "Tile.generated.h"
 
-class ATileLOD;
 class AMapTileTemplate;
 class ULevel;
 class ULevelStreaming;
 class UTileSet;
 class UTileInfo;
+class ATileLOD;
 class AMapTileInfo;
 class AMapTileEdge;
 

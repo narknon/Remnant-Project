@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "PrimaryPingInfo.h"
-#include "OnRequestPingDelegate.h"
 #include "Components/ActorComponent.h"
+#include "PrimaryPingInfo.h"
 #include "EPingType.h"
 #include "OnCharacterPingDelegate.h"
-#include "OnCharacterPingCooldownDelegate.h"
+#include "OnRequestPingDelegate.h"
 #include "Engine/EngineTypes.h"
+#include "OnCharacterPingCooldownDelegate.h"
 #include "ActionPing.h"
 #include "RemnantPingManager.generated.h"
 
-class AItem;
-class UItemType;
 class AActor;
 class UPingSubContext;
+class UItemType;
+class AItem;
 class ARemnantPingActor;
 class URemnantPingManager;
 class UObject;
@@ -99,7 +99,7 @@ public:
     UFUNCTION(BlueprintCallable)
     float GetRemainingCharacterPingCooldown(AActor* Character);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URemnantPingManager* GetPingManager(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

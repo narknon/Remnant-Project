@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "SurfaceOrientFeeler.h"
+#include "Components/ActorComponent.h"
 #include "SurfaceOrientComponent.generated.h"
 
 class USceneComponent;

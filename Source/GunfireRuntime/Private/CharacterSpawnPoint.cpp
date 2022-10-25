@@ -3,8 +3,8 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SphereComponent.h"
 
-class AActor;
 class ACharacterGunfire;
+class AActor;
 class UPrimitiveComponent;
 
 void ACharacterSpawnPoint::Spawn(float InDelay, bool IsRespawn, bool bUseDeferredOptimization) {

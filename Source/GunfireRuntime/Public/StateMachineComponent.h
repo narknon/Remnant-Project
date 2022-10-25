@@ -1,19 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "StateChangeDelegateDelegate.h"
-#include "Components/ActorComponent.h"
-#include "InteractiveInfo.h"
-#include "InteractiveDelegateDelegate.h"
-#include "StateCompleteDelegateDelegate.h"
-#include "StateID.h"
-#include "UObject/NoExportTypes.h"
 #include "HitReactionType.h"
+#include "Components/ActorComponent.h"
+#include "StateCompleteDelegateDelegate.h"
+#include "StateChangeDelegateDelegate.h"
+#include "InteractiveDelegateDelegate.h"
+#include "StateID.h"
+#include "InteractiveInfo.h"
+#include "UObject/NoExportTypes.h"
 #include "StateMachineComponent.generated.h"
 
-class ACharacterGunfire;
-class UStateMachine;
-class UActorState;
 class UAnimInstanceGunfire;
+class UActorState;
+class UStateMachine;
+class ACharacterGunfire;
 class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

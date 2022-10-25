@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/Canvas.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/DataAsset.h"
 #include "HierarchicalEditInterface.h"
 #include "TargetingColorParams.h"
+#include "Engine/Canvas.h"
 #include "Reticule.generated.h"
 
 class UReticulePiece;

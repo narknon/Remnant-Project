@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "MovieSceneObjectBindingID.h"
-#include "Tracks/MovieSceneEventTrack.h"
 #include "MovieSceneNameableTrack.h"
+#include "Tracks/MovieSceneEventTrack.h"
 #include "EventTreeTrackEventDelegate.h"
+#include "MovieSceneObjectBindingID.h"
 #include "MovieSceneEventTreeTrack.generated.h"
 
 class UMovieSceneSection;

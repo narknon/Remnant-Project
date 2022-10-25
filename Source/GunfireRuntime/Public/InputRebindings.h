@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "RebindedInputAction.h"
-#include "GameFramework/PlayerInput.h"
 #include "RebindedInputAxis.h"
+#include "GameFramework/PlayerInput.h"
 #include "GameFramework/PlayerInput.h"
 #include "InputRebindings.generated.h"
 

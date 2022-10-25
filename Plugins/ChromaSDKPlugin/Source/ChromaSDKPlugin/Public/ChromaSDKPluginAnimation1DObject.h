@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ChromaSDKColorFrame1D.h"
-//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Object -FallbackName=Object
+#include "UObject/Object.h"
 #include "EChromaSDKDevice1DEnum.h"
+#include "ChromaSDKColorFrame1D.h"
 #include "ChromaSDKPluginAnimation1DObject.generated.h"
 
 UCLASS(Blueprintable)

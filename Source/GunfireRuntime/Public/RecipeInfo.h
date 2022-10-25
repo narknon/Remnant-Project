@@ -3,8 +3,8 @@
 #include "IngredientInfo.h"
 #include "RecipeInfo.generated.h"
 
-class UCraftingRecipe_Base;
 class AActor;
+class UCraftingRecipe_Base;
 
 USTRUCT(BlueprintType)
 struct FRecipeInfo {

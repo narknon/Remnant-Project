@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EGfeSDKHighlightSignificance.h"
 #include "EGfeSDKHighlightType.h"
+#include "EGfeSDKHighlightSignificance.h"
 #include "GfeSDKHighlightGroupView.generated.h"
 
 USTRUCT(BlueprintType)

@@ -1,8 +1,8 @@
 #include "ItemManager.h"
 
-class UItemManager;
-class UObject;
 class AItem;
+class UObject;
+class UItemManager;
 
 void UItemManager::GetItemsInRangeByType(const FVector& Position, float Radius, TSoftClassPtr<AItem> Type, TArray<AItem*>& OutItems) {
 }

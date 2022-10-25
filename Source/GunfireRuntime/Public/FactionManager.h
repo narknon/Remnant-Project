@@ -3,8 +3,8 @@
 #include "Components/ActorComponent.h"
 #include "FactionManager.generated.h"
 
-class UFactionManager;
 class UFactionComponent;
+class UFactionManager;
 class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -20,7 +20,7 @@ protected:
     
 public:
     UFactionManager();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UFactionManager* GetFactionManager(UObject* WorldContextObject);
     
 };

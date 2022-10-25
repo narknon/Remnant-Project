@@ -1,10 +1,10 @@
 #include "RemnantQuestEntity.h"
 #include "Templates/SubclassOf.h"
 
-class UFaction;
 class ARemnantQuest;
-class ACharacterGunfire;
+class UFaction;
 class AActor;
+class ACharacterGunfire;
 class URemnantQuestZone;
 class AZoneActor;
 class URemnantQuestTile;

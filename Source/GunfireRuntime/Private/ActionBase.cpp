@@ -2,12 +2,12 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UActionComponent;
+class UDamageType;
 class AActor;
-class UActionBase;
 class UDamageTypeGunfire;
 class APlayerControllerGunfire;
-class UDamageType;
+class UActionBase;
+class UActionComponent;
 
 void UActionBase::SetCause(AActor* Cause) {
 }

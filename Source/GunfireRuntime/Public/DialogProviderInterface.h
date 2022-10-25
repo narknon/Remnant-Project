@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EDialogType.h"
 #include "UObject/Interface.h"
+#include "EDialogType.h"
 #include "DialogProviderInterface.generated.h"
 
 class UDialogComponent;
-class UEventTree;
 class AActor;
+class UEventTree;
 
 UINTERFACE(Blueprintable)
 class UDialogProviderInterface : public UInterface {

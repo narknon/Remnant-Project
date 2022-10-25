@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EWoundedState.h"
 #include "Condition.h"
+#include "EWoundedState.h"
 #include "WoundedCondition.generated.h"
 
 UCLASS(Blueprintable)

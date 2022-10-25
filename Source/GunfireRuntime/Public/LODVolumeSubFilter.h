@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "LODVolumeSubFilter.generated.h"
 
-class UBlueprint;
 class UStaticMesh;
+class UBlueprint;
 class UMaterialInstance;
 
 USTRUCT(BlueprintType)

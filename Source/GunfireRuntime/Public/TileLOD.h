@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ETileLODType.h"
 #include "Engine/LODActor.h"
+#include "ETileLODType.h"
 #include "TileLOD.generated.h"
 
 class UStaticMeshComponent;

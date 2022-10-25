@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EInputDevice.h"
 #include "GameInstanceGunfire.h"
 #include "PresenceJoinResultDelegate.h"
+#include "EInputDevice.h"
 #include "ERemnantDemoMode.h"
 #include "RemnantGameInstance.generated.h"
 

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Engine/DataTable.h"
 #include "Components/ActorComponent.h"
+#include "Engine/DataTable.h"
 #include "ComputeStatsDelegateDelegate.h"
 #include "StatsComponent.generated.h"
 

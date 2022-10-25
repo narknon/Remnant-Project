@@ -18,7 +18,7 @@ public:
     FBlueprintSaveNoRetDelegate OnFailure;
     
     UDeleteProfileSaveCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UDeleteProfileSaveCallbackProxy* DeleteProfileSave(UObject* WorldContextObject);
     
 };

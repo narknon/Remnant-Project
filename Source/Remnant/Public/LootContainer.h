@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "LootContainerItem.h"
 #include "OnLootGeneratedDelegate.h"
 #include "SpawnList.h"
-#include "LootContainerItem.h"
 #include "LootContainer.generated.h"
 
 class USpawnTable;

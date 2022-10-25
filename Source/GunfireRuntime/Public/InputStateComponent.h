@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "InputButtonDelegateDelegate.h"
-#include "InputStateDelegateDelegate.h"
 #include "InputButton.h"
-#include "ButtonEvent.h"
 #include "UObject/NoExportTypes.h"
+#include "InputStateDelegateDelegate.h"
+#include "ButtonEvent.h"
+#include "InputButtonDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "InputStateComponent.generated.h"
 

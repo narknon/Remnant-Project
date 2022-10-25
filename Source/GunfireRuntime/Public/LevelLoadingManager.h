@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LevelInstanceInfo.h"
 #include "Components/ActorComponent.h"
 #include "LevelInstanceStatus.h"
+#include "LevelInstanceInfo.h"
 #include "LevelLoadingManager.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

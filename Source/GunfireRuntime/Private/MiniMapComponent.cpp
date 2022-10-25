@@ -1,7 +1,7 @@
 #include "MiniMapComponent.h"
 
-class ACharacterGunfire;
 class AActor;
+class ACharacterGunfire;
 
 void UMiniMapComponent::UpdateMiniMapLevel() {
 }

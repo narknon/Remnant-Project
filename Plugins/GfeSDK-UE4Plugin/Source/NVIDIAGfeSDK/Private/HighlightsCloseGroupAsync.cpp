@@ -1,7 +1,7 @@
 #include "HighlightsCloseGroupAsync.h"
 
-class UObject;
 class UHighlightsCloseGroupAsync;
+class UObject;
 
 UHighlightsCloseGroupAsync* UHighlightsCloseGroupAsync::HighlightsCloseGroup(UObject* WorldContextObject, const FString& GroupId, const bool& DestroyHighlights) {
     return NULL;

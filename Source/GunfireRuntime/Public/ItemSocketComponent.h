@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "Components/SceneComponent.h"
 #include "UseItemInterface.h"
-#include "ItemSocketSlot.h"
 #include "ItemSocketEventDelegate.h"
+#include "ItemSocketSlot.h"
 #include "ItemSocketComponent.generated.h"
 
 class AItem;

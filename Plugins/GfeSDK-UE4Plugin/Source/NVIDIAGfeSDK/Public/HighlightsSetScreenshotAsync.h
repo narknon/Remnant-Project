@@ -18,7 +18,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsSetScreenshotAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsSetScreenshotAsync* HighlightsSetScreenshot(UObject* WorldContextObject, const FString& GroupId, const FString& HighlightId);
     
 };

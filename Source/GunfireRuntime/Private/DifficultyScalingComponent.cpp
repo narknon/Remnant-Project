@@ -1,10 +1,10 @@
 #include "DifficultyScalingComponent.h"
 #include "Net/UnrealNetwork.h"
 
-class UDataTable;
-class UDifficultyScalingComponent;
-class AActor;
 class UObject;
+class UDataTable;
+class AActor;
+class UDifficultyScalingComponent;
 
 void UDifficultyScalingComponent::SetNumPlayers(int32 NewNumPlayers) {
 }

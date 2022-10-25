@@ -1,9 +1,9 @@
 #include "GameInstanceGunfire.h"
 
-class UAssetCache;
-class UObject;
-class APawn;
 class UGameInstanceGunfire;
+class APawn;
+class UObject;
+class UAssetCache;
 
 void UGameInstanceGunfire::QuitToMainMenu() {
 }

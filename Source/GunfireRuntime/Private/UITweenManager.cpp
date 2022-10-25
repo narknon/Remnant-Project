@@ -1,8 +1,8 @@
 #include "UITweenManager.h"
 
-class UObject;
-class UCurveFloat;
 class UWidget;
+class UCurveFloat;
+class UObject;
 class UUITweenManager;
 
 bool UUITweenManager::StopTween(int32 TweenID) {

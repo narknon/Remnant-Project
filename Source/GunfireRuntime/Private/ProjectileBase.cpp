@@ -1,8 +1,8 @@
 #include "ProjectileBase.h"
-#include "ProjectileMovementComponentGunfire.h"
 #include "ReplicatedMovementComponent.h"
-#include "Components/AudioComponent.h"
+#include "ProjectileMovementComponentGunfire.h"
 #include "ActionComponent.h"
+#include "Components/AudioComponent.h"
 
 bool AProjectileBase::ValidateHit_Implementation(const FHitResult& Hit, bool bSimulating) {
     return false;

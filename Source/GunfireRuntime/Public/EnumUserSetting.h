@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "IntUserSetting.h"
 #include "EnumUserSettingEntry.h"
+#include "IntUserSetting.h"
 #include "EnumUserSetting.generated.h"
 
 UCLASS(Blueprintable, EditInlineNew)

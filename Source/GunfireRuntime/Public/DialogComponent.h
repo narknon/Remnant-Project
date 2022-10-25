@@ -1,26 +1,26 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "DialogOption.h"
 #include "EventTreeComponent.h"
 #include "DialogVoidDelegateDelegate.h"
-#include "DialogEventDelegate.h"
 #include "EventTreeStage.h"
 #include "EventTreeAttrib.h"
+#include "DialogEventDelegate.h"
 #include "DialogInfo.h"
+#include "DialogOption.h"
 #include "DialogTokenValuePair.h"
 #include "DamageInfo.h"
 #include "DialogComponent.generated.h"
 
+class AActor;
+class AItem;
 class UEventTree;
 class ADialogStage;
-class AActor;
-class UDialogInstance;
 class UAudioComponent;
 class UObject;
+class UDialogInstance;
 class APlayerController;
 class UEventTreeAsset;
-class AItem;
 class UEventTreeNode;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

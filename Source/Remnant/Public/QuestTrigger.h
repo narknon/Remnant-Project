@@ -4,8 +4,8 @@
 #include "QuestTriggerPlayerDelegateDelegate.h"
 #include "QuestTrigger.generated.h"
 
-class ARemnantCharacter;
 class ATriggerVolume;
+class ARemnantCharacter;
 
 UCLASS(Blueprintable)
 class REMNANT_API AQuestTrigger : public AActor {

@@ -1,7 +1,7 @@
 #include "GlobalObjectPool.h"
 
-class UWorld;
 class UGlobalObjectPool;
+class UWorld;
 
 UGlobalObjectPool* UGlobalObjectPool::GetInstance(UWorld* World) {
     return NULL;

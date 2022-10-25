@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UEmote;
 class UTexture2D;
+class UEmote;
 
 void UEmotesComponent::UnlockEmote(TSubclassOf<UEmote> NewEmote) {
 }

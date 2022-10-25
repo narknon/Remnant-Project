@@ -2,10 +2,10 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "ContextualDialogDelegateDelegate.h"
-#include "ContextualDialogResponse.h"
+#include "UObject/NoExportTypes.h"
 #include "DamageInfo.h"
 #include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "ContextualDialogResponse.h"
 #include "ContextualDialogComponent.generated.h"
 
 class UContextualDialogSet;

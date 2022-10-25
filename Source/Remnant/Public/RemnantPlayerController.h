@@ -1,48 +1,48 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EZoneTravelLock.h"
 #include "PlayerControllerGunfire.h"
+#include "SequencerPlayerSettings.h"
 #include "OnSetPawnEventDelegate.h"
-#include "Engine/EngineTypes.h"
-#include "OnLocalPlayerFinishedLevelSequenceDelegate.h"
 #include "QuestRewardDelegateDelegate.h"
-#include "Engine/NetSerialization.h"
+#include "OnLocalPlayerFinishedLevelSequenceDelegate.h"
 #include "TravelCompleteDelegateDelegate.h"
-#include "AchievementId.h"
-#include "ZoneLinkInfo.h"
-#include "EPlayerTravelState.h"
-#include "RemnantQuestReward.h"
-#include "EAchievementUpdateType.h"
-#include "RemnantClientInventoryChangeInfo.h"
+#include "VisitedCoordinates.h"
 #include "OnGivenLicensesEventDelegate.h"
+#include "EPlayerTravelState.h"
+#include "Engine/EngineTypes.h"
+#include "RemnantQuestReward.h"
+#include "RemnantClientInventoryChangeInfo.h"
+#include "ZoneLinkInfo.h"
 #include "ELicensedContent.h"
-#include "ActionPing.h"
+#include "EZoneTravelLock.h"
+#include "Engine/NetSerialization.h"
+#include "AchievementId.h"
 #include "OnReceiveAccountAwardDelegateDelegate.h"
 #include "ERemnantQuestRewardType.h"
-#include "VisitedCoordinates.h"
-#include "EPingGenerationResult.h"
+#include "EAchievementUpdateType.h"
 #include "UObject/NoExportTypes.h"
-#include "SequencerPlayerSettings.h"
+#include "EPingGenerationResult.h"
+#include "ActionPing.h"
 #include "RemnantPlayerController.generated.h"
 
 class UActionBase;
+class UWorld;
 class URemnantArchetype;
 class ARemnantQuest;
-class APawn;
-class AItem;
-class UItemAward;
-class UItemType;
-class AActor;
-class UProgressionComponent;
-class UWorld;
 class UNetDriver;
-class ACharacterGunfire;
+class APawn;
 class ACheckpoint;
+class UAccountAward;
+class UItemAward;
+class AItem;
+class UItemType;
+class UProgressionComponent;
+class ACharacterGunfire;
+class AActor;
 class UObject;
 class USpawnTable;
 class UInventoryComponent;
-class UAccountAward;
 class AZoneActor;
 class ULevelSequence;
 class UEmote;
@@ -367,10 +367,10 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPlayerDead() const;
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsIntroQuestDisabled(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsIntroQuestComplete(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

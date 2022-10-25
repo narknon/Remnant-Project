@@ -5,10 +5,10 @@
 #include "UObject/NoExportTypes.h"
 #include "AIAwarenessManager.generated.h"
 
-class AAIControllerGunfire;
 class AActor;
-class UObject;
+class AAIControllerGunfire;
 class UAIAwarenessManager;
+class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UAIAwarenessManager : public UActorComponent {
@@ -32,7 +32,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SendAwarenessSignal(EAwarenessSignal Type, AActor* Source, const FVector& Position, float Radius, bool UseSourceForLastKnownPosition, bool bApplySightRangeBonus);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAIAwarenessManager* GetInstance(UObject* WorldContextObject);
     
 };

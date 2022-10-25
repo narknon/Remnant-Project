@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "UserSettingAppliedEventDelegate.h"
+#include "UObject/Object.h"
 #include "HierarchicalEditInterface.h"
 #include "UserSetting.generated.h"
 

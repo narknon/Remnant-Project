@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "EAITacticalPointType.h"
+#include "UObject/NoExportTypes.h"
 #include "AITacticalPoint.generated.h"
 
 USTRUCT(BlueprintType)

@@ -2,11 +2,11 @@
 #include "Net/UnrealNetwork.h"
 
 class UObject;
-class AActor;
 class UEventTreeAsset;
 class UDialogInstance;
-class APlayerController;
 class AItem;
+class AActor;
+class APlayerController;
 class UEventTreeNode;
 
 void UDialogComponent::TokenValueSet(const FName& NameID, const FText& Value) {

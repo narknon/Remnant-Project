@@ -6,7 +6,7 @@
 
 class AActor;
 
-UCLASS(Blueprintable, DefaultConfig, Config = Engine)
+UCLASS(Blueprintable, DefaultConfig, Config=Engine)
 class GUNFIRERUNTIME_API UTraversalSettings : public UObject {
     GENERATED_BODY()
 public:

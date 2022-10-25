@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "BlackboardClassValue.h"
-#include "BlackboardBoolValue.h"
 #include "VariableConditionBase.h"
 #include "BlackboardNumValue.h"
-#include "BlackboardObjectValue.h"
+#include "BlackboardBoolValue.h"
+#include "BlackboardClassValue.h"
 #include "BlackboardStringValue.h"
+#include "BlackboardObjectValue.h"
 #include "BlackboardVariableCondition.generated.h"
 
 UCLASS(Blueprintable)

@@ -1,8 +1,8 @@
 #include "CraftingComponent.h"
 #include "Templates/SubclassOf.h"
 
-class AActor;
 class AItem;
+class AActor;
 
 void UCraftingComponent::UpgradeItem_Implementation(AActor* Source, int32 ItemID, FGuid RecipeID) {
 }

@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "HierarchicalEditInterface.h"
 #include "EventTreeNodeCondition.h"
+#include "HierarchicalEditInterface.h"
 #include "EventTreeNode_Base.generated.h"
 
 UCLASS(Abstract, Blueprintable)

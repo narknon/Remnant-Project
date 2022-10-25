@@ -1,4 +1,4 @@
-//$ Copyright 2015-20, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
+//$ Copyright 2015-19, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
 
 #pragma once
 #include "CoreMinimal.h"
@@ -13,11 +13,8 @@ public:
 	virtual UPrefabricatorAsset* CreatePrefabAsset() override;
 	virtual FVector SnapToGrid(const FVector& InLocation) override;
 	virtual void SetDetailsViewObject(UObject* InObject) override;
-	virtual void RefreshDetailsViewObject(UObject* InObject) override;
-	virtual AActor* SpawnActor(TSubclassOf<AActor> InClass, const FTransform& InTransform, ULevel* InLevel, AActor* InTemplate) override;
 	virtual void BeginTransaction(const FText& Description) override;
 	virtual void EndTransaction() override;
-	virtual void RunGC() override;
-	virtual void CaptureThumb(UPrefabricatorAsset* PrefabAsset) override;
+
 };
 

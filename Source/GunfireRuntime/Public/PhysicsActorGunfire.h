@@ -2,13 +2,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "PhysicsImpactSoundInfo.h"
-#include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "PhysicsActorGunfire.generated.h"
 
-class UPrimitiveComponent;
-class UPhysicsSoundInstance;
 class UObject;
+class UPhysicsSoundInstance;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API APhysicsActorGunfire : public AActor {

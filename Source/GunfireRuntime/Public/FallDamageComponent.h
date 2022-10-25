@@ -5,9 +5,9 @@
 #include "OnFallDamageDelegateDelegate.h"
 #include "FallDamageComponent.generated.h"
 
+class UCharacterMovementComponent;
 class UDamageTypeGunfire;
 class UStatsComponent;
-class UCharacterMovementComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UFallDamageComponent : public UActorComponent {

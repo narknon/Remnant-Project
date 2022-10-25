@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ESpawnType.h"
 #include "SpawnTableEntry.h"
 #include "SpawnList.h"
 #include "ESpawnTableType.h"
+#include "ESpawnType.h"
 #include "SpawnTable.generated.h"
 
 class UObject;
@@ -25,10 +25,10 @@ public:
     int32 TableGroupRollMax;
     
     USpawnTable();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void GenerateWithSeed(UObject* WorldContextObject, int32 Level, int32 Rating, const TArray<FName>& InTags, FSpawnList& SpawnList, ESpawnType Type, int32 RandomSeed);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void Generate(UObject* WorldContextObject, int32 Level, int32 Rating, const TArray<FName>& InTags, FSpawnList& SpawnList, ESpawnType Type);
     
 };

@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "LegIkEffector.h"
 #include "Animation/AnimInstance.h"
 #include "UObject/NoExportTypes.h"
 #include "AnimationLayer.h"
+#include "LegIkEffector.h"
 #include "UObject/NoExportTypes.h"
 #include "AnimationHandle.h"
 #include "AnimInstanceGunfire.generated.h"
 
 class UInputStateComponent;
-class UStateMachineComponent;
-class APawn;
 class ACharacterGunfire;
+class APawn;
 class UAnimInstanceGunfire;
+class UStateMachineComponent;
 class AActor;
 
 UCLASS(Blueprintable, NonTransient)

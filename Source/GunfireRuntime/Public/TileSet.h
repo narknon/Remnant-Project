@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
 #include "HierarchicalEditInterface.h"
+#include "UObject/NoExportTypes.h"
 #include "TileSet.generated.h"
 
-class AAudioCustomVolume;
 class UTileSet;
-class UTileInfo;
 class UTexture2D;
+class UTileInfo;
+class AAudioCustomVolume;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UTileSet : public UObject, public IHierarchicalEditInterface {

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "EventTreeContext.generated.h"
 
-class UBranch;
 class UEventTreeNode;
+class UBranch;
 
 USTRUCT(BlueprintType)
 struct FEventTreeContext {

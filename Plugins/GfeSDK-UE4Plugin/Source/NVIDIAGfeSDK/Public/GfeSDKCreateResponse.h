@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EGfeSDKScope.h"
 #include "EGfeSDKPermission.h"
+#include "EGfeSDKScope.h"
 #include "GfeSDKCreateResponse.generated.h"
 
 USTRUCT(BlueprintType)

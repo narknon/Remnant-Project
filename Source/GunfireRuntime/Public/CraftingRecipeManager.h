@@ -6,10 +6,10 @@
 #include "UObject/NoExportTypes.h"
 #include "CraftingRecipeManager.generated.h"
 
+class UCraftingRecipe_Base;
 class AItem;
 class UCraftingRecipeManager;
 class UObject;
-class UCraftingRecipe_Base;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UCraftingRecipeManager : public UActorComponent {
@@ -24,13 +24,13 @@ protected:
     
 public:
     UCraftingRecipeManager();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UCraftingRecipeManager* GetInstance(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static TSet<TSubclassOf<AItem>> GetAllMaterials(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void BuildRecipeList(UObject* WorldContextObject);
     
 };

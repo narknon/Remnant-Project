@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "WorldSound.h"
 #include "HierarchicalEditInterface.h"
+#include "WorldSound.h"
 #include "WorldSoundEntry.generated.h"
 
 UCLASS(Blueprintable)

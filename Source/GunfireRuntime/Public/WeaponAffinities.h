@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "WeaponAffinity.h"
+#include "UObject/Object.h"
 #include "WeaponAffinities.generated.h"
 
 UCLASS(Abstract, Blueprintable, Const, MinimalAPI)

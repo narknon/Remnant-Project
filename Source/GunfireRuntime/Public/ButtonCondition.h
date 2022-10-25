@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ButtonState.h"
 #include "Condition.h"
+#include "ButtonState.h"
 #include "ButtonCondition.generated.h"
 
 UCLASS(Blueprintable)

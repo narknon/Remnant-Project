@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "DamageInfo.h"
-#include "QuestEntity.h"
 #include "RemnantQuestEntityInfo.h"
+#include "QuestEntity.h"
+#include "DamageInfo.h"
 #include "EAffiliation.h"
 #include "RemnantQuestEntity.generated.h"
 
+class ACharacterGunfire;
 class AActor;
 class USpawnTable;
 class ARemnantQuest;
 class UFaction;
-class ACharacterGunfire;
 class AZoneActor;
 class URemnantQuestZone;
 class URemnantQuestTile;

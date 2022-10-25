@@ -5,8 +5,8 @@
 #include "EInputDevice.h"
 #include "ImageSet.generated.h"
 
-class UImageSet;
 class UImageID;
+class UImageSet;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UImageSet : public UObject, public IHierarchicalEditInterface {
