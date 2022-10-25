@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "GameFramework/ProjectileMovementComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
-#include "UObject/NoExportTypes.h"
 #include "ProjectileMovementComponentGunfire.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 
 class UActionBase;
-class AActor;
 class UDamageType;
+class AActor;
 
 void UActionComponent::StopActionByType(TSubclassOf<UActionBase> ActionBP) {
 }

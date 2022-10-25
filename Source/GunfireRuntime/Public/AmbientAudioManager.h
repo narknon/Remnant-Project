@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "AmbientSoundMix.h"
+#include "UObject/Object.h"
 #include "AmbientAudioManager.generated.h"
 
-class USoundMix;
 class UInterpolatedSoundMix;
+class USoundMix;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UAmbientAudioManager : public UObject {

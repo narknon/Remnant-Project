@@ -19,7 +19,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsConfigureAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsConfigureAsync* HighlightsConfigure(UObject* WorldContextObject, const FGfeSDKHighlightConfigParams& ConfigParams);
     
 };

@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "UObject/Object.h"
+#include "OnBeginLoadingNextMapDelegate.h"
 #include "UObject/NoExportTypes.h"
 #include "MapSettings.h"
-#include "OnBeginLoadingNextMapDelegate.h"
 #include "MapLoader.generated.h"
 
 class UWorld;
-class ULevel;
 class UPlayableMap;
+class ULevel;
 class UGameInstanceGunfire;
 class UMapLoader;
 
@@ -62,10 +62,10 @@ protected:
     void TravelToNextMap();
     
 public:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool OpenMapByName(UObject* WorldContextObject, const FString& MapName);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool OpenMap(UObject* WorldContextObject, TSubclassOf<UPlayableMap> Map);
     
 protected:
@@ -88,7 +88,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetNotStreamableMapSuffix();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UMapLoader* GetMapLoader(UObject* WorldContextObject);
     
 };

@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SequencerPlayerSettings.h"
 #include "Components/ActorComponent.h"
+#include "SequencerPlayerSettings.h"
 #include "OnSequenceSkipVoteChangedEventDelegate.h"
 #include "OnSequencePlayingEventDelegate.h"
 #include "SequencerManager.generated.h"
 
+class UActionBase;
+class USequenceInstance;
 class UEventTreeComponent;
 class ULevelSequence;
-class USequenceInstance;
-class UActionBase;
 class UObject;
 class AActor;
 class APlayerGunfire;
@@ -44,13 +44,13 @@ public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void SkipSequence(ULevelSequence* InSequence);
     
-    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable, meta=(WorldContext="WorldContextObject"))
     void SetupSequence_Client(UObject* WorldContextObject, ULevelSequence* LevelSequence, FSequencerPlayerSettings LevelSequenceSettings, AActor* Instigator, UEventTreeComponent* SourceComponent);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ProposeToSkip(ULevelSequence* InSequence, APlayerGunfire* Player);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static USequencerManager* GetInstance(UObject* WorldContextObject);
     
 };

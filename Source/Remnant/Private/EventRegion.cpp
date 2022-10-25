@@ -2,10 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "PersistenceComponent.h"
 
-class APlayerController;
 class ARemnantCharacter;
-class ACharacterGunfire;
+class APlayerController;
 class AActor;
+class ACharacterGunfire;
 class AEventRegion;
 
 void AEventRegion::PlayerExit(ARemnantCharacter* Character) {

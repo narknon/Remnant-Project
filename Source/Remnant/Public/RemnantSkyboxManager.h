@@ -2,13 +2,13 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "SkyboxModifierVolumeInfo.h"
-#include "Engine/EngineTypes.h"
 #include "OnSkyboxManagerInitDelegate.h"
+#include "Engine/EngineTypes.h"
 #include "RemnantSkyboxManager.generated.h"
 
 class UPrimitiveComponent;
-class AActor;
 class UObject;
+class AActor;
 class URemnantSkyboxManager;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -47,7 +47,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void InitSkyboxManager(AActor* SkyboxActor);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URemnantSkyboxManager* GetInstance(const UObject* WorldContextObject);
     
 };

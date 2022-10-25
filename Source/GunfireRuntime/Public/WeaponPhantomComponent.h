@@ -7,10 +7,10 @@
 #include "UObject/NoExportTypes.h"
 #include "WeaponPhantomComponent.generated.h"
 
-class UImpactDirection;
 class UDamageTypeGunfire;
 class AImpactEffect;
 class UShapeComponent;
+class UImpactDirection;
 class AActor;
 class UObject;
 
@@ -72,13 +72,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetSuspended(bool bIsSuspended);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void MarkActorHit(UObject* WorldContextObject, UShapeComponent* Shape, AActor* Actor);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSuspended() const;
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     bool HasRecentlyHitActor(UObject* WorldContextObject, UShapeComponent* Shape, AActor* Actor) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

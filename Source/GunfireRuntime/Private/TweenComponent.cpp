@@ -1,8 +1,8 @@
 #include "TweenComponent.h"
 
-class ULightComponent;
 class AActor;
 class USceneComponent;
+class ULightComponent;
 class UObject;
 class UPrimitiveComponent;
 class UMaterialInterface;

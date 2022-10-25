@@ -1,12 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "InventoryResult.h"
 #include "Components/ActorComponent.h"
+#include "InventoryItemLeveledUpDelegate.h"
 #include "EInventoryAccess.h"
 #include "InventoryChangedDelegateDelegate.h"
-#include "InventoryItemLeveledUpDelegate.h"
-#include "InspectInfo.h"
 #include "InventoryAddItemDelegate.h"
 #include "InventoryPickupItemDelegate.h"
 #include "InventoryUpgradeItemDelegate.h"
@@ -14,18 +12,20 @@
 #include "InventoryEquipEventDelegate.h"
 #include "InventoryItem.h"
 #include "EquipmentSlot.h"
+#include "InventoryResult.h"
 #include "InventoryScalingInfo.h"
 #include "EItemNotifyReason.h"
 #include "UObject/NoExportTypes.h"
+#include "InspectInfo.h"
 #include "InventoryComponent.generated.h"
 
-class AItem;
 class UParticleSystem;
-class AActor;
 class UItemType;
+class AItem;
+class UItemInstanceData;
+class AActor;
 class AEquipment;
 class UInventoryComponent;
-class UItemInstanceData;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UInventoryComponent : public UActorComponent {

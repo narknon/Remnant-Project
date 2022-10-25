@@ -2,8 +2,8 @@
 #include "Templates/SubclassOf.h"
 
 class UObject;
-class UCraftingRecipeManager;
 class AItem;
+class UCraftingRecipeManager;
 
 UCraftingRecipeManager* UCraftingRecipeManager::GetInstance(UObject* WorldContextObject) {
     return NULL;

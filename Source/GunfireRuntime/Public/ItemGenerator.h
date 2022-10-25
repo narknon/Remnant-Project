@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemGenRequest.h"
 #include "UObject/Object.h"
 #include "HierarchicalEditInterface.h"
 #include "ItemGenResult.h"
+#include "ItemGenRequest.h"
 #include "ItemGenerator.generated.h"
 
 UCLASS(Abstract, Blueprintable)

@@ -1,8 +1,8 @@
 #include "DialogStage.h"
 
+class UCameraComponent;
 class AActor;
 class APlayerController;
-class UCameraComponent;
 
 void ADialogStage::SetupStage_Implementation(const FEventTreeStage& Stage) {
 }

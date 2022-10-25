@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "GfeSDKHighlightOpenGroupParams.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
 #include "OnHighlightsOperationResultCallbackDelegate.h"
-#include "GfeSDKHighlightOpenGroupParams.h"
 #include "HighlightsOpenGroupAsync.generated.h"
 
-class UObject;
 class UHighlightsOpenGroupAsync;
+class UObject;
 
 UCLASS(Blueprintable)
 class UHighlightsOpenGroupAsync : public UBlueprintAsyncActionBase {
@@ -19,7 +19,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsOpenGroupAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsOpenGroupAsync* HighlightsOpenGroup(UObject* WorldContextObject, const FGfeSDKHighlightOpenGroupParams& Params);
     
 };

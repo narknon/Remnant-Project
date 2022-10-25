@@ -4,8 +4,8 @@
 #include "Blueprint/UserWidget.h"
 #include "OnAdvButtonClickedEventDelegate.h"
 #include "OnButtonClickedContextEventDelegate.h"
-#include "OnAdvButtonReleasedEventDelegate.h"
 #include "OnAdvButtonPressedEventDelegate.h"
+#include "OnAdvButtonReleasedEventDelegate.h"
 #include "OnNavigationDelegateDelegate.h"
 #include "FocusWidget.generated.h"
 

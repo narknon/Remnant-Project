@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ZoneLinkInfo.h"
 #include "Components/ActorComponent.h"
-#include "EZoneLinkStatus.h"
+#include "ZoneLinkInfo.h"
 #include "EZoneLinkType.h"
+#include "EZoneLinkStatus.h"
 #include "ZoneVoidDelegateDelegate.h"
 #include "ZoneLinkActivateEventDelegate.h"
 #include "ZoneLinkComponent.generated.h"

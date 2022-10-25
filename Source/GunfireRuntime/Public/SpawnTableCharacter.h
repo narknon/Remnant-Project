@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "SpawnTableElement.h"
+#include "ESpawnVisibility.h"
 #include "ESpawnThrottling.h"
 #include "ESpawnFrom.h"
-#include "ESpawnVisibility.h"
 #include "SpawnTableCharacter.generated.h"
 
 class ACharacterGunfire;

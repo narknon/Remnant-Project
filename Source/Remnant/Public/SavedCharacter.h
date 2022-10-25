@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "ERemnantCharacterType.h"
 #include "ELastHostType.h"
-#include "SavedEquipmentVisual.h"
-#include "VisualSlot.h"
+#include "UObject/Object.h"
 #include "EGender.h"
 #include "PersistenceBlob.h"
+#include "VisualSlot.h"
 #include "AccountAwardInstance.h"
+#include "SavedEquipmentVisual.h"
 #include "SavedCharacter.generated.h"
 
 class URemnantArchetype;

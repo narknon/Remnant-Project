@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EWallCheckType.h"
 #include "Condition.h"
+#include "EWallCheckType.h"
 #include "WallCheckCondition.generated.h"
 
 UCLASS(Blueprintable)

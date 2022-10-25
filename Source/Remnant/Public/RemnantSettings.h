@@ -5,7 +5,7 @@
 
 class UDamageClass;
 
-UCLASS(Blueprintable, DefaultConfig, Config = Engine)
+UCLASS(Blueprintable, DefaultConfig, Config=Engine)
 class REMNANT_API URemnantSettings : public UObject {
     GENERATED_BODY()
 public:

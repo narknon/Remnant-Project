@@ -7,8 +7,8 @@
 #include "Components/AudioComponent.h"
 #include "MovieSceneDialogSection.generated.h"
 
-class USoundWave;
 class UDialog_Emote;
+class USoundWave;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UMovieSceneDialogSection : public UMovieSceneSection {

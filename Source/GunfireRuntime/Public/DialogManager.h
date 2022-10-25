@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "DialogInfo.h"
 #include "Components/ActorComponent.h"
 #include "DialogCompleteAllEventDelegate.h"
-#include "DialogInfo.h"
 #include "DialogManager.generated.h"
 
-class USoundBase;
-class UObject;
-class AActor;
 class UDialogInstance;
+class USoundBase;
+class AActor;
 class UDialogManager;
+class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UDialogManager : public UActorComponent {
@@ -39,7 +39,7 @@ public:
     UFUNCTION(BlueprintCallable)
     UDialogInstance* PlayDialog(AActor* Source, const FDialogInfo& Info);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UDialogManager* GetDialogManager(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

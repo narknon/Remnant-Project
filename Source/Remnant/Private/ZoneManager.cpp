@@ -2,9 +2,9 @@
 #include "Templates/SubclassOf.h"
 
 class AZoneActor;
+class UZoneManager;
 class AActor;
 class UObject;
-class UZoneManager;
 
 int32 UZoneManager::UnlockAllWaypoints() {
     return 0;

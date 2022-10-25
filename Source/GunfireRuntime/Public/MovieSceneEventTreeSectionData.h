@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Channels/MovieSceneChannel.h"
-#include "UObject/NoExportTypes.h"
 #include "EventTreePayload.h"
+#include "UObject/NoExportTypes.h"
 #include "MovieSceneEventTreeSectionData.generated.h"
 
 USTRUCT(BlueprintType)

@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
 #include "DamageInfoVariable.h"
 #include "UObject/NoExportTypes.h"
-#include "Engine/EngineTypes.h"
 #include "DamageInfo.generated.h"
 
 class AActor;

@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "VisualFXNode.h"
 #include "UObject/NoExportTypes.h"
+#include "VisualFXNode.h"
 #include "UObject/NoExportTypes.h"
 #include "ParticleFXNode.generated.h"
 

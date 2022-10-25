@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnWoundedDelegateDelegate.h"
 #include "Components/ActorComponent.h"
+#include "EWoundedState.h"
 #include "WoundedStateDelegateDelegate.h"
 #include "WoundedComponentDelegateDelegate.h"
 #include "OnRevivedDelegateDelegate.h"
-#include "DamageInfo.h"
-#include "EWoundedState.h"
+#include "OnWoundedDelegateDelegate.h"
 #include "SequencerPlayerSettings.h"
+#include "DamageInfo.h"
 #include "WoundedComponent.generated.h"
 
 class UConditionList;

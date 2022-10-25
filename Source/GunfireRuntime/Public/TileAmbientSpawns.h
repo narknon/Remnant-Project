@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EAmbientSpawnState.h"
 #include "AmbientSpawn.h"
 #include "TileAmbientSpawnRegion.h"
+#include "EAmbientSpawnState.h"
 #include "TileAmbientSpawns.generated.h"
 
 USTRUCT(BlueprintType)

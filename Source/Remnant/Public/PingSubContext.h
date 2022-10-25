@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
+#include "EPingType.h"
 #include "UObject/Object.h"
 #include "ETownLock.h"
-#include "EPingType.h"
+#include "UObject/NoExportTypes.h"
 #include "PingSubContext.generated.h"
 
 class UTexture2D;

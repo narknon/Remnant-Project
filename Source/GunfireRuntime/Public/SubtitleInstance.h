@@ -5,10 +5,10 @@
 #include "SubtitleDelegateDelegate.h"
 #include "SubtitleInstance.generated.h"
 
-class USubtitlesComponent;
 class UAudioComponent;
-class AActor;
+class USubtitlesComponent;
 class USoundBase;
+class AActor;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API USubtitleInstance : public UObject {

@@ -2,8 +2,8 @@
 #include "Templates/SubclassOf.h"
 
 class UWorld;
-class UObject;
 class UPlayableMap;
+class UObject;
 class UMapLoader;
 
 void UMapLoader::TravelToTransitionMap() {

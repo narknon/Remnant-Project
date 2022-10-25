@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "BreakableEventDelegate.h"
-#include "Components/SceneComponent.h"
 #include "Engine/EngineTypes.h"
+#include "Components/SceneComponent.h"
+#include "BreakableEventDelegate.h"
 #include "BreakableComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

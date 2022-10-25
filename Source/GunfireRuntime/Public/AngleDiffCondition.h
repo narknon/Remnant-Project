@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Condition.h"
-#include "EAngleComponent.h"
 #include "EAngleRef.h"
+#include "EAngleComponent.h"
 #include "AngleDiffCondition.generated.h"
 
 UCLASS(Blueprintable)

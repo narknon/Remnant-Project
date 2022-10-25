@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
-#include "Attribute.h"
 #include "AttributeLevel.h"
-#include "OnAttributeIncreasedDelegateDelegate.h"
+#include "Attribute.h"
+#include "Components/ActorComponent.h"
 #include "OnPreviewDelegateDelegate.h"
+#include "OnAttributeIncreasedDelegateDelegate.h"
 #include "AttributesComponent.generated.h"
 
 class UDataTable;

@@ -1,7 +1,7 @@
 #include "RestoreProfileBackupCallbackProxy.h"
 
-class UObject;
 class URestoreProfileBackupCallbackProxy;
+class UObject;
 
 URestoreProfileBackupCallbackProxy* URestoreProfileBackupCallbackProxy::RestoreProfileBackup(UObject* WorldContextObject) {
     return NULL;

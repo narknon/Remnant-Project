@@ -1,7 +1,7 @@
 #include "RemnantPingActor.h"
 
-class APlayerControllerGunfire;
 class UTexture2D;
+class APlayerControllerGunfire;
 
 void ARemnantPingActor::SetPingDetails_Implementation(float Duration, UTexture2D* Icon, FColor Color, ETailType Tail) {
 }

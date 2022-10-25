@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
-#include "OnHighlightsOperationResultCallbackDelegate.h"
 #include "GfeSDKHighlightSummaryParams.h"
+#include "OnHighlightsOperationResultCallbackDelegate.h"
 #include "HighlightsSummaryAsync.generated.h"
 
-class UObject;
 class UHighlightsSummaryAsync;
+class UObject;
 
 UCLASS(Blueprintable)
 class UHighlightsSummaryAsync : public UBlueprintAsyncActionBase {
@@ -19,7 +19,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsSummaryAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsSummaryAsync* HighlightsOpenSummary(UObject* WorldContextObject, const FGfeSDKHighlightSummaryParams& Params);
     
 };

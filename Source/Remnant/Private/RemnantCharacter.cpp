@@ -1,16 +1,16 @@
 #include "RemnantCharacter.h"
 #include "Net/UnrealNetwork.h"
+#include "EmotesComponent.h"
 #include "VisualComponent.h"
 #include "RemnantPlayerInventoryComponent.h"
-#include "EmotesComponent.h"
 
-class ACheckpoint;
+class ACharacterGunfire;
 class AActor;
 class UGameUserSettingsGunfire;
 class ASpawnPoint;
-class ARemnantPlayerController;
-class ACharacterGunfire;
 class UActionBuff;
+class ARemnantPlayerController;
+class ACheckpoint;
 class UUserSetting;
 class ARangedWeapon;
 class USavedCharacter;

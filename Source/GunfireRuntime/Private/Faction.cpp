@@ -4,11 +4,11 @@
 class AActor;
 class UFaction;
 
-EAffiliation UFaction::GetAffiliationForActors(const AActor* Actor1, const AActor* Actor2) {
+EAffiliation UFaction::GetAffiliationForActors(const AActor* Actor1, const AActor* Actor2)  {
     return EAffiliation::SuperFriendly;
 }
 
-EAffiliation UFaction::GetAffiliation(TSubclassOf<UFaction> Faction1, TSubclassOf<UFaction> Faction2) {
+EAffiliation UFaction::GetAffiliation(TSubclassOf<UFaction> Faction1, TSubclassOf<UFaction> Faction2)  {
     return EAffiliation::SuperFriendly;
 }
 

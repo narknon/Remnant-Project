@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
-#include "EncounterSpawnDelegateDelegate.h"
-#include "EncounterEventDelegateDelegate.h"
 #include "EncounterDelegateDelegate.h"
+#include "UObject/Object.h"
+#include "EncounterEventDelegateDelegate.h"
+#include "EncounterSpawnDelegateDelegate.h"
 #include "SpawnList.h"
 #include "EncounterInstance.generated.h"
 
-class APlayerController;
 class UEncounterManager;
 class AActor;
+class APlayerController;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UEncounterInstance : public UObject {

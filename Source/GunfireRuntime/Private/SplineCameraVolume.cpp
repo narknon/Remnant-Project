@@ -1,10 +1,10 @@
 #include "SplineCameraVolume.h"
-#include "SplineCameraSplineComponent.h"
 #include "SplineCameraComponent.h"
 #include "Components/BoxComponent.h"
+#include "SplineCameraSplineComponent.h"
 
-class ACharacterGunfire;
 class UPrimitiveComponent;
+class ACharacterGunfire;
 class AActor;
 
 FVector ASplineCameraVolume::GetCurrentSplinePosition() const {

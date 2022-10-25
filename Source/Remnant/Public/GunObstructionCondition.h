@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Condition.h"
 #include "EGunObstructionTypes.h"
+#include "Condition.h"
 #include "GunObstructionCondition.generated.h"
 
 UCLASS(Blueprintable)

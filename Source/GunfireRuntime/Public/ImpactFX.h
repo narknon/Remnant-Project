@@ -4,9 +4,9 @@
 #include "ImpactFXDecalCurves.h"
 #include "ImpactFX.generated.h"
 
+class UMaterial;
 class USoundCue;
 class UParticleSystem;
-class UMaterial;
 
 USTRUCT(BlueprintType)
 struct FImpactFX {

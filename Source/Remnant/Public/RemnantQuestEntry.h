@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "ERemnantQuestDebugState.h"
 #include "ERemnantQuestRarity.h"
-#include "ERemnantQuestType.h"
 #include "EQuestMode.h"
 #include "ELicensedContent.h"
+#include "ERemnantQuestType.h"
 #include "RemnantQuestEntry.generated.h"
 
 class UTexture2D;

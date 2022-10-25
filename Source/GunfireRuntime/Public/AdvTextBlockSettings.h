@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "FontStyleConfigEntry.h"
 #include "UObject/Object.h"
+#include "FontStyleConfigEntry.h"
 #include "AdvTextBlockSettings.generated.h"
 
 UCLASS(Blueprintable, Config=Game)

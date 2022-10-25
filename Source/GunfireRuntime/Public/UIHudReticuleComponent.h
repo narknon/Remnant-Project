@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UIHudComponent.h"
 #include "DamageInfo.h"
-#include "UObject/NoExportTypes.h"
+#include "UIHudComponent.h"
 #include "EDisabledWeaponVisuals.h"
+#include "UObject/NoExportTypes.h"
 #include "UIHudReticuleComponent.generated.h"
 
 class ARangedWeapon;

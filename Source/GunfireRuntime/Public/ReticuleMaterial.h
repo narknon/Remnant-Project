@@ -3,8 +3,8 @@
 #include "ReticulePiece.h"
 #include "ReticuleMaterial.generated.h"
 
-class UMaterialInterface;
 class UMaterialInstanceDynamic;
+class UMaterialInterface;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UReticuleMaterial : public UReticulePiece {

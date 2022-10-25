@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "SceneVisual.h"
 #include "VisualMaterialReplacement.h"
+#include "SceneVisual.h"
 #include "VisualMaterialParam.h"
 #include "StaticMeshVisual.generated.h"
 

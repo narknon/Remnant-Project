@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Condition.h"
 #include "EVisState.h"
+#include "Condition.h"
 #include "EYesNo.h"
 #include "RangeToTargetCondition.generated.h"
 

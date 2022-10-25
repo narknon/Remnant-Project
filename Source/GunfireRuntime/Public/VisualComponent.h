@@ -1,13 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "VisualSlot.h"
 #include "Components/ActorComponent.h"
 #include "OnStreamedVisualAppliedDelegate.h"
-#include "VisualSlot.h"
-#include "VisualSet.h"
 #include "VisualComponent.generated.h"
 
-
 class UVisualSetSlot;
+class UVisualSet;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UVisualComponent : public UActorComponent {

@@ -1,7 +1,7 @@
 #include "RemnantSpectatorPawn.h"
 
-class AActor;
 class USpectatorTargetComponent;
+class AActor;
 
 
 void ARemnantSpectatorPawn::OnTargetUnavailable(USpectatorTargetComponent* SpectatorTarget) {

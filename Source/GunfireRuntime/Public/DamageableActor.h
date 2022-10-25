@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "DamageInfo.h"
-#include "DamageableInterface.h"
 #include "GameFramework/Actor.h"
-#include "EInvincibleHandlingMethod.h"
-#include "UObject/NoExportTypes.h"
+#include "DamageableInterface.h"
 #include "DamageEventDelegateDelegate.h"
+#include "UObject/NoExportTypes.h"
+#include "EInvincibleHandlingMethod.h"
 #include "DamageableVoidDelegateDelegate.h"
+#include "DamageInfo.h"
 #include "DamageableActor.generated.h"
 
 class USceneComponent;

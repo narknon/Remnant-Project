@@ -1,7 +1,7 @@
 #include "HighlightsOpenGroupAsync.h"
 
-class UHighlightsOpenGroupAsync;
 class UObject;
+class UHighlightsOpenGroupAsync;
 
 UHighlightsOpenGroupAsync* UHighlightsOpenGroupAsync::HighlightsOpenGroup(UObject* WorldContextObject, const FGfeSDKHighlightOpenGroupParams& Params) {
     return NULL;

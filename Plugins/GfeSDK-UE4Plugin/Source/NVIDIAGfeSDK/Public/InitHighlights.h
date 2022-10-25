@@ -19,7 +19,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UInitHighlights();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UInitHighlights* InitHighlights(UObject* WorldContextObject, const FString& InGameName, const bool Video, const bool Screenshots);
     
 };

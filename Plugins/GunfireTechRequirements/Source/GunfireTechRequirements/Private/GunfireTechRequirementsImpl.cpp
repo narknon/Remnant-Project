@@ -1,9 +1,9 @@
 #include "GunfireTechRequirementsImpl.h"
 
-class UCameraComponent;
-class APlayerController;
 class UGunfireTechRequirementsImpl;
+class APlayerController;
 class UObject;
+class UCameraComponent;
 
 void UGunfireTechRequirementsImpl::ShowSwitchPlatformGameProfile() {
 }

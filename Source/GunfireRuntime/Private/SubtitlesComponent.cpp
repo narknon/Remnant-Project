@@ -1,8 +1,8 @@
 #include "SubtitlesComponent.h"
 
-class AActor;
-class USoundBase;
 class USubtitleInstance;
+class USoundBase;
+class AActor;
 
 void USubtitlesComponent::ServerRemoveSubtitle_Implementation(int32 ID) {
 }

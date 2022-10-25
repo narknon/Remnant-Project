@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UserSetting.h"
 #include "GenericInput.h"
+#include "UserSetting.h"
 #include "EInputConflictGroup.h"
 #include "RebindableInputSetting.generated.h"
 

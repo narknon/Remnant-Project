@@ -1,11 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "TutorialPromptDelegateDelegate.h"
+#include "Components/ActorComponent.h"
 #include "TutorialComponent.generated.h"
 
-class AActor;
 class UTutorialPrompts;
+class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UTutorialComponent : public UActorComponent {

@@ -4,8 +4,8 @@
 #include "BlueprintCommitSaveResultDelegateDelegate.h"
 #include "CommitSaveWithResultCallbackProxy.generated.h"
 
-class UCommitSaveWithResultCallbackProxy;
 class UObject;
+class UCommitSaveWithResultCallbackProxy;
 
 UCLASS(Blueprintable)
 class UCommitSaveWithResultCallbackProxy : public UPersistenceCallbackProxy {
@@ -18,7 +18,7 @@ public:
     FBlueprintCommitSaveResultDelegate OnFailure;
     
     UCommitSaveWithResultCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UCommitSaveWithResultCallbackProxy* CommitSaveWithResult(UObject* WorldContextObject, const FString& Reason);
     
 };

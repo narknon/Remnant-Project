@@ -2,8 +2,8 @@
 
 class UMaterialInterface;
 class UTexture;
-class UMaterialInstanceDynamic;
 class UPrimitiveComponent;
+class UMaterialInstanceDynamic;
 
 UTexture* URasterWidgetComponent::GetWidgetTexture() {
     return NULL;

@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "QuestManagerQuestDelegateDelegate.h"
 #include "QuestManager.h"
-#include "RemnantQuestEntry.h"
+#include "QuestManagerQuestDelegateDelegate.h"
 #include "ELicensedContent.h"
 #include "EQuestMode.h"
+#include "RemnantQuestEntry.h"
 #include "RemnantQuestManager.generated.h"
 
-class AActor;
 class ARemnantQuest;
+class AActor;
 class UQuestObjective;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

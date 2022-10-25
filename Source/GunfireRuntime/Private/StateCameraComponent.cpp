@@ -1,8 +1,8 @@
 #include "StateCameraComponent.h"
 #include "Templates/SubclassOf.h"
 
-class UCameraState;
 class AActor;
+class UCameraState;
 class APlayerControllerGunfire;
 class ACharacter;
 

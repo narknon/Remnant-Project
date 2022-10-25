@@ -4,8 +4,8 @@
 #include "Engine/DataTable.h"
 #include "MiniMapMeshMapIndex.generated.h"
 
-class UStaticMesh;
 class AActor;
+class UStaticMesh;
 
 USTRUCT(BlueprintType)
 struct GUNFIRERUNTIME_API FMiniMapMeshMapIndex : public FTableRowBase {

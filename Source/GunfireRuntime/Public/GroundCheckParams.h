@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Engine/EngineTypes.h"
 #include "UObject/Object.h"
 #include "EGroundCheckType.h"
-#include "Engine/EngineTypes.h"
 #include "GroundCheckParams.generated.h"
 
 UCLASS(Abstract, Blueprintable, Const)

@@ -27,7 +27,7 @@ protected:
     void StartMatch();
     
 public:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AGameStateGunfire* GetGunfireGameState(const UObject* WorldContextObject);
     
 };

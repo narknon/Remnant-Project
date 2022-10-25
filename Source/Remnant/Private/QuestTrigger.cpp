@@ -1,7 +1,7 @@
 #include "QuestTrigger.h"
 
-class ARemnantCharacter;
 class ATriggerVolume;
+class ARemnantCharacter;
 
 bool AQuestTrigger::IsLocalPlayerInRegion() const {
     return false;

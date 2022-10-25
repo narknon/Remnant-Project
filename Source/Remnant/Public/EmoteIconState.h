@@ -3,8 +3,8 @@
 #include "Templates/SubclassOf.h"
 #include "EmoteIconState.generated.h"
 
-class UEmote;
 class UTexture2D;
+class UEmote;
 
 USTRUCT(BlueprintType)
 struct FEmoteIconState {

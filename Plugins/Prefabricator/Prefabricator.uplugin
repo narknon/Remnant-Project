@@ -1,42 +1,43 @@
 {
-	"FileVersion": 3,
-	"Version": 19,
-	"VersionName": "1.5.1",
-	"FriendlyName": "Prefabricator",
-	"Description": "Create Prefabs in Unreal Engine",
-	"Category": "Prefab",
-	"CreatedBy": "Code Respawn",
-	"CreatedByURL": "http://prefabricator.io",
+	"FileVersion" : 3,
+	"FriendlyName" : "Prefabricator",
+	"Version" : 8,
+	"VersionName" : "1.1.0",
+	"CreatedBy" : "Code Respawn",
+	"CreatedByURL" : "http://prefabricator.io",
 	"DocsURL": "http://docs.prefabricator.io",
-	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/39ccbbf668e84847890992df9922e355",
-	"SupportURL": "",
-	"CanContainContent": true,
-	"Installed": true,
-	"Modules": [
+	"Description" : "Create Prefabs in Unreal Engine",
+	"Category" : "Prefab",
+	"EnabledByDefault" : true,
+	"MarketplaceURL" : "com.epicgames.launcher://ue/marketplace/content/39ccbbf668e84847890992df9922e355",
+	
+	"Modules" :
+	[
 		{
-			"Name": "PrefabricatorRuntime",
-			"Type": "Runtime",
-			"LoadingPhase": "PreDefault"
+			"Name" : "PrefabricatorRuntime",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PreDefault",
+			"WhitelistPlatforms" : [
+				"Win64"
+			]
 		},
 		{
-			"Name": "PrefabricatorEditor",
-			"Type": "Editor",
-			"LoadingPhase": "Default"
+			"Name" : "PrefabricatorEditor",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default",
+			"WhitelistPlatforms" : [
+				"Win64"
+			]
 		},
 		{
-			"Name": "PrefabricatorEditorPostInit",
-			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
-		},
-		{
-			"Name": "ConstructionSystemRuntime",
-			"Type": "Runtime",
-			"LoadingPhase": "PreDefault"
-		},
-		{
-			"Name": "ConstructionSystemEditor",
-			"Type": "Editor",
-			"LoadingPhase": "Default"
+			"Name" : "PrefabricatorEditorPostInit",
+			"Type" : "Editor",
+			"LoadingPhase" : "PostEngineInit",
+			"WhitelistPlatforms" : [
+				"Win64"
+			]
 		}
-	]
+	],
+
+	"CanContainContent" : true
 }

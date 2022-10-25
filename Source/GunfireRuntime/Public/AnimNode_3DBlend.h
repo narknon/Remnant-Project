@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Animation/AnimNodeBase.h"
-#include "Animation/BlendSpaceBase.h"
 #include "Animation/AnimNodeBase.h"
+#include "Animation/BlendSpaceBase.h"
 #include "AnimNode_3DBlend.generated.h"
 
 USTRUCT(BlueprintType)

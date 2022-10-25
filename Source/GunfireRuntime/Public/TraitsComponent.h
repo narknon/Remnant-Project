@@ -2,16 +2,16 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "Components/ActorComponent.h"
-#include "OnTraitLevelChangedDelegateDelegate.h"
 #include "TraitSlot.h"
-#include "TraitInfo.h"
 #include "OnTraitDelegateDelegate.h"
 #include "OnTraitPointAddedDelegate.h"
+#include "OnTraitLevelChangedDelegateDelegate.h"
+#include "TraitInfo.h"
 #include "TraitsComponent.generated.h"
 
+class UTrait;
 class UDataTable;
 class UProgressionComponent;
-class UTrait;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UTraitsComponent : public UActorComponent {

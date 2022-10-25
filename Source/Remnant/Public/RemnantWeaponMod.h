@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "LoadableModAsset.h"
 #include "EquipmentMod.h"
+#include "DamageInfo.h"
+#include "UObject/NoExportTypes.h"
 #include "EModInputMode.h"
 #include "RangedWeaponMode.h"
-#include "UObject/NoExportTypes.h"
-#include "DamageInfo.h"
 #include "RemnantWeaponMod.generated.h"
 
-class UObject;
 class ARemnantRangedWeapon;
+class UObject;
 
 UCLASS(Blueprintable)
 class REMNANT_API ARemnantWeaponMod : public AEquipmentMod {

@@ -5,8 +5,8 @@
 #include "ItemManager.generated.h"
 
 class AItem;
-class UObject;
 class UItemManager;
+class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UItemManager : public UActorComponent {
@@ -21,7 +21,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void GetItemsInRangeByType(const FVector& Position, float Radius, TSoftClassPtr<AItem> Type, TArray<AItem*>& OutItems);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UItemManager* GetInstance(const UObject* WorldContextObject);
     
 };

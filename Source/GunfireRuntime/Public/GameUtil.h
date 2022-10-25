@@ -1,49 +1,49 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
-#include "Camera/CameraTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
-#include "Engine/EngineTypes.h"
+#include "ActorQueryFilter.h"
+#include "EBuildType.h"
 #include "ELevelContextFallback.h"
+#include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Engine/EngineTypes.h"
+#include "Components/SceneComponent.h"
 #include "ObjectArraySortPredicateDelegate.h"
-#include "UObject/NoExportTypes.h"
+#include "ActorQueryResult.h"
 #include "CachedMaterialState.h"
+#include "Camera/CameraTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "EPlatform.h"
-#include "Components/SceneComponent.h"
 #include "ELocalizationLanguage.h"
-#include "EBuildType.h"
-#include "ActorQueryResult.h"
-#include "ActorQueryFilter.h"
 #include "GameUtil.generated.h"
 
-class ULevel;
-class UForceFeedbackEffect;
-class AActor;
-class UCurveFloat;
-class USceneComponent;
 class ACharacter;
 class USkeletalMeshComponent;
-class APlayerController;
+class AActor;
 class UPoseableMeshComponent;
-class ULevelStreaming;
+class UForceFeedbackEffect;
 class USkinnedMeshComponent;
 class UCameraShake;
 class APawn;
 class UBehaviorTree;
 class UAdvancedDecalComponent;
 class UShapeComponent;
-class UMaterialInterface;
-class UPrimitiveComponent;
-class APlayerState;
 class ALevelScriptActor;
+class UMaterialInterface;
+class UCurveFloat;
+class USceneComponent;
+class ULevel;
+class UPrimitiveComponent;
+class ULevelStreaming;
+class APlayerState;
+class APlayerController;
 class UGameViewportClientGunfire;
 class UActorComponent;
 class UWorld;
@@ -71,34 +71,34 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool TestLineOfSight(AActor* from, AActor* to, const TArray<AActor*>& IgnoredActors);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool SweepCharacter(UObject* WorldContextObject, ACharacter* Character, const FVector& Start, const FVector& End, const TArray<AActor*>& IgnoredActors, const TArray<TEnumAsByte<ECollisionChannel>>& IgnoreChannels, const TArray<TEnumAsByte<ECollisionChannel>>& OverlapChannels, const TArray<TEnumAsByte<ECollisionChannel>>& BlockChannels, FHitResult& Hit, float RadiusOverride, float HalfHeightOverride, FVector SweepOffset, bool bMoveCharacter);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool StuckCheckForClass(UObject* WorldContextObject, FVector FeetLocation, TSubclassOf<ACharacter> CharacterClass, const TArray<AActor*>& IgnoredActors, float RadiusOverride);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool StuckCheck(UObject* WorldContextObject, FVector FeetLocation, const ACharacter* Character, const TArray<AActor*>& IgnoredActors, float RadiusOverride);
     
     UFUNCTION(BlueprintCallable)
     static void StreamInTextures(const FVector& Position);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void StopForceFeedback(const UObject* WorldContextObject, UForceFeedbackEffect* ForceFeedbackEffect, FName Tag, int32 PlayerIndex);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void StopCameraShake(const UObject* WorldContextObject, TSubclassOf<UCameraShake> CameraShake, bool bSkipBlendOut, int32 PlayerIndex);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static APawn* SpawnAIEx(UObject* WorldContextObject, TSubclassOf<APawn> PawnClass, UBehaviorTree* BehaviorTree, FVector Location, FRotator Rotation, bool bNoCollisionFail, ELevelContextFallback LevelContextFallback, AActor* LevelContext);
     
     UFUNCTION(BlueprintCallable)
     static UAdvancedDecalComponent* SpawnAdvancedDecalAttached(UMaterialInterface* DecalMaterial, FVector DecalSize, USceneComponent* AttachToComponent, FName AttachPointName, FVector Location, FRotator Rotation, TEnumAsByte<EAttachLocation::Type> LocationType, float LifeSpan, UCurveFloat* EmissiveCurve, UCurveFloat* OpacityCurve, bool bSetLifespan);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAdvancedDecalComponent* SpawnAdvancedDecalAtLocation(const UObject* WorldContextObject, UMaterialInterface* DecalMaterial, FVector DecalSize, FVector Location, FRotator Rotation, float LifeSpan, UCurveFloat* EmissiveCurve, UCurveFloat* OpacityCurve, bool bSetLifespan);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AActor* SpawnActorEx(UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, const FTransform& SpawnTransform, ESpawnActorCollisionHandlingMethod CollisionHandling, AActor* Owner, APawn* Instigator, bool Transient, ELevelContextFallback LevelContextFallback, AActor* LevelContext, ULevel* OverrideLevel);
     
     UFUNCTION(BlueprintCallable)
@@ -113,10 +113,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SortActorArrayByDistance(FVector Location, UPARAM(Ref) TArray<AActor*>& ActorArray);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool SnapToNavMesh(UObject* WorldContextObject, const FVector& Position, float Radius, FVector& SnappedPosition);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool SnapToGround(UObject* WorldContextObject, const FVector& Position, FVector& SnappedPosition, float Offset, float CastDistance, bool TraceComplex);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -179,16 +179,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static void RemoveTag(AActor* Actor, FName Tag);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void RemoveLevelInstanceByName(UObject* WorldContextObject, const FString& UniqueInstanceName);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void RemoveLevelInstance(UObject* WorldContextObject, ULevelStreaming* LevelInstance);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void PlayForceFeedback(const UObject* WorldContextObject, UForceFeedbackEffect* ForceFeedbackEffect, bool bLooping, bool bIgnoreTimeDilation, FName Tag, int32 PlayerIndex);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void PlayCameraShake(const UObject* WorldContextObject, TSubclassOf<UCameraShake> CameraShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace::Type> PlaySpace, FRotator UserPlaySpaceRot, int32 PlayerIndex);
     
     UFUNCTION(BlueprintCallable)
@@ -203,7 +203,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void LoadFileToString(const FString& File, FString& Contents, bool& bSuccessful);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool LineTraceByChannelWithContext(UObject* WorldContextObject, const FVector& Start, const FVector& End, TEnumAsByte<ECollisionChannel> TraceChannel, bool TraceComplex, FHitResult& Hit);
     
     UFUNCTION(BlueprintCallable)
@@ -236,13 +236,13 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsSoftDestroyed(AActor* Actor);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsSingleplayerGame(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static bool IsShippingBuild();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsPlayingCinematic(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -290,10 +290,10 @@ public:
     UFUNCTION(BlueprintCallable)
     static FName GetPrefix(const FName& Name);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static TArray<APlayerState*> GetPlayerStates(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static TArray<APlayerController*> GetPlayerControllers(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -314,7 +314,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool GetObjectPath(UObject* Object, FString& Path);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static int32 GetNumConnectedPlayers(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -329,13 +329,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static FString GetLevelPathName(ULevel* Level);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static ULevelStreaming* GetLevelInstance(UObject* WorldContextObject, const FString& UniqueInstanceName);
     
     UFUNCTION(BlueprintCallable)
     static ULevel* GetLevelForActor(AActor* Actor);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UGameViewportClientGunfire* GetGameViewport(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintPure)
@@ -380,13 +380,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool GetAttachSocketName(USceneComponent* Mesh, FName& OutSocketName);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void GetActorsWithTagEx(const UObject* WorldContextObject, FName Tag, TArray<AActor*>& OutResults);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void GetActorsInRangeEx(const UObject* WorldContextObject, const FVector& Position, float MinRange, float MaxRange, UClass* FilterClass, const FActorQueryFilter& Filter, TArray<FActorQueryResult>& OutResults);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void GetActorsInRange(const UObject* WorldContextObject, const FVector& Position, float MinRange, float MaxRange, UClass* FilterClass, const FActorQueryFilter& Filter, TArray<AActor*>& OutResults);
     
     UFUNCTION(BlueprintCallable)
@@ -401,28 +401,28 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool FindTeleportPositionNear(AActor* Actor, float Distance, FVector& OutPosition, bool InFOVOnly);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static APlayerStart* FindPlayerStart(UObject* WorldContextObject, const FName& PlayerStartTag);
     
     UFUNCTION(BlueprintCallable)
     static void EnableStereo(bool bEnable);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void DrawDebugArrow(const UObject* WorldContextObject, const FVector& LineStart, const FVector& LineEnd, const FVector& ArrowAxis, const FRotator& BasisRotation, const FLinearColor& Color, const float Thickness, const float Duration, const float ArrowSize);
     
     UFUNCTION(BlueprintCallable)
     static bool DoesPathIntersectWithBounds(const ACharacterGunfire* Character, const FVector& Origin, const FVector& Extents);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static bool DoesGameHaveFocus(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void DebugDrawShapeWithOrientation(const UObject* WorldContextObject, const UShapeComponent* Shape, const FColor& Color, FVector Location, FRotator Rotation, bool bPersistentLines, float LifeTime, uint8 DepthPriority, float Thickness);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void DebugDrawShape(const UObject* WorldContextObject, const UShapeComponent* Shape, const FColor& Color, bool bPersistentLines, float LifeTime, uint8 DepthPriority, float Thickness);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void DebugDrawCollision(const UObject* WorldContextObject, const UPrimitiveComponent* Primitive, const FColor& Color, bool bPersistentLines, float LifeTime, uint8 DepthPriority, float Thickness);
     
     UFUNCTION(BlueprintCallable)
@@ -434,7 +434,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void CenterViewportCursor(const APlayerController* PlayerController);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FVector CalculateTraversableTeleportLocation(UObject* WorldContextObject, ACharacter* Character, FVector AimStart, FVector AimEnd, float AimObstacleTolerance, float GroundDistance, float CliffTolerance, bool bConstrainToLedges, float ProbeDistance, float StuckCheckHeightOffset, float FlatSurfaceDistance, bool bDebugDraw);
     
     UFUNCTION(BlueprintCallable)
@@ -446,7 +446,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void AddTag(AActor* Actor, FName Tag);
     
-    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static ULevelStreaming* AddLevelInstance(UObject* WorldContextObject, const FString& UniqueInstanceName, const FString& PackageNameToLoad, const FTransform& LevelTransform, bool BlockOnLoad, bool ShouldBeLoaded, bool ShouldBeVisible, TSubclassOf<ULevelStreaming> LevelStreamingOverride);
     
     UFUNCTION(BlueprintCallable)

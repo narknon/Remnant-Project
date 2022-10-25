@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Types/SlateEnums.h"
 #include "Components/PanelSlot.h"
 #include "Layout/Margin.h"
+#include "Types/SlateEnums.h"
 #include "Types/SlateEnums.h"
 #include "TabButtonSlot.generated.h"
 

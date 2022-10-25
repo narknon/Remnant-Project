@@ -2,15 +2,15 @@
 #include "Templates/SubclassOf.h"
 
 class AActor;
-class AImpactEffect;
-class UObject;
-class UDamageTypeGunfire;
-class ACharacter;
-class UDamageType;
 class UFaction;
 class UDamageClass;
-class APawn;
+class UObject;
+class AImpactEffect;
+class UDamageTypeGunfire;
+class ACharacter;
 class UCurveFloat;
+class UDamageType;
+class APawn;
 
 FHitResult UCombatUtil::WeaponTrace(AActor* Cause, const FVector& StartTrace, const FVector& EndTrace) {
     return FHitResult{};

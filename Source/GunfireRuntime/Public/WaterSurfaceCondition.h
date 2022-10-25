@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "TraversalCondition.h"
 #include "EWaterSurfaceDirection.h"
+#include "TraversalCondition.h"
 #include "WaterSurfaceCondition.generated.h"
 
 UCLASS(Blueprintable)

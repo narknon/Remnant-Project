@@ -2,8 +2,8 @@
 #include "Templates/SubclassOf.h"
 
 class AUIActor;
-class UObject;
 class APawn;
+class UObject;
 
 void AUIHud::UnloadLargeIcons() {
 }

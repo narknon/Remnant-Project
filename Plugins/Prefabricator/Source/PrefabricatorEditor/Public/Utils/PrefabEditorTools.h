@@ -1,15 +1,12 @@
-//$ Copyright 2015-20, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
+//$ Copyright 2015-19, Code Respawn Technologies Pvt Ltd - All Rights Reserved $//
 
 #pragma once
 #include "CoreMinimal.h"
-#include "AssetToolsModule.h"
 #include "ContentBrowserModule.h"
-#include "IAssetTools.h"
 #include "IContentBrowserSingleton.h"
 #include "Widgets/Notifications/SNotificationList.h"
 
 class UPrefabricatorAsset;
-class UPrefabricatorAssetInterface;
 
 class PREFABRICATOREDITOR_API FPrefabEditorTools {
 public:
@@ -18,10 +15,6 @@ public:
 	static void ShowNotification(FText Text, SNotificationItem::ECompletionState State = SNotificationItem::CS_Fail);
 
 	static void SwitchLevelViewportToRealtimeMode();
-
-	static void CapturePrefabAssetThumbnail(UPrefabricatorAsset* InAsset);
-	static void AssignPrefabAssetThumbnail(UPrefabricatorAssetInterface* InAsset, const TArray<FColor>& InBitmap, int32 Width, int32 Height);
-	static void AssignPrefabAssetThumbnail(UPrefabricatorAssetInterface* InAsset, UTexture2D* ThumbTexture);
 
 	template<typename T>
 	static T* CreateAssetOnContentBrowser(const FString& InAssetName, bool bSyncBrowserToAsset)

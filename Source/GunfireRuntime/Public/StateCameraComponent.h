@@ -1,18 +1,18 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "Camera/CameraTypes.h"
 #include "Camera/CameraComponent.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "Camera/CameraTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "StateCameraComponent.generated.h"
 
-class APlayerControllerGunfire;
-class UCameraState;
-class ACharacter;
 class USceneComponent;
 class AActor;
+class UCameraState;
+class ACharacter;
+class APlayerControllerGunfire;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UStateCameraComponent : public UCameraComponent {

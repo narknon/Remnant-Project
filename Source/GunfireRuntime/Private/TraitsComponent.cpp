@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class UProgressionComponent;
 class UTrait;
+class UProgressionComponent;
 
 bool UTraitsComponent::UnlockTrait(TSubclassOf<UTrait> TraitBP, int32 StartingLevel) {
     return false;

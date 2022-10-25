@@ -34,7 +34,7 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 GetMaxWeightForTarget(AActor* Target);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAICoordinator* GetAICoordinator(UObject* WorldContextObject);
     
 };

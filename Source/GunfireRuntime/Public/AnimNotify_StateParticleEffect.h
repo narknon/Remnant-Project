@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotify_PlayParticleEffect.h"
+#include "Conditions.h"
 #include "OptimizableNotifyInterface.h"
 #include "ENotifyOptimizationType.h"
-#include "Conditions.h"
 #include "AnimNotify_StateParticleEffect.generated.h"
 
 UCLASS(Blueprintable, CollapseCategories)

@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "EVitalityInitialValue.h"
 #include "Components/ActorComponent.h"
 #include "VitalityDelegateDelegate.h"
-#include "EVitalityInitialValue.h"
 #include "VitalityComponent.generated.h"
 
-class AActor;
 class UVitalityComponent;
+class AActor;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UVitalityComponent : public UActorComponent {

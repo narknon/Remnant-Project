@@ -2,20 +2,20 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "UObject/Object.h"
+#include "RequestFailedDelegateDelegate.h"
 #include "CharacterCreatedDelegateDelegate.h"
 #include "CharactersDeletedDelegateDelegate.h"
-#include "RequestFailedDelegateDelegate.h"
 #include "OnActiveCharacterChangedDelegate.h"
 #include "ERemnantCharacterType.h"
 #include "RemnantCharacterManager.generated.h"
 
 class UItemType;
+class UAccountAward;
+class URemnantCharacterManager;
 class USavedCharacter;
 class APlayerController;
-class URemnantCharacterManager;
 class AItem;
 class URemnantArchetype;
-class UAccountAward;
 
 UCLASS(Blueprintable)
 class REMNANT_API URemnantCharacterManager : public UObject {
@@ -48,7 +48,7 @@ protected:
     
 public:
     URemnantCharacterManager();
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool ShouldAwardHardcoreRewards(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -60,10 +60,10 @@ public:
     UFUNCTION(BlueprintCallable)
     bool ResolvePendingExit();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsHardcore(const UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsDeceasedCharacter(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -81,7 +81,7 @@ public:
     UFUNCTION(BlueprintCallable)
     TArray<USavedCharacter*> GetCharacters();
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URemnantCharacterManager* GetCharacterManager(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

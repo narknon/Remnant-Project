@@ -2,20 +2,20 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
-class AItem;
 class UItemType;
-class AActor;
 class UProgressionComponent;
+class UAccountAward;
 class UItemAward;
+class AItem;
 class URemnantArchetype;
 class ARemnantQuest;
 class UWorld;
 class UNetDriver;
 class ACharacterGunfire;
+class AActor;
 class UObject;
 class USpawnTable;
 class UInventoryComponent;
-class UAccountAward;
 class AZoneActor;
 class APawn;
 class ACheckpoint;

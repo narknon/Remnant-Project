@@ -1,7 +1,7 @@
 #include "TabButton.h"
 
-class UTexture2D;
 class UWidget;
+class UTexture2D;
 
 void UTabButton::SetTexture(UTexture2D* Texture) {
 }

@@ -12,7 +12,6 @@
 	"SupportURL": "http://www.gunfiregames.com/",
 	"CanContainContent": true,
 	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
 	"Installed": false,
 	"Modules": [
 		{

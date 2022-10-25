@@ -2,10 +2,10 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "HierarchicalEditInterface.h"
+#include "EReticulePieceDisableMode.h"
 #include "EReticuleAlignment.h"
 #include "UObject/NoExportTypes.h"
 #include "TargetingColorParams.h"
-#include "EReticulePieceDisableMode.h"
 #include "ReticulePiece.generated.h"
 
 UCLASS(Abstract, Blueprintable)

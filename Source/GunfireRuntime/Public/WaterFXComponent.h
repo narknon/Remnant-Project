@@ -1,15 +1,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "WaterFXOverride.h"
 #include "Components/ActorComponent.h"
 #include "Engine/EngineTypes.h"
 #include "WaterFXEntry.h"
+#include "WaterFXOverride.h"
 #include "WaterFXComponent.generated.h"
 
-class UPhysicsBoundsType;
-class UParticleSystemComponent;
 class UAudioComponent;
+class UParticleSystemComponent;
+class UPhysicsBoundsType;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UWaterFXComponent : public UActorComponent {

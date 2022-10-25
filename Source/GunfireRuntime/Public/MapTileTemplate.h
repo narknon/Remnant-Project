@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "UObject/NoExportTypes.h"
-#include "MapGenAttribute.h"
 #include "ETileDirection.h"
+#include "GameFramework/Actor.h"
+#include "MapGenAttribute.h"
 #include "TileSpawnList.h"
+#include "UObject/NoExportTypes.h"
 #include "MapTileTemplate.generated.h"
 
 class UTileSet;

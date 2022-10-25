@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "VisualSetNode.h"
-#include "VisualFXEntry.h"
 #include "VisualFX.generated.h"
 
+class UVisualFXEntry;
 
 UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UVisualFX : public UVisualSetNode {

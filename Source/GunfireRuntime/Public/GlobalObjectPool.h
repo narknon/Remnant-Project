@@ -6,8 +6,8 @@
 #include "GlobalObjectPool.generated.h"
 
 class USingleObjectPool;
-class UGlobalObjectPool;
 class UWorld;
+class UGlobalObjectPool;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UGlobalObjectPool : public UActorComponent {

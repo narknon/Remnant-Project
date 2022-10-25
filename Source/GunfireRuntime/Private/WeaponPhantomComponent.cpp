@@ -2,11 +2,11 @@
 #include "Templates/SubclassOf.h"
 
 class UShapeComponent;
+class UImpactDirection;
 class AActor;
 class UDamageTypeGunfire;
-class UImpactDirection;
-class UObject;
 class AImpactEffect;
+class UObject;
 
 void UWeaponPhantomComponent::StopWeaponPhantom(UShapeComponent* Shape) {
 }

@@ -1,7 +1,7 @@
 #include "UIHudReticuleComponent.h"
 
-class ARangedWeapon;
 class AMeleeWeapon;
+class ARangedWeapon;
 
 void UUIHudReticuleComponent::OnNotifyHitTarget(const FDamageInfo& DamageInfo) {
 }

@@ -1,11 +1,11 @@
 #include "SequencerManager.h"
 
 class UEventTreeComponent;
+class AActor;
 class ULevelSequence;
 class UObject;
-class AActor;
-class USequencerManager;
 class APlayerGunfire;
+class USequencerManager;
 
 void USequencerManager::UpdateSkipStatus_Implementation(ULevelSequence* InSequence, bool ShouldSkip) {
 }

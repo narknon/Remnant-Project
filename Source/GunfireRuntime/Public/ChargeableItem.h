@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Equipment.h"
-#include "Engine/EngineTypes.h"
-#include "EChargeState.h"
 #include "EChargeableActivateType.h"
+#include "EChargeState.h"
+#include "Engine/EngineTypes.h"
 #include "ChargeableItem.generated.h"
 
 class UConditionList;

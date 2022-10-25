@@ -4,8 +4,8 @@
 #include "BlueprintSaveNoRetDelegateDelegate.h"
 #include "RestoreProfileBackupCallbackProxy.generated.h"
 
-class URestoreProfileBackupCallbackProxy;
 class UObject;
+class URestoreProfileBackupCallbackProxy;
 
 UCLASS(Blueprintable)
 class URestoreProfileBackupCallbackProxy : public UPersistenceCallbackProxy {
@@ -18,7 +18,7 @@ public:
     FBlueprintSaveNoRetDelegate OnFailure;
     
     URestoreProfileBackupCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static URestoreProfileBackupCallbackProxy* RestoreProfileBackup(UObject* WorldContextObject);
     
 };

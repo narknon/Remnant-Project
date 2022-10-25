@@ -109,9 +109,26 @@
 		{
 			"Name": "ElgEditorScripting",
 			"Enabled": true
+		},
+		{
+			"Name": "ProceduralMeshComponent",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "GunfireSaveSystem",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
+		"Win64",
 		"WindowsNoEditor"
 	]
 }

@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "UITweenFinishedEventDelegate.h"
-#include "EUIEaseType.h"
+#include "Components/ActorComponent.h"
 #include "UITweenTimerDelegateDelegate.h"
 #include "UObject/NoExportTypes.h"
+#include "EUIEaseType.h"
 #include "UObject/NoExportTypes.h"
 #include "UITweenManager.generated.h"
 
 class UUITweenManager;
-class UCurveFloat;
 class UWidget;
+class UCurveFloat;
 class UObject;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -51,7 +51,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void InvalidateHandle(UPARAM(Ref) int32& TweenHandle);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UUITweenManager* GetInstance(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

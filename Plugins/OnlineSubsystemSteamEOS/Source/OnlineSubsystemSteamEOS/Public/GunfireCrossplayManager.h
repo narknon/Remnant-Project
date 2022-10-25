@@ -20,7 +20,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void LinkEpicFromSteam();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UGunfireCrossplayManager* GetGunfireCrossplayManager(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

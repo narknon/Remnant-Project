@@ -1,8 +1,8 @@
 #include "Matchmaker.h"
 
-class UMatchmaker;
 class APlayerController;
 class UObject;
+class UMatchmaker;
 
 void UMatchmaker::UpdateSession() {
 }

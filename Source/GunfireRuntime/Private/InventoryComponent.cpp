@@ -2,9 +2,9 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+class AActor;
 class AItem;
 class UItemType;
-class AActor;
 class UInventoryComponent;
 class AEquipment;
 class UItemInstanceData;

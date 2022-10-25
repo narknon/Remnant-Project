@@ -1,7 +1,7 @@
 #include "HasSaveCallbackProxy.h"
 
-class UObject;
 class UHasSaveCallbackProxy;
+class UObject;
 
 UHasSaveCallbackProxy* UHasSaveCallbackProxy::HasSave(UObject* WorldContextObject, int32 Slot) {
     return NULL;

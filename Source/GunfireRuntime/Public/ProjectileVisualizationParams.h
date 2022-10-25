@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EProjectileBounceMode.h"
 #include "EProjectileSimMode.h"
+#include "EProjectileBounceMode.h"
 #include "ProjectileVisualizationParams.generated.h"
 
 class AProjectileVisualization;

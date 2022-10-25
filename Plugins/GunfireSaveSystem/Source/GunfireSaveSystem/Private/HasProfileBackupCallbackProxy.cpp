@@ -1,7 +1,7 @@
 #include "HasProfileBackupCallbackProxy.h"
 
-class UHasProfileBackupCallbackProxy;
 class UObject;
+class UHasProfileBackupCallbackProxy;
 
 UHasProfileBackupCallbackProxy* UHasProfileBackupCallbackProxy::HasProfileBackup(UObject* WorldContextObject) {
     return NULL;

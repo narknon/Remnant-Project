@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "OnStateFailDelegate.h"
-#include "UObject/Object.h"
-#include "OnSessionsFoundDelegate.h"
-#include "FindSessionsCallbackProxy.h"
 #include "ESessionType.h"
-#include "Net/OnlineBlueprintCallProxyBase.h"
-#include "OnShowMatchmakingEventMessageDelegate.h"
+#include "UObject/Object.h"
 #include "OnWaitDialogDelegate.h"
+#include "FindSessionsCallbackProxy.h"
+#include "OnShowMatchmakingEventMessageDelegate.h"
+#include "OnStateFailDelegate.h"
+#include "OnSessionsFoundDelegate.h"
+#include "Net/OnlineBlueprintCallProxyBase.h"
 #include "OnRegisterPlayerDelegate.h"
 #include "OnUnregisterPlayerDelegate.h"
 #include "SessionDetails.h"
@@ -132,7 +132,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void InviteFriend();
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void Init(const UObject* WorldContextObject, APlayerController* PlayerController);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -141,7 +141,7 @@ public:
     UFUNCTION(BlueprintCallable)
     FSessionDetails GetSessionDetails(const FBlueprintSessionResult& Session);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UMatchmaker* GetMatchmakerInstance(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
@@ -162,7 +162,7 @@ public:
     UFUNCTION(BlueprintCallable)
     bool CanRejoinLastSession();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     bool CanJoinSessionGameMode(const UObject* WorldContextObject, const FBlueprintSessionResult& Session);
     
     UFUNCTION(BlueprintCallable)

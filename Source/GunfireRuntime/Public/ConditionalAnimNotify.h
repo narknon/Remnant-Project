@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotify.h"
+#include "Conditions.h"
 #include "OptimizableNotifyInterface.h"
 #include "ENotifyOptimizationType.h"
-#include "Conditions.h"
 #include "ConditionalAnimNotify.generated.h"
 
 UCLASS(Abstract, Blueprintable, CollapseCategories)

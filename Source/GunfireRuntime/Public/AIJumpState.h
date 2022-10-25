@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "AnimActorState.h"
 #include "EJumpType.h"
-#include "EAutoArcType.h"
 #include "PositionValue.h"
+#include "EAutoArcType.h"
 #include "AIJumpState.generated.h"
 
 class UStateMachineComponent;

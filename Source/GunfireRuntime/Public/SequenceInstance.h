@@ -2,14 +2,14 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "SequencerPlayerSettings.h"
-#include "LevelSequencePossession.h"
 #include "UObject/NoExportTypes.h"
+#include "LevelSequencePossession.h"
 #include "OnSequenceInstanceCompleteEventDelegate.h"
 #include "OnSequenceInstanceEventTreeTriggerDelegate.h"
 #include "SequenceInstance.generated.h"
 
-class ULevelSequence;
 class AActor;
+class ULevelSequence;
 class ULevelSequencePlayer;
 class ALevelSequenceActor;
 

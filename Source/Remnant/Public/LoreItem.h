@@ -20,7 +20,7 @@ public:
     TArray<FLorePage> Pages;
     
     ALoreItem();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void LoreNotify(UObject* WorldContextObject, const FLorePage& Page);
     
 };

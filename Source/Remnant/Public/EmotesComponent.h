@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EmoteIconState.h"
-#include "Components/ActorComponent.h"
 #include "OnIconLoadedEventDelegate.h"
+#include "Components/ActorComponent.h"
+#include "EmoteIconState.h"
 #include "EmotesComponent.generated.h"
 
-class UEmote;
 class UTexture2D;
+class UEmote;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API UEmotesComponent : public UActorComponent {

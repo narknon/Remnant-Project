@@ -4,11 +4,11 @@
 #include "Components/ActorComponent.h"
 #include "ZoneManager.generated.h"
 
-class AZoneRegion;
 class AZoneActor;
+class AZoneRegion;
+class UZoneManager;
 class AActor;
 class UObject;
-class UZoneManager;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API UZoneManager : public UActorComponent {
@@ -38,13 +38,13 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AZoneActor* GetZoneForActor(AActor* Actor);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AZoneActor* GetZoneByNameID(const UObject* WorldContextObject, const FName& NameID);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AZoneActor* GetZoneByID(const UObject* WorldContextObject, int32 ID);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UZoneManager* GetInstance(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

@@ -1,0 +1,8 @@
+{
+	"plugin_modules": [
+		"PrefabricatorRuntime", 
+		"PrefabricatorEditor",
+		"PrefabricatorEditorPostInit"
+	],
+	"engine_version": "4.22"
+}

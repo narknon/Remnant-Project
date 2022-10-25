@@ -5,10 +5,10 @@
 class APlayableLevelCollection;
 class ULevelStreaming;
 class APlayerController;
-class APlayableLevel;
-class AActor;
-class UDamageTypeGunfire;
 class UImpactDirection;
+class AActor;
+class APlayableLevel;
+class UDamageTypeGunfire;
 
 void AGameModeGunfire::RemoveLevelInstanceByName(const FString& UniqueInstanceName) const {
 }

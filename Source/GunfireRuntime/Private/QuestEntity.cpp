@@ -1,8 +1,8 @@
 #include "QuestEntity.h"
 
+class AActor;
 class UEventTree;
 class AQuest;
-class AActor;
 
 void UQuestEntity::StartEventTree(UEventTree* NewEventTree) {
 }

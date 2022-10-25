@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EMiniMapActorType.h"
 #include "UObject/NoExportTypes.h"
+#include "EMiniMapActorType.h"
 #include "MiniMapEntry.generated.h"
 
+class UUserWidget;
 class AActor;
 class UMiniMapPanelSlot;
-class UUserWidget;
 
 USTRUCT(BlueprintType)
 struct GUNFIRERUNTIME_API FMiniMapEntry {

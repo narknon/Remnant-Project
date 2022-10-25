@@ -4,8 +4,8 @@
 #include "BlueprintHasSaveResultDelegateDelegate.h"
 #include "HasSaveCallbackProxy.generated.h"
 
-class UHasSaveCallbackProxy;
 class UObject;
+class UHasSaveCallbackProxy;
 
 UCLASS(Blueprintable)
 class UHasSaveCallbackProxy : public UPersistenceCallbackProxy {
@@ -15,7 +15,7 @@ public:
     FBlueprintHasSaveResultDelegate OnComplete;
     
     UHasSaveCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHasSaveCallbackProxy* HasSave(UObject* WorldContextObject, int32 Slot);
     
 };

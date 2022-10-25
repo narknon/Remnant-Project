@@ -4,9 +4,9 @@
 #include "SpawnList.h"
 #include "GenericItem.generated.h"
 
+class AActor;
 class USpawnTable;
 class UInventoryComponent;
-class AActor;
 
 UCLASS(Blueprintable)
 class REMNANT_API AGenericItem : public AItem {

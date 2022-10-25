@@ -22,13 +22,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void RemoveActor(const FName& NameID, AActor* Actor);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UNamedActorManager* GetInstance(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void FindActorsByTags(UObject* WorldContextObject, const TArray<FName>& Tags, TArray<AActor*>& Actors);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AActor* FindActorByName(UObject* WorldContextObject, FName NameID);
     
     UFUNCTION(BlueprintCallable)

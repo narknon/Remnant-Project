@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "EncounterSpawn.h"
 #include "VisualLogger/VisualLoggerDebugSnapshotInterface.h"
 #include "DamageInfo.h"
-#include "EncounterSpawn.h"
 #include "EncounterManager.generated.h"
 
-class APlayerController;
-class AActor;
 class UEncounterInstance;
+class AActor;
+class APlayerController;
 class USpawnTable;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

@@ -18,7 +18,7 @@ public:
     FBlueprintLoadProfileSaveResultDelegate OnFailure;
     
     ULoadProfileSaveCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static ULoadProfileSaveCallbackProxy* LoadProfileSave(UObject* WorldContextObject);
     
 };

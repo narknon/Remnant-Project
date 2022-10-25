@@ -6,7 +6,7 @@
 class USaveGameWorld;
 class USaveGameProfile;
 
-UCLASS(Blueprintable, DefaultConfig, Config = Engine)
+UCLASS(Blueprintable, DefaultConfig, Config=Engine)
 class GUNFIRESAVESYSTEM_API UGunfireSaveSystemSettings : public UDeveloperSettings {
     GENERATED_BODY()
 public:

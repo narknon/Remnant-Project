@@ -4,8 +4,8 @@
 #include "OnHighlightsOperationResultCallbackDelegate.h"
 #include "HighlightsCloseGroupAsync.generated.h"
 
-class UHighlightsCloseGroupAsync;
 class UObject;
+class UHighlightsCloseGroupAsync;
 
 UCLASS(Blueprintable)
 class UHighlightsCloseGroupAsync : public UBlueprintAsyncActionBase {
@@ -18,7 +18,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsCloseGroupAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsCloseGroupAsync* HighlightsCloseGroup(UObject* WorldContextObject, const FString& GroupId, const bool& DestroyHighlights);
     
 };

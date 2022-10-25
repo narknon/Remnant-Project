@@ -4,8 +4,8 @@
 #include "MeleeWeapon.h"
 #include "RemnantMeleeWeapon.generated.h"
 
-class UDamageTypeGunfire;
 class UWeaponAffinityComponent;
+class UDamageTypeGunfire;
 
 UCLASS(Blueprintable)
 class REMNANT_API ARemnantMeleeWeapon : public AMeleeWeapon {

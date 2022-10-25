@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
 #include "Engine/EngineTypes.h"
+#include "UObject/Object.h"
 #include "PhysicsBoundsType.generated.h"
 
 UCLASS(Abstract, Blueprintable, Const, MinimalAPI)

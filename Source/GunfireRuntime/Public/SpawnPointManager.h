@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "Components/ActorComponent.h"
 #include "QueuedSpawn.h"
-#include "SpawnList.h"
+#include "Components/ActorComponent.h"
 #include "SpawnEntry.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "SpawnList.h"
 #include "SpawnPointManager.generated.h"
 
+class ARecastNavMesh;
 class ASpawnPoint;
 class AActor;
-class ARecastNavMesh;
-class ULevel;
 class UObject;
+class ULevel;
 class USpawnPointManager;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -42,13 +42,13 @@ public:
     UFUNCTION(BlueprintCallable)
     void SpawnCharacter(const FSpawnEntry& Entry, AActor* Owner, const FVector& SpawnPos, bool Transient);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AActor* SpawnActorDeferred(UObject* WorldContextObject, TSubclassOf<AActor> ActorBP, const FTransform& Transform);
     
     UFUNCTION(BlueprintCallable)
     void Spawn(const FBox& Region, const FSpawnList& SpawnList, ULevel* OwningLevel, bool Transient, TArray<AActor*>& SpawnedActors);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static USpawnPointManager* GetInstance(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)

@@ -2,15 +2,15 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/Actor.h"
-#include "Engine/DataTable.h"
 #include "ItemDelegateDelegate.h"
+#include "Engine/DataTable.h"
 #include "InspectInfo.h"
 #include "Item.generated.h"
 
-class USoundCue;
-class UItemType;
 class UPersistenceComponent;
 class UTexture2D;
+class USoundCue;
+class UItemType;
 class UItemCategory;
 class UItemInstanceData;
 class UParticleSystem;

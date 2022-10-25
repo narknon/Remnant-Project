@@ -5,8 +5,8 @@
 #include "DeployableAttributes.h"
 #include "Builder.generated.h"
 
-class UMaterial;
 class APawn;
+class UMaterial;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API ABuilder : public AEquipment {

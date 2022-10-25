@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "EventTreeNode.h"
-#include "EventTreeAttrib.h"
 #include "Engine/EngineTypes.h"
+#include "EventTreeAttrib.h"
 #include "EventTreeNode_Dialog.generated.h"
 
 class UDialogVocalRange;

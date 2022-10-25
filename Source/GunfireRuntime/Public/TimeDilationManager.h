@@ -4,9 +4,9 @@
 #include "TimeDilationEffectHandle.h"
 #include "TimeDilationManager.generated.h"
 
+class APlayerControllerGunfire;
 class AActor;
 class UObject;
-class APlayerControllerGunfire;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UTimeDilationManager : public UActorComponent {
@@ -16,7 +16,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetTimeDilation(AActor* InActor, float InTimeDilation, FName Tag);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetGlobalTimeDilation(UObject* WorldContextObject, float InTimeDilation, FName Tag);
     
     UFUNCTION(BlueprintCallable)
@@ -25,7 +25,7 @@ public:
     UFUNCTION(BlueprintCallable)
     static FTimeDilationEffectHandle PlayTimeDilationEffect(AActor* InActor, float InTimeDilation, float InDuration, float EaseInTime, float EaseOutTime, bool bIsHitPause);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static FTimeDilationEffectHandle PlayGlobalTimeDilationEffect(UObject* WorldContextObject, float InTimeDilation, float InDuration, float EaseInTime, float EaseOutTime);
     
 protected:
@@ -45,7 +45,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetTimeDilation(AActor* InActor, bool bOnlyForTag, FName Tag);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static float GetGlobalTimeDilation(UObject* WorldContextObject, bool bOnlyForTag, FName Tag);
     
     UFUNCTION(BlueprintCallable)
@@ -57,13 +57,13 @@ public:
     UFUNCTION(BlueprintCallable)
     static void ClearTimeDilation(AActor* InActor, bool bClearEffects, bool bOnlyForTag, FName Tag);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ClearGlobalTimeDilationEffect(UObject* WorldContextObject, FTimeDilationEffectHandle Handle);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ClearGlobalTimeDilation(UObject* WorldContextObject, bool bClearEffects, bool bOnlyForTag, FName Tag);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void ClearAllTimeDilation(UObject* WorldContextObject);
     
 };

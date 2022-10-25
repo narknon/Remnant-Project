@@ -4,8 +4,8 @@
 #include "BlueprintLoadSaveResultDelegateDelegate.h"
 #include "ReadSaveCallbackProxy.generated.h"
 
-class UObject;
 class UReadSaveCallbackProxy;
+class UObject;
 
 UCLASS(Blueprintable)
 class UReadSaveCallbackProxy : public UPersistenceCallbackProxy {
@@ -18,7 +18,7 @@ public:
     FBlueprintLoadSaveResultDelegate OnFailure;
     
     UReadSaveCallbackProxy();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UReadSaveCallbackProxy* ReadSave(UObject* WorldContextObject, int32 Slot);
     
 };

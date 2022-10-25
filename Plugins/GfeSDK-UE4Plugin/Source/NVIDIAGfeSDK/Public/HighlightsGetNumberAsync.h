@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintAsyncActionBase.h"
 #include "OnGetNumberOfHighlightsCallbackDelegate.h"
+#include "Kismet/BlueprintAsyncActionBase.h"
 #include "OnHighlightsOperationResultCallbackDelegate.h"
 #include "EGfeSDKHighlightSignificance.h"
 #include "EGfeSDKHighlightType.h"
 #include "HighlightsGetNumberAsync.generated.h"
 
-class UHighlightsGetNumberAsync;
 class UObject;
+class UHighlightsGetNumberAsync;
 
 UCLASS(Blueprintable)
 class UHighlightsGetNumberAsync : public UBlueprintAsyncActionBase {
@@ -21,7 +21,7 @@ public:
     FOnHighlightsOperationResultCallback OnFailure;
     
     UHighlightsGetNumberAsync();
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UHighlightsGetNumberAsync* HighlightsGetNumberOfHighlights(UObject* WorldContextObject, const FString& GroupId, const EGfeSDKHighlightType& TagFilter, const EGfeSDKHighlightSignificance& SignificanceFilter);
     
 };

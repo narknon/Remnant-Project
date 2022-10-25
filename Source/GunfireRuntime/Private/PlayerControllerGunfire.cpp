@@ -2,8 +2,8 @@
 #include "Net/UnrealNetwork.h"
 #include "PlayStateComponent.h"
 
-class AActor;
 class ULevelSequence;
+class AActor;
 class APawn;
 
 void APlayerControllerGunfire::SpectateTarget(AActor* Actor) {

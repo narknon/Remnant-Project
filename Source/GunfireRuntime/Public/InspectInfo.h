@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "InspectStat.h"
 #include "InspectMod.h"
+#include "InspectStat.h"
 #include "InspectInfo.generated.h"
 
 class UObject;

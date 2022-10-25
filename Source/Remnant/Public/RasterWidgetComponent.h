@@ -5,8 +5,8 @@
 
 class UTexture;
 class UMaterialInterface;
-class UPrimitiveComponent;
 class UMaterialInstanceDynamic;
+class UPrimitiveComponent;
 
 UCLASS(Blueprintable, EditInlineNew, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URasterWidgetComponent : public UWidgetComponent {

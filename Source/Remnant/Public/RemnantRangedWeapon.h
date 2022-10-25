@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "RangedWeaponVoidDelegateDelegate.h"
 #include "RangedWeapon.h"
-#include "RangedWeaponPowerDelegateDelegate.h"
-#include "RangedWeaponActiveDelegateDelegate.h"
-#include "EModActiveState.h"
 #include "UObject/NoExportTypes.h"
+#include "RangedWeaponActiveDelegateDelegate.h"
+#include "RangedWeaponPowerDelegateDelegate.h"
+#include "RangedWeaponVoidDelegateDelegate.h"
+#include "EModActiveState.h"
 #include "Engine/NetSerialization.h"
 #include "RemnantRangedWeapon.generated.h"
 

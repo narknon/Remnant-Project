@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "DamageInfo.h"
 #include "GameFramework/Actor.h"
+#include "DamageInfo.h"
 #include "GameRules.generated.h"
 
 class AWeaponBase;

@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "Components/ActorComponent.h"
-#include "LevelChangedEventDelegate.h"
 #include "EMiniMapActorType.h"
+#include "LevelChangedEventDelegate.h"
 #include "MiniMapComponent.generated.h"
 
 class ACharacterGunfire;

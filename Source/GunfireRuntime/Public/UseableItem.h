@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Equipment.h"
-#include "Engine/EngineTypes.h"
 #include "EUsableActivationType.h"
+#include "Engine/EngineTypes.h"
 #include "UseableItem.generated.h"
 
 class UConditionList;

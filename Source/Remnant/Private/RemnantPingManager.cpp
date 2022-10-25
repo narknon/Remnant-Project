@@ -1,8 +1,8 @@
 #include "RemnantPingManager.h"
 
-class URemnantPingManager;
 class AActor;
 class UObject;
+class URemnantPingManager;
 
 bool URemnantPingManager::IsCharacterOnVOCooldown(AActor* Character) {
     return false;

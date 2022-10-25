@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "ReceptacleSlot.h"
 #include "Components/ActorComponent.h"
 #include "UseItemInterface.h"
-#include "ReceptacleSlot.h"
 #include "ReceptacleEventDelegate.h"
 #include "ReceptacleSlotEventDelegate.h"
 #include "ReceptacleComponent.generated.h"
 
+class UInventoryComponent;
 class AItem;
 class ACharacterGunfire;
-class UInventoryComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UReceptacleComponent : public UActorComponent, public IUseItemInterface {

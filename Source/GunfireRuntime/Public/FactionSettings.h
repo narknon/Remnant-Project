@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "FactionAffiliation.h"
 #include "UObject/Object.h"
+#include "FactionAffiliation.h"
 #include "FactionSettings.generated.h"
 
 class UFaction;
 
-UCLASS(Blueprintable, DefaultConfig, Config = Engine)
+UCLASS(Blueprintable, DefaultConfig, Config=Engine)
 class GUNFIRERUNTIME_API UFactionSettings : public UObject {
     GENERATED_BODY()
 public:

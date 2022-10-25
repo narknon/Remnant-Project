@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
+#include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "InspectInfo.h"
 #include "ItemUtil.generated.h"
 
-class AActor;
-class AItem;
-class UInventoryComponent;
 class USpawnTable;
+class AItem;
+class AActor;
+class UInventoryComponent;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UItemUtil : public UObject {

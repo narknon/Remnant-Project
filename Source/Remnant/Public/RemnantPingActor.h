@@ -5,8 +5,8 @@
 #include "ETailType.h"
 #include "RemnantPingActor.generated.h"
 
-class APlayerControllerGunfire;
 class UTexture2D;
+class APlayerControllerGunfire;
 
 UCLASS(Blueprintable)
 class REMNANT_API ARemnantPingActor : public AActor {

@@ -4,11 +4,11 @@
 #include "AIDefaultTargetSelector.h"
 #include "PathFollowingComponentGunfire.h"
 
-class UObject;
 class AActor;
+class AAIControllerGunfire;
 class ACharacterGunfire;
 class AAIPathPoint;
-class AAIControllerGunfire;
+class UObject;
 
 void AAIControllerGunfire::UpdateAwareness(float DeltaSeconds) {
 }
@@ -92,7 +92,7 @@ void AAIControllerGunfire::AddThreat(AActor* ThreatCharacter, float Amount, bool
 void AAIControllerGunfire::AddPersistentTarget(AActor* Target) {
 }
 
-AAIControllerGunfire::AAIControllerGunfire(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UPathFollowingComponentGunfire>(TEXT("PathFollowingComponent"))) {
+AAIControllerGunfire::AAIControllerGunfire() : Super(FObjectInitializer::Get().SetDefaultSubobjectClass<UPathFollowingComponentGunfire>(TEXT("PathFollowingComponent"))) {
     this->NavigationFilter = UPathSharingFilter_Default::StaticClass();
     this->bSeeksTargets = true;
     this->Persistent = false;

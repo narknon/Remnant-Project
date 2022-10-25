@@ -1,8 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ImpactFX.h"
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
+#include "ImpactFX.h"
 #include "Engine/EngineTypes.h"
 #include "ImpactEffect.generated.h"
 

@@ -5,8 +5,8 @@
 class AEquipment;
 class AEquipmentMod;
 class UInventoryComponent;
-class AItem;
 class AActor;
+class AItem;
 
 bool AEquipmentMod::UnequipMod(UInventoryComponent* Inventory, int32 ItemID, uint8 Slot, bool AddToInventory) {
     return false;

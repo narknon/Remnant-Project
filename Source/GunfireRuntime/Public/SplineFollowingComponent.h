@@ -2,10 +2,10 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "ESplineAttachmentRule.h"
-#include "SplineFollowCompleteEventDelegate.h"
-#include "ESplineMovementDirection.h"
-#include "UObject/NoExportTypes.h"
 #include "ESplineAttachType.h"
+#include "ESplineMovementDirection.h"
+#include "SplineFollowCompleteEventDelegate.h"
+#include "UObject/NoExportTypes.h"
 #include "SplineFollowingComponent.generated.h"
 
 class USplineComponent;

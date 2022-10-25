@@ -3,9 +3,9 @@
 #include "Components/ActorComponent.h"
 #include "SoundSetComponent.generated.h"
 
-class USoundBase;
 class UMeshComponent;
 class USoundSet;
+class USoundBase;
 class USoundCue;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

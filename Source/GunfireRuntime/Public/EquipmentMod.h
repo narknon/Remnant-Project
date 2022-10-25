@@ -1,16 +1,16 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "EquipmentModData.h"
 #include "DamageSourceInterface.h"
 #include "Item.h"
-#include "EquipmentModData.h"
 #include "InspectInfo.h"
 #include "EquipmentMod.generated.h"
 
+class AActor;
 class AEquipmentMod;
 class UInventoryComponent;
 class AEquipment;
-class AActor;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AEquipmentMod : public AItem, public IDamageSourceInterface {

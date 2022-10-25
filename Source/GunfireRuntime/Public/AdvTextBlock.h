@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EInputDevice.h"
-#include "Layout/Margin.h"
+#include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "OnWidgetReadyDelegate.h"
 #include "Components/Widget.h"
+#include "Fonts/SlateFontInfo.h"
 #include "OnTextFilledDelegate.h"
 #include "Framework/Text/TextLayout.h"
-#include "Fonts/SlateFontInfo.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
+#include "Layout/Margin.h"
+#include "EInputDevice.h"
 #include "AdvTextBlock.generated.h"
 
 UCLASS(Blueprintable)

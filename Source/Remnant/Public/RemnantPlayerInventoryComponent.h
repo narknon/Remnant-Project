@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "InventoryComponent.h"
 #include "AutoUpgradeableItem.h"
+#include "CheatProtectedItemParams.h"
+#include "InventoryComponent.h"
+#include "OnClientExceptionAddedDelegateDelegate.h"
 #include "OnPickedUpDuplicateUniqueDelegate.h"
 #include "ValidationTrackedItemParams.h"
-#include "CheatProtectedItemParams.h"
-#include "OnClientExceptionAddedDelegateDelegate.h"
 #include "ClientValidatedItemInfo.h"
 #include "AddedItemTypeTimeStamp.h"
 #include "InventoryScalingInfo.h"
 #include "RemnantPlayerInventoryComponent.generated.h"
 
+class AItem;
 class AActor;
 class UItemType;
-class AItem;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URemnantPlayerInventoryComponent : public UInventoryComponent {

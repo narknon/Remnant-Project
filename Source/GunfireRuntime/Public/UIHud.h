@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "EDialogLocation.h"
-#include "Engine/LatentActionManager.h"
 #include "GameFramework/HUD.h"
-#include "OnIconsLoadedDelegate.h"
 #include "OnHudEventDelegateDelegate.h"
+#include "Engine/LatentActionManager.h"
+#include "EDialogLocation.h"
+#include "OnIconsLoadedDelegate.h"
 #include "EDialogBeginMethod.h"
 #include "UIHud.generated.h"
 
+class UObject;
 class APawn;
 class AUIActor;
-class UObject;
 
 UCLASS(Blueprintable, NonTransient)
 class GUNFIRERUNTIME_API AUIHud : public AHUD {
@@ -65,7 +65,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDialogBegin(AUIActor* Dialog);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(Latent, LatentInfo="LatentInfo"))
     void LoadLargeIcons(FOnIconsLoaded OnIconsLoaded, FLatentActionInfo LatentInfo);
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)

@@ -3,8 +3,8 @@
 class URemnantQuestTile;
 class URemnantQuestZone;
 class AZoneActor;
-class APlayerController;
 class ARemnantQuest;
+class APlayerController;
 class URemnantQuestEntity;
 
 bool URemnantQuestComponent::IsZoneLoaded() {

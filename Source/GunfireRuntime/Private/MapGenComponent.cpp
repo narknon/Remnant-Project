@@ -1,10 +1,10 @@
 #include "MapGenComponent.h"
 #include "Net/UnrealNetwork.h"
 
+class UTileSet;
+class AActor;
 class AAudioCustomVolume;
 class ULevel;
-class AActor;
-class UTileSet;
 class UMapGenComponent;
 
 void UMapGenComponent::OnStartedVisualLogger() {

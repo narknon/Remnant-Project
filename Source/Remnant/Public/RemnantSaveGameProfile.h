@@ -1,13 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
-#include "SaveGameProfile.h"
 #include "AccountCurrencyInstance.h"
+#include "SaveGameProfile.h"
 #include "RemnantSaveGameProfile.generated.h"
 
+class UAccountAward;
 class USavedCharacter;
 class AQuest;
-class UAccountAward;
 class AItem;
 
 UCLASS(Blueprintable)

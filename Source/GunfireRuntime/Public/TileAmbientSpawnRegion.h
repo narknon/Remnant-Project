@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "AmbientSpawn.h"
 #include "UObject/NoExportTypes.h"
+#include "AmbientSpawn.h"
 #include "TileAmbientSpawnRegion.generated.h"
 
 USTRUCT(BlueprintType)

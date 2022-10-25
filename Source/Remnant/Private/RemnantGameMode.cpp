@@ -1,7 +1,7 @@
 #include "RemnantGameMode.h"
 
-class ACheckpoint;
 class AActor;
+class ACheckpoint;
 
 void ARemnantGameMode::TravelToZone(int32 DestZoneID, const FName& DestLink, AActor* Source, bool bForce, bool bInstant) {
 }

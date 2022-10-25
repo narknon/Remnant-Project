@@ -1,7 +1,7 @@
 #include "EventTreeNode.h"
 
-class UEventTreeComponent;
 class APlayerController;
+class UEventTreeComponent;
 
 bool UEventTreeNode::Validate_Implementation(UEventTreeComponent* Component) {
     return false;

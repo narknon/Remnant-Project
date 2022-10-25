@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Conditions.h"
 #include "Animation/AnimNotifies/AnimNotifyState_Trail.h"
+#include "Conditions.h"
 #include "OptimizableNotifyInterface.h"
 #include "ENotifyOptimizationType.h"
 #include "AnimNotifyState_StateTrail.generated.h"

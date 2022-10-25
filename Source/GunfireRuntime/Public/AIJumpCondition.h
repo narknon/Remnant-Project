@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ActorStateID.h"
 #include "Condition.h"
+#include "ActorStateID.h"
 #include "AIJumpCondition.generated.h"
 
 UCLASS(Blueprintable)

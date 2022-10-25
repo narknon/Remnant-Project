@@ -1,10 +1,10 @@
 #include "PersistenceBlueprintFunctionLibrary.h"
 
-class USaveGameProfile;
-class UObject;
 class AActor;
 class USaveGameWorld;
 class UPersistenceManager;
+class UObject;
+class USaveGameProfile;
 
 void UPersistenceBlueprintFunctionLibrary::SetReference(FPersistentReference& Reference, AActor* InActor) {
 }

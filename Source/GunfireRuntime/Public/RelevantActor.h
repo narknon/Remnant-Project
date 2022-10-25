@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EPathState.h"
-#include "EAwarenessState.h"
 #include "EAffiliation.h"
+#include "EAwarenessState.h"
 #include "UObject/NoExportTypes.h"
 #include "EVisState.h"
+#include "EPathState.h"
 #include "RelevantActor.generated.h"
 
 class AActor;

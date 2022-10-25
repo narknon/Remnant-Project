@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "EventRegionPlayerDelegateDelegate.h"
-#include "RemnantQuestComponent.h"
-#include "EventRegionDelegateDelegate.h"
 #include "EventRegionCharacter.h"
+#include "EventRegionDelegateDelegate.h"
+#include "RemnantQuestComponent.h"
+#include "EventRegionPlayerDelegateDelegate.h"
 #include "RemnantQuestEventRegion.generated.h"
 
-class AActor;
 class UMusicSet;
 class AEventRegion;
+class AActor;
 class ARemnantCharacter;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))

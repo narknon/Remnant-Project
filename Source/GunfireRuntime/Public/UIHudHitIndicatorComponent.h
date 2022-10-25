@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UIHudComponent.h"
 #include "DamageInfo.h"
+#include "UIHudComponent.h"
 #include "UIHudHitIndicatorComponent.generated.h"
 
 class UTexture2D;

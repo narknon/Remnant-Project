@@ -1,17 +1,17 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
+#include "UIHudComponent.h"
+#include "InteractiveInfoDelegateDelegate.h"
 #include "HudInteractive.h"
 #include "InteractiveRelevantDelegateDelegate.h"
-#include "UIHudComponent.h"
 #include "Fonts/SlateFontInfo.h"
-#include "InteractiveInfoDelegateDelegate.h"
 #include "Engine/EngineTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UIHudInteractComponent.generated.h"
 
-class AUIActor;
 class UTexture2D;
+class AUIActor;
 class UObject;
 class AActor;
 

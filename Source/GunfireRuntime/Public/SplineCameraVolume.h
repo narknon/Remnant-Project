@@ -6,12 +6,12 @@
 #include "Engine/EngineTypes.h"
 #include "SplineCameraVolume.generated.h"
 
+class APlayerController;
+class ACharacterGunfire;
 class USplineCameraComponent;
 class UBoxComponent;
 class USplineCameraSplineComponent;
 class UStateCameraComponent;
-class ACharacterGunfire;
-class APlayerController;
 class UPrimitiveComponent;
 
 UCLASS(Blueprintable, Config=Game)

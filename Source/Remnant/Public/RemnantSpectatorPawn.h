@@ -3,8 +3,8 @@
 #include "GameFramework/SpectatorPawn.h"
 #include "RemnantSpectatorPawn.generated.h"
 
-class AActor;
 class USpectatorTargetComponent;
+class AActor;
 
 UCLASS(Blueprintable)
 class REMNANT_API ARemnantSpectatorPawn : public ASpectatorPawn {

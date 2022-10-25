@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "ItemGenerator.h"
 #include "EItemGenTableType.h"
+#include "ItemGenerator.h"
 #include "ItemGeneratorTable.generated.h"
 
 UCLASS(Blueprintable)

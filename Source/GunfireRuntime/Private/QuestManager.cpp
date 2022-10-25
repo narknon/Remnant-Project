@@ -2,10 +2,10 @@
 #include "Templates/SubclassOf.h"
 
 class UEventTreeComponent;
-class ULevel;
 class UObject;
-class AQuest;
 class UQuestManager;
+class AQuest;
+class ULevel;
 
 void UQuestManager::SetupQuestVariables(UEventTreeComponent* EventTreeComponent) {
 }

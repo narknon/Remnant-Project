@@ -2,8 +2,8 @@
 #include "CoreMinimal.h"
 #include "Templates/SubclassOf.h"
 #include "GameFramework/Actor.h"
-#include "ELODVolumeVisibility.h"
 #include "TileCoord.h"
+#include "ELODVolumeVisibility.h"
 #include "LODVolume.generated.h"
 
 class UBoxComponent;

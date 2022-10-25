@@ -4,11 +4,11 @@
 #include "PersistentReference.h"
 #include "PersistenceBlueprintFunctionLibrary.generated.h"
 
-class USaveGameProfile;
-class UObject;
 class AActor;
 class USaveGameWorld;
 class UPersistenceManager;
+class UObject;
+class USaveGameProfile;
 
 UCLASS(Blueprintable)
 class GUNFIRESAVESYSTEM_API UPersistenceBlueprintFunctionLibrary : public UBlueprintFunctionLibrary {
@@ -18,25 +18,25 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetReference(UPARAM(Ref) FPersistentReference& Reference, AActor* InActor);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void SetDisableCommit(UObject* WorldContextObject, bool DisableCommit);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static AActor* GetReference(UObject* WorldContextObject, UPARAM(Ref) FPersistentReference& Reference);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static USaveGameProfile* GetProfileSave(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UPersistenceManager* GetPersistenceManager(UObject* WorldContextObject);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static USaveGameWorld* GetCurrentSave(UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable)
     static void CopyReference(const FPersistentReference& from, UPARAM(Ref) FPersistentReference& to);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void CommitSave(UObject* WorldContextObject, const FString& Reason);
     
     UFUNCTION(BlueprintCallable)

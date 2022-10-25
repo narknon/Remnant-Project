@@ -6,11 +6,11 @@
 #include "Engine/EngineTypes.h"
 #include "ActionBase.generated.h"
 
-class UActionComponent;
-class AActor;
 class UDamageTypeGunfire;
 class APlayerControllerGunfire;
 class UDamageType;
+class AActor;
+class UActionComponent;
 class UActionBase;
 
 UCLASS(Blueprintable, Config=Game)
