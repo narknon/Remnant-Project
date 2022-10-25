@@ -162,3 +162,13 @@ obj/
 
 # Explcitly ignore Mac DS_Store files, regardless of where they are
 .DS_Store
+Binaries/Win64/Remnant-Win64-Shipping.exe
+Binaries/Win64/Remnant-Win64-Shipping.exp
+Binaries/Win64/Remnant-Win64-Shipping.lib
+Binaries/Win64/Remnant-Win64-Shipping.target
+Binaries/Win64/Remnant.exe
+Binaries/Win64/Remnant.exp
+Binaries/Win64/Remnant.lib
+Binaries/Win64/Remnant.target
+Binaries/Win64/UnrealPak.target
+Build/WindowsNoEditor/ChunkLayerInfo/pakchunklayers.txt
