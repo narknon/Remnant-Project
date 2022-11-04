@@ -241,8 +241,9 @@ def write_csv(csv_data, agg_data):
 				inv_total_count = 1.0 / total_count
 			print('{}, {}'.format(algo_data['csv_name'], ', '.join([str((float(x) * inv_total_count) * 100.0) for x in algo_data['bit_rates']])), file = csv_data['stats_bit_rate_csv_file'])
 
-def print_progress(iteration, total, prefix='', suffix='', decimals = 1, bar_length = 50):
+def print_progress(iteration, total, prefix='', suffix='', decimals = 1, bar_length = 40):
 	# Taken from https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
+	# With minor tweaks
 	"""
 	Call in a loop to create terminal progress bar
 	@params:
@@ -258,16 +259,17 @@ def print_progress(iteration, total, prefix='', suffix='', decimals = 1, bar_len
 	filled_length = int(round(bar_length * iteration / float(total)))
 	bar = '█' * filled_length + '-' * (bar_length - filled_length)
 
-	if platform.system() == 'Darwin':
-		# On OS X, \r doesn't appear to work properly in the terminal
-		print('{}{} |{}| {}{} {}'.format('\b' * 100, prefix, bar, percents, '%', suffix), end='')
-	else:
-		sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
+	# We need to clear any previous line we might have to ensure we have no visual artifacts
+	# Note that if this function is called too quickly, the text might flicker
+	terminal_width = 80
+	sys.stdout.write('{}\r'.format(' ' * terminal_width))
+	sys.stdout.flush()
+
+	sys.stdout.write('%s |%s| %s%s %s\r' % (prefix, bar, percents, '%', suffix)),
+	sys.stdout.flush()
 
 	if iteration == total:
-		print('')
-
-	sys.stdout.flush()
+		sys.stdout.write('\n')
 
 def run_acl_compressor(cmd_queue, result_queue):
 	while True:
@@ -357,7 +359,7 @@ def compress_clips(options):
 			cmd_queue.put(None)
 
 		result_queue = queue.Queue()
-		compression_start_time = time.clock()
+		compression_start_time = time.perf_counter()
 
 		threads = [ threading.Thread(target = run_acl_compressor, args = (cmd_queue, result_queue)) for _i in range(options['num_threads']) ]
 		for thread in threads:
@@ -385,7 +387,7 @@ def compress_clips(options):
 		except KeyboardInterrupt:
 			sys.exit(1)
 
-		compression_end_time = time.clock()
+		compression_end_time = time.perf_counter()
 		print()
 		print('Compressed {} clips in {}'.format(len(stat_files), format_elapsed_time(compression_end_time - compression_start_time)))
 
@@ -538,6 +540,9 @@ def run_stat_parsing(options, stat_queue, result_queue):
 						run_stats['translation_format'] = shorten_translation_format(run_stats['translation_format'])
 						run_stats['scale_format'] = shorten_scale_format(run_stats['scale_format'])
 
+						if isinstance(run_stats['duration'], str):
+							run_stats['duration'] = 0.0
+
 						if 'segmenting' in run_stats:
 							run_stats['segmenting']['range_reduction'] = shorten_range_reduction(run_stats['segmenting']['range_reduction'])
 							run_stats['desc'] = '{}|{}|{}, Clip {}, Segment {}'.format(run_stats['rotation_format'], run_stats['translation_format'], run_stats['scale_format'], run_stats['range_reduction'], run_stats['segmenting']['range_reduction'])
@@ -662,7 +667,7 @@ if __name__ == "__main__":
 
 	csv_data = create_csv(options)
 
-	aggregating_start_time = time.clock()
+	aggregating_start_time = time.perf_counter()
 
 	stat_queue = multiprocessing.Queue()
 	for stat_filename in stat_files:
@@ -712,7 +717,7 @@ if __name__ == "__main__":
 
 	write_csv(csv_data, agg_run_stats)
 
-	aggregating_end_time = time.clock()
+	aggregating_end_time = time.perf_counter()
 	print()
 	print('Found {} runs in {}'.format(num_runs, format_elapsed_time(aggregating_end_time - aggregating_start_time)))
 	print()
@@ -737,7 +742,7 @@ if __name__ == "__main__":
 	total_duration = sum([x['total_duration'] for x in agg_run_stats.values()])
 
 	print('Sum of clip durations: {}'.format(format_elapsed_time(total_duration)))
-	print('Total compression time: {}'.format(format_elapsed_time(total_wall_compression_time)))
+	print('Total compression time: {} ({:.3f} seconds)'.format(format_elapsed_time(total_wall_compression_time), total_wall_compression_time))
 	print('Total raw size: {:.2f} MB'.format(bytes_to_mb(total_raw_size)))
 	print('Compression speed: {:.2f} KB/sec'.format(bytes_to_kb(total_raw_size) / total_compression_time))
 	if len(agg_job_results['bone_error_values']) > 0:

@@ -58,7 +58,7 @@ namespace acl
 	inline Vector4_32 ACL_SIMD_CALL vector_set(float x, float y, float z)
 	{
 #if defined(ACL_SSE2_INTRINSICS)
-		return _mm_set_ps(0.0f, z, y, x);
+		return _mm_set_ps(0.0F, z, y, x);
 #elif defined(ACL_NEON_INTRINSICS)
 #if 1
 		float32x2_t V0 = vcreate_f32(((uint64_t)*(const uint32_t*)&x) | ((uint64_t)(*(const uint32_t*)&y) << 32));
@@ -86,14 +86,12 @@ namespace acl
 
 	inline Vector4_32 ACL_SIMD_CALL vector_unaligned_load(const float* input)
 	{
-		ACL_ASSERT(is_aligned(input), "Invalid alignment");
 		return vector_set(input[0], input[1], input[2], input[3]);
 	}
 
 	inline Vector4_32 ACL_SIMD_CALL vector_unaligned_load3(const float* input)
 	{
-		ACL_ASSERT(is_aligned(input), "Invalid alignment");
-		return vector_set(input[0], input[1], input[2], 0.0f);
+		return vector_set(input[0], input[1], input[2], 0.0F);
 	}
 
 	inline Vector4_32 ACL_SIMD_CALL vector_unaligned_load_32(const uint8_t* input)
@@ -104,7 +102,7 @@ namespace acl
 		return vreinterpretq_f32_u8(vld1q_u8(input));
 #else
 		Vector4_32 result;
-		memcpy(&result, input, sizeof(Vector4_32));
+		std::memcpy(&result, input, sizeof(Vector4_32));
 		return result;
 #endif
 	}
@@ -112,8 +110,8 @@ namespace acl
 	inline Vector4_32 ACL_SIMD_CALL vector_unaligned_load3_32(const uint8_t* input)
 	{
 		float input_f[3];
-		memcpy(&input_f[0], input, sizeof(float) * 3);
-		return vector_set(input_f[0], input_f[1], input_f[2], 0.0f);
+		std::memcpy(&input_f[0], input, sizeof(float) * 3);
+		return vector_set(input_f[0], input_f[1], input_f[2], 0.0F);
 	}
 
 	inline Vector4_32 ACL_SIMD_CALL vector_zero_32()
@@ -121,7 +119,7 @@ namespace acl
 #if defined(ACL_SSE2_INTRINSICS)
 		return _mm_setzero_ps();
 #else
-		return vector_set(0.0f);
+		return vector_set(0.0F);
 #endif
 	}
 
@@ -202,7 +200,7 @@ namespace acl
 		case VectorMix::W: return vector_get_w(input);
 		default:
 			ACL_ASSERT(false, "Invalid component index");
-			return 0.0f;
+			return 0.0F;
 		}
 	}
 
@@ -220,7 +218,7 @@ namespace acl
 		case VectorMix::W: return vector_get_w(input);
 		default:
 			ACL_ASSERT(false, "Invalid component index");
-			return 0.0f;
+			return 0.0F;
 		}
 	}
 
@@ -231,16 +229,18 @@ namespace acl
 
 	inline void ACL_SIMD_CALL vector_unaligned_write(Vector4_32Arg0 input, float* output)
 	{
-		ACL_ASSERT(is_aligned(output), "Invalid alignment");
+#if defined(ACL_SSE2_INTRINSICS)
+		_mm_storeu_ps(output, input);
+#else
 		output[0] = vector_get_x(input);
 		output[1] = vector_get_y(input);
 		output[2] = vector_get_z(input);
 		output[3] = vector_get_w(input);
+#endif
 	}
 
 	inline void ACL_SIMD_CALL vector_unaligned_write3(Vector4_32Arg0 input, float* output)
 	{
-		ACL_ASSERT(is_aligned(output), "Invalid alignment");
 		output[0] = vector_get_x(input);
 		output[1] = vector_get_y(input);
 		output[2] = vector_get_z(input);
@@ -248,12 +248,12 @@ namespace acl
 
 	inline void ACL_SIMD_CALL vector_unaligned_write(Vector4_32Arg0 input, uint8_t* output)
 	{
-		memcpy(output, &input, sizeof(Vector4_32));
+		std::memcpy(output, &input, sizeof(Vector4_32));
 	}
 
 	inline void ACL_SIMD_CALL vector_unaligned_write3(Vector4_32Arg0 input, uint8_t* output)
 	{
-		memcpy(output, &input, sizeof(float) * 3);
+		std::memcpy(output, &input, sizeof(float) * 3);
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -365,7 +365,7 @@ namespace acl
 #if defined(ACL_NEON_INTRINSICS)
 		return vnegq_f32(input);
 #else
-		return vector_mul(input, -1.0f);
+		return vector_mul(input, -1.0F);
 #endif
 	}
 
@@ -392,7 +392,7 @@ namespace acl
 		float32x4_t x2 = vmulq_f32(x1, vrecpsq_f32(x1, input));
 		return x2;
 #else
-		return vector_div(vector_set(1.0f), input);
+		return vector_div(vector_set(1.0F), input);
 #endif
 	}
 
@@ -529,7 +529,7 @@ namespace acl
 		return vector_length3(vector_sub(rhs, lhs));
 	}
 
-	inline Vector4_32 ACL_SIMD_CALL vector_normalize3(Vector4_32Arg0 input, float threshold = 1.0e-8f)
+	inline Vector4_32 ACL_SIMD_CALL vector_normalize3(Vector4_32Arg0 input, float threshold = 1.0E-8F)
 	{
 		// Reciprocal is more accurate to normalize with
 		const float len_sq = vector_length_squared3(input);
@@ -547,7 +547,9 @@ namespace acl
 	// output = (input * scale) + offset
 	inline Vector4_32 ACL_SIMD_CALL vector_mul_add(Vector4_32Arg0 input, Vector4_32Arg1 scale, Vector4_32Arg2 offset)
 	{
-#if defined(ACL_NEON_INTRINSICS)
+#if defined(ACL_NEON64_INTRINSICS)
+		return vfmaq_f32(offset, input, scale);
+#elif defined(ACL_NEON_INTRINSICS)
 		return vmlaq_f32(offset, input, scale);
 #else
 		return vector_add(vector_mul(input, scale), offset);
@@ -556,7 +558,9 @@ namespace acl
 
 	inline Vector4_32 ACL_SIMD_CALL vector_mul_add(Vector4_32Arg0 input, float scale, Vector4_32Arg2 offset)
 	{
-#if defined(ACL_NEON_INTRINSICS)
+#if defined(ACL_NEON64_INTRINSICS)
+		return vfmaq_n_f32(offset, input, scale);
+#elif defined(ACL_NEON_INTRINSICS)
 		return vmlaq_n_f32(offset, input, scale);
 #else
 		return vector_add(vector_mul(input, scale), offset);
@@ -566,8 +570,21 @@ namespace acl
 	// output = offset - (input * scale)
 	inline Vector4_32 ACL_SIMD_CALL vector_neg_mul_sub(Vector4_32Arg0 input, Vector4_32Arg1 scale, Vector4_32Arg2 offset)
 	{
-#if defined(ACL_NEON_INTRINSICS)
+#if defined(ACL_NEON64_INTRINSICS)
+		return vfmsq_f32(offset, input, scale);
+#elif defined(ACL_NEON_INTRINSICS)
 		return vmlsq_f32(offset, input, scale);
+#else
+		return vector_sub(offset, vector_mul(input, scale));
+#endif
+	}
+
+	inline Vector4_32 ACL_SIMD_CALL vector_neg_mul_sub(Vector4_32Arg0 input, float scale, Vector4_32Arg2 offset)
+	{
+#if defined(ACL_NEON64_INTRINSICS)
+		return vfmsq_n_f32(offset, input, scale);
+#elif defined(ACL_NEON_INTRINSICS)
+		return vmlsq_n_f32(offset, input, scale);
 #else
 		return vector_sub(offset, vector_mul(input, scale));
 #endif
@@ -622,7 +639,7 @@ namespace acl
 		uint32x4_t mask = vcltq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFu;
+		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFU;
 #else
 		return lhs.x < rhs.x && lhs.y < rhs.y && lhs.z < rhs.z && lhs.w < rhs.w;
 #endif
@@ -636,7 +653,7 @@ namespace acl
 		uint32x4_t mask = vcltq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) == 0x00FFFFFFu;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) == 0x00FFFFFFU;
 #else
 		return lhs.x < rhs.x && lhs.y < rhs.y && lhs.z < rhs.z;
 #endif
@@ -664,7 +681,7 @@ namespace acl
 		uint32x4_t mask = vcltq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) != 0;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) != 0;
 #else
 		return lhs.x < rhs.x || lhs.y < rhs.y || lhs.z < rhs.z;
 #endif
@@ -678,9 +695,21 @@ namespace acl
 		uint32x4_t mask = vcleq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFu;
+		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFU;
 #else
 		return lhs.x <= rhs.x && lhs.y <= rhs.y && lhs.z <= rhs.z && lhs.w <= rhs.w;
+#endif
+	}
+
+	inline bool ACL_SIMD_CALL vector_all_less_equal2(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs)
+	{
+#if defined(ACL_SSE2_INTRINSICS)
+		return (_mm_movemask_ps(_mm_cmple_ps(lhs, rhs)) & 0x3) == 0x3;
+#elif defined(ACL_NEON_INTRINSICS)
+		uint32x2_t mask = vcle_f32(vget_low_f32(lhs), vget_low_f32(rhs));
+		return vget_lane_u64(mask, 0) == 0xFFFFFFFFFFFFFFFFULL;
+#else
+		return lhs.x <= rhs.x && lhs.y <= rhs.y;
 #endif
 	}
 
@@ -692,7 +721,7 @@ namespace acl
 		uint32x4_t mask = vcleq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) == 0x00FFFFFFu;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) == 0x00FFFFFFU;
 #else
 		return lhs.x <= rhs.x && lhs.y <= rhs.y && lhs.z <= rhs.z;
 #endif
@@ -720,7 +749,7 @@ namespace acl
 		uint32x4_t mask = vcleq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) != 0;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) != 0;
 #else
 		return lhs.x <= rhs.x || lhs.y <= rhs.y || lhs.z <= rhs.z;
 #endif
@@ -734,7 +763,7 @@ namespace acl
 		uint32x4_t mask = vcgeq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFu;
+		return vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) == 0xFFFFFFFFU;
 #else
 		return lhs.x >= rhs.x && lhs.y >= rhs.y && lhs.z >= rhs.z && lhs.w >= rhs.w;
 #endif
@@ -748,7 +777,7 @@ namespace acl
 		uint32x4_t mask = vcgeq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) == 0x00FFFFFFu;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) == 0x00FFFFFFU;
 #else
 		return lhs.x >= rhs.x && lhs.y >= rhs.y && lhs.z >= rhs.z;
 #endif
@@ -776,28 +805,33 @@ namespace acl
 		uint32x4_t mask = vcgeq_f32(lhs, rhs);
 		uint8x8x2_t mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15 = vzip_u8(vget_low_u8(mask), vget_high_u8(mask));
 		uint16x4x2_t mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15 = vzip_u16(mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[0], mask_0_8_1_9_2_10_3_11_4_12_5_13_6_14_7_15.val[1]);
-		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFu) != 0;
+		return (vget_lane_u32(mask_0_8_4_12_1_9_5_13_2_10_6_14_3_11_7_15.val[0], 0) & 0x00FFFFFFU) != 0;
 #else
 		return lhs.x >= rhs.x || lhs.y >= rhs.y || lhs.z >= rhs.z;
 #endif
 	}
 
-	inline bool ACL_SIMD_CALL vector_all_near_equal(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001f)
+	inline bool ACL_SIMD_CALL vector_all_near_equal(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001F)
 	{
 		return vector_all_less_equal(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
 	}
 
-	inline bool ACL_SIMD_CALL vector_all_near_equal3(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001f)
+	inline bool ACL_SIMD_CALL vector_all_near_equal2(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001F)
+	{
+		return vector_all_less_equal2(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
+	}
+
+	inline bool ACL_SIMD_CALL vector_all_near_equal3(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001F)
 	{
 		return vector_all_less_equal3(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
 	}
 
-	inline bool ACL_SIMD_CALL vector_any_near_equal(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001f)
+	inline bool ACL_SIMD_CALL vector_any_near_equal(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001F)
 	{
 		return vector_any_less_equal(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
 	}
 
-	inline bool ACL_SIMD_CALL vector_any_near_equal3(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001f)
+	inline bool ACL_SIMD_CALL vector_any_near_equal3(Vector4_32Arg0 lhs, Vector4_32Arg1 rhs, float threshold = 0.00001F)
 	{
 		return vector_any_less_equal3(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
 	}
@@ -911,7 +945,23 @@ namespace acl
 	inline Vector4_32 ACL_SIMD_CALL vector_sign(Vector4_32Arg0 input)
 	{
 		Vector4_32 mask = vector_greater_equal(input, vector_zero_32());
-		return vector_blend(mask, vector_set(1.0f), vector_set(-1.0f));
+		return vector_blend(mask, vector_set(1.0F), vector_set(-1.0F));
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Returns per component the rounded input using a symmetric algorithm.
+	// symmetric_round(1.5) = 2.0
+	// symmetric_round(1.2) = 1.0
+	// symmetric_round(-1.5) = -2.0
+	// symmetric_round(-1.2) = -1.0
+	//////////////////////////////////////////////////////////////////////////
+	inline Vector4_32 ACL_SIMD_CALL vector_symmetric_round(Vector4_32Arg0 input)
+	{
+		const Vector4_32 half = vector_set(0.5F);
+		const Vector4_32 floored = vector_floor(vector_add(input, half));
+		const Vector4_32 ceiled = vector_ceil(vector_sub(input, half));
+		const Vector4_32 is_greater_equal = vector_greater_equal(input, vector_zero_32());
+		return vector_blend(is_greater_equal, floored, ceiled);
 	}
 }
 

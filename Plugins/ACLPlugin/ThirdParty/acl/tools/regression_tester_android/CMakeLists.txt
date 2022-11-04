@@ -4,8 +4,8 @@ project(acl_regression_tester_android)
 set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_ANDROID_ARCH armv7-a)
-set(CMAKE_ANDROID_API_MIN 21)
-set(CMAKE_ANDROID_API 21)
+set(CMAKE_ANDROID_API_MIN 24)
+set(CMAKE_ANDROID_API 24)
 set(CMAKE_ANDROID_GUI 1)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
@@ -17,6 +17,7 @@ set(CMAKE_ANDROID_JAVA_SOURCE_DIR "${PROJECT_SOURCE_DIR}/java")
 include_directories("${PROJECT_SOURCE_DIR}/../../includes")
 include_directories("${PROJECT_SOURCE_DIR}/../acl_compressor/includes")
 include_directories("${PROJECT_SOURCE_DIR}/../acl_compressor/sources")
+include_directories("${PROJECT_SOURCE_DIR}/../../external/rtm/includes")
 include_directories("${PROJECT_SOURCE_DIR}/../../external/sjson-cpp/includes")
 
 # Setup resources
@@ -63,16 +64,21 @@ target_compile_options(${PROJECT_NAME} PRIVATE -g)
 
 # Throw on failure to allow us to catch them and recover
 add_definitions(-DACL_ON_ASSERT_THROW)
+add_definitions(-DRTM_ON_ASSERT_THROW)
 add_definitions(-DSJSON_CPP_ON_ASSERT_THROW)
 
 # Disable SIMD if not needed
 if(NOT USE_SIMD_INSTRUCTIONS)
 	add_definitions(-DACL_NO_INTRINSICS)
+	add_definitions(-DRTM_NO_INTRINSICS)
 endif()
 
-# Disable allocation track since if we fail a regression test, we'll throw an exception
+# Disable allocation tracking since if we fail a regression test, we'll throw an exception
 # and fail to free memory, leading to a crash in the allocator
 add_definitions(-DACL_NO_ALLOCATOR_TRACKING)
+
+# Enable SJSON
+add_definitions(-DACL_USE_SJSON)
 
 target_include_directories(${PROJECT_NAME} PUBLIC jni)
 
@@ -83,6 +89,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_SKIP_ANT_STEP 0)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_PROGUARD 1)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_PROGUARD_CONFIG_PATH proguard-android.txt)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_SECURE_PROPS_PATH /definitely/insecure)
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_GLOBAL_AndroidBuildSystem "AntBuild")				# Use Ant as our build system
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY ANDROID_NATIVE_LIB_DIRECTORIES $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 set_property(TARGET ${PROJECT_NAME} PROPERTY ANDROID_NATIVE_LIB_DEPENDENCIES ${PROJECT_NAME}.so)

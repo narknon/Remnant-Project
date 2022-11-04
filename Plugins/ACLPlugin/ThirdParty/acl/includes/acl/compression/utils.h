@@ -41,7 +41,7 @@ namespace acl
 {
 	struct BoneError
 	{
-		BoneError() : index(k_invalid_bone_index), error(0.0f), sample_time(0.0f) {}
+		BoneError() : index(k_invalid_bone_index), error(0.0F), sample_time(0.0F) {}
 
 		uint16_t index;
 		float error;
@@ -50,12 +50,12 @@ namespace acl
 
 	template<class DecompressionContextType>
 	inline BoneError calculate_compressed_clip_error(IAllocator& allocator,
-		const AnimationClip& clip, const CompressionSettings& settings, DecompressionContextType& context)
+		const AnimationClip& clip, const ISkeletalErrorMetric& error_metric, DecompressionContextType& context)
 	{
 		const uint16_t num_bones = clip.get_num_bones();
 		const float clip_duration = clip.get_duration();
 		const float sample_rate = clip.get_sample_rate();
-		const uint32_t num_samples = clip.get_num_samples();;
+		const uint32_t num_samples = clip.get_num_samples();
 		const RigidSkeleton& skeleton = clip.get_skeleton();
 
 		uint16_t num_output_bones = 0;
@@ -63,7 +63,7 @@ namespace acl
 
 		const AnimationClip* additive_base_clip = clip.get_additive_base();
 		const uint32_t additive_num_samples = additive_base_clip != nullptr ? additive_base_clip->get_num_samples() : 0;
-		const float additive_duration = additive_base_clip != nullptr ? additive_base_clip->get_duration() : 0.0f;
+		const float additive_duration = additive_base_clip != nullptr ? additive_base_clip->get_duration() : 0.0F;
 
 		Transform_32* raw_pose_transforms = allocate_type_array<Transform_32>(allocator, num_bones);
 		Transform_32* base_pose_transforms = allocate_type_array<Transform_32>(allocator, num_bones);
@@ -85,9 +85,9 @@ namespace acl
 
 			if (additive_base_clip != nullptr)
 			{
-				const float normalized_sample_time = additive_num_samples > 1 ? (sample_time / clip_duration) : 0.0f;
+				const float normalized_sample_time = additive_num_samples > 1 ? (sample_time / clip_duration) : 0.0F;
 				const float additive_sample_time = normalized_sample_time * additive_duration;
-				additive_base_clip->sample_pose(additive_sample_time, base_pose_transforms, num_bones);
+				additive_base_clip->sample_pose(additive_sample_time, SampleRoundingPolicy::Nearest, base_pose_transforms, num_bones);
 			}
 
 			// Perform remapping by copying the raw pose first and we overwrite with the decompressed pose if
@@ -102,7 +102,7 @@ namespace acl
 			for (uint16_t bone_index = 0; bone_index < num_bones; ++bone_index)
 			{
 				// Always calculate the error with scale, slower but binary exact
-				const float error = settings.error_metric->calculate_object_bone_error(skeleton, raw_pose_transforms, base_pose_transforms, lossy_remapped_pose_transforms, bone_index);
+				const float error = error_metric.calculate_object_bone_error(skeleton, raw_pose_transforms, base_pose_transforms, lossy_remapped_pose_transforms, bone_index);
 
 				if (error > bone_error.error)
 				{
@@ -120,6 +120,15 @@ namespace acl
 		deallocate_type_array(allocator, lossy_remapped_pose_transforms, num_bones);
 
 		return bone_error;
+	}
+
+	template<class DecompressionContextType>
+	ACL_DEPRECATED("Use a calculate_compressed_clip_error(..) with an explicit error metric instead, to be removed in v2.0")
+	inline BoneError calculate_compressed_clip_error(IAllocator& allocator,
+		const AnimationClip& clip, const CompressionSettings& settings, DecompressionContextType& context)
+	{
+		ACL_ASSERT(settings.error_metric != nullptr, "Error metric cannot be null");
+		return calculate_compressed_clip_error(allocator, clip, *settings.error_metric, context);
 	}
 }
 

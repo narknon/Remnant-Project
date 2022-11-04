@@ -53,13 +53,13 @@ namespace acl
 		const SegmentContext& segment = clip_context.segments[0];
 		for (const BoneStreams& bone_stream : segment.const_bone_iterator())
 		{
-			if (bone_stream.is_rotation_animated())
+			if (!bone_stream.is_rotation_constant)
 				range_data_size += rotation_size;
 
-			if (bone_stream.is_translation_animated())
+			if (!bone_stream.is_translation_constant)
 				range_data_size += translation_size;
 
-			if (clip_context.has_scale && bone_stream.is_scale_animated())
+			if (!bone_stream.is_scale_constant)
 				range_data_size += scale_size;
 		}
 
@@ -75,9 +75,9 @@ namespace acl
 		{
 			const uint32_t range_member_size = sizeof(float) * 3;
 
-			memcpy(out_range_data, vector_as_float_ptr(range_min), range_member_size);
+			std::memcpy(out_range_data, vector_as_float_ptr(range_min), range_member_size);
 			out_range_data += range_member_size;
-			memcpy(out_range_data, vector_as_float_ptr(range_extent), range_member_size);
+			std::memcpy(out_range_data, vector_as_float_ptr(range_extent), range_member_size);
 			out_range_data += range_member_size;
 		}
 		else
@@ -85,7 +85,7 @@ namespace acl
 			if (is_constant_bit_rate(track.get_bit_rate()))
 			{
 				const uint8_t* sample_ptr = track.get_raw_sample_ptr(0);
-				memcpy(out_range_data, sample_ptr, sizeof(uint16_t) * 3);
+				std::memcpy(out_range_data, sample_ptr, sizeof(uint16_t) * 3);
 				out_range_data += sizeof(uint16_t) * 3;
 			}
 			else
@@ -105,6 +105,7 @@ namespace acl
 	{
 		ACL_ASSERT(range_data != nullptr, "'range_data' cannot be null!");
 		(void)range_data_size;
+		(void)clip_context;	// TODO: Remove in 2.0
 
 #if defined(ACL_HAS_ASSERT_CHECKS)
 		const uint8_t* range_data_end = add_offset_to_ptr<uint8_t>(range_data, range_data_size);
@@ -120,7 +121,7 @@ namespace acl
 			// value = (normalized value * range extent) + range min
 			// normalized value = (value - range min) / range extent
 
-			if (are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Rotations) && bone_stream.is_rotation_animated())
+			if (are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Rotations) && !bone_stream.is_rotation_constant)
 			{
 				const Vector4_32 range_min = bone_range.rotation.get_min();
 				const Vector4_32 range_extent = bone_range.rotation.get_extent();
@@ -129,9 +130,9 @@ namespace acl
 				{
 					const uint32_t range_member_size = bone_stream.rotations.get_rotation_format() == RotationFormat8::Quat_128 ? (sizeof(float) * 4) : (sizeof(float) * 3);
 
-					memcpy(range_data, vector_as_float_ptr(range_min), range_member_size);
+					std::memcpy(range_data, vector_as_float_ptr(range_min), range_member_size);
 					range_data += range_member_size;
-					memcpy(range_data, vector_as_float_ptr(range_extent), range_member_size);
+					std::memcpy(range_data, vector_as_float_ptr(range_extent), range_member_size);
 					range_data += range_member_size;
 				}
 				else
@@ -148,7 +149,7 @@ namespace acl
 						if (is_constant_bit_rate(bone_stream.rotations.get_bit_rate()))
 						{
 							const uint8_t* rotation = bone_stream.rotations.get_raw_sample_ptr(0);
-							memcpy(range_data, rotation, sizeof(uint16_t) * 3);
+							std::memcpy(range_data, rotation, sizeof(uint16_t) * 3);
 							range_data += sizeof(uint16_t) * 3;
 						}
 						else
@@ -162,10 +163,10 @@ namespace acl
 				}
 			}
 
-			if (are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Translations) && bone_stream.is_translation_animated())
+			if (are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Translations) && !bone_stream.is_translation_constant)
 				write_range_track_data_impl(bone_stream.translations, bone_range.translation, is_clip_range_data, range_data);
 
-			if (clip_context.has_scale && are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Scales) && bone_stream.is_scale_animated())
+			if (are_any_enum_flags_set(range_reduction, RangeReductionFlags8::Scales) && !bone_stream.is_scale_constant)
 				write_range_track_data_impl(bone_stream.scales, bone_range.scale, is_clip_range_data, range_data);
 
 			ACL_ASSERT(range_data <= range_data_end, "Invalid range data offset. Wrote too much data.");

@@ -33,28 +33,30 @@ ACL_IMPL_FILE_PRAGMA_PUSH
 
 namespace acl
 {
-	namespace impl
+	namespace acl_impl
 	{
 		template <class ItemType, bool is_const>
-		struct Iterator
+		class Iterator
 		{
+		public:
 			typedef typename std::conditional<is_const, const ItemType*, ItemType*>::type ItemPtr;
 
-			constexpr Iterator(ItemPtr items_, uint32_t num_items_) : items(items_), num_items(num_items_) {}
+			constexpr Iterator(ItemPtr items, size_t num_items) : m_items(items), m_num_items(num_items) {}
 
-			constexpr ItemPtr begin() const { return items; }
-			constexpr ItemPtr end() const { return items + num_items; }
+			constexpr ItemPtr begin() const { return m_items; }
+			constexpr ItemPtr end() const { return m_items + m_num_items; }
 
-			ItemPtr items;
-			uint32_t num_items;
+		private:
+			ItemPtr		m_items;
+			size_t		m_num_items;
 		};
 	}
 
 	template <class ItemType>
-	using Iterator = impl::Iterator<ItemType, false>;
+	using Iterator = acl_impl::Iterator<ItemType, false>;
 
 	template <class ItemType>
-	using ConstIterator = impl::Iterator<ItemType, true>;
+	using ConstIterator = acl_impl::Iterator<ItemType, true>;
 }
 
 ACL_IMPL_FILE_PRAGMA_POP

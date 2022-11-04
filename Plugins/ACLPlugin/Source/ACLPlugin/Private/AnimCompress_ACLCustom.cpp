@@ -35,7 +35,7 @@
 #include <acl/compression/skeleton_error_metric.h>
 #include <acl/compression/utils.h>
 
-#include <sjson/writer.h>
+
 #include <acl/io/clip_writer.h>
 #endif
 
@@ -127,10 +127,7 @@ void UAnimCompress_ACLCustom::DoReduction(UAnimSequence* AnimSeq, const TArray<F
 	Settings.constant_translation_threshold = ConstantTranslationThreshold;
 	Settings.constant_scale_threshold = ConstantScaleThreshold;
 	Settings.error_threshold = ErrorThreshold;
-
-	static volatile bool DumpClip = false;
-	if (DumpClip)
-		write_acl_clip(*ACLSkeleton, *ACLClip, AlgorithmType8::UniformlySampled, Settings, "D:\\acl_clip.acl.sjson");
+	
 
 	CompressedClip* CompressedClipData = nullptr;
 	ErrorResult CompressionResult = uniformly_sampled::compress_clip(AllocatorImpl, *ACLClip, Settings, CompressedClipData, Stats);

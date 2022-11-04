@@ -45,6 +45,7 @@ namespace acl
 			InvalidCompressionSetting,
 			InvalidAdditiveClipFormat,
 			PositiveValueExpected,
+			InvalidTrackType,
 		};
 
 		ClipReaderError()
@@ -76,6 +77,8 @@ namespace acl
 				return "Invalid additive clip format provided";
 			case PositiveValueExpected:
 				return "A positive value is expected here";
+			case InvalidTrackType:
+				return "Invalid raw track type";
 			default:
 				return sjson::ParserError::get_description();
 			}

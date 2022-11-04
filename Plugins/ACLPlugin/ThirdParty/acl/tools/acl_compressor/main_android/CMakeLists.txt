@@ -4,8 +4,8 @@ project(acl_compressor)
 set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_ANDROID_ARCH armv7-a)
-set(CMAKE_ANDROID_API_MIN 21)
-set(CMAKE_ANDROID_API 21)
+set(CMAKE_ANDROID_API_MIN 24)
+set(CMAKE_ANDROID_API 24)
 set(CMAKE_ANDROID_GUI 1)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
@@ -15,8 +15,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 set(CMAKE_ANDROID_JAVA_SOURCE_DIR "${PROJECT_SOURCE_DIR}/java")
 
 include_directories("${PROJECT_SOURCE_DIR}/../../../includes")
-include_directories("${PROJECT_SOURCE_DIR}/../../../external/sjson-cpp/includes")
+include_directories("${PROJECT_SOURCE_DIR}/../../../external/rtm/includes")
 include_directories("${PROJECT_SOURCE_DIR}/../includes")
+
+if(USE_SJSON)
+	include_directories("${PROJECT_SOURCE_DIR}/../../../external/sjson-cpp/includes")
+endif()
 
 # Grab all of our common source files
 file(GLOB_RECURSE ALL_COMMON_SOURCE_FILES LIST_DIRECTORIES false
@@ -47,6 +51,12 @@ target_compile_options(${PROJECT_NAME} PRIVATE -g)
 # Disable SIMD if not needed
 if(NOT USE_SIMD_INSTRUCTIONS)
 	add_definitions(-DACL_NO_INTRINSICS)
+	add_definitions(-DRTM_NO_INTRINSICS)
+endif()
+
+# Enable SJSON when needed
+if(USE_SJSON)
+	add_definitions(-DACL_USE_SJSON)
 endif()
 
 target_include_directories(${PROJECT_NAME} PUBLIC jni)
@@ -58,6 +68,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_SKIP_ANT_STEP 0)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_PROGUARD 1)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_PROGUARD_CONFIG_PATH proguard-android.txt)
 set_target_properties(${PROJECT_NAME} PROPERTIES ANDROID_SECURE_PROPS_PATH /definitely/insecure)
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_GLOBAL_AndroidBuildSystem "AntBuild")				# Use Ant as our build system
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY ANDROID_NATIVE_LIB_DIRECTORIES $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 set_property(TARGET ${PROJECT_NAME} PROPERTY ANDROID_NATIVE_LIB_DEPENDENCIES ${PROJECT_NAME}.so)

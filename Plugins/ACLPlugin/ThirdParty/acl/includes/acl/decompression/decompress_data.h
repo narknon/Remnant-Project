@@ -25,6 +25,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "acl/core/compiler_utils.h"
+#include "acl/core/memory_utils.h"
 
 ACL_IMPL_FILE_PRAGMA_PUSH
 
@@ -712,6 +713,8 @@ namespace acl
 	template <class SettingsType, class DecompressionContextType, class SamplingContextType>
 	inline Quat_32 ACL_SIMD_CALL decompress_and_interpolate_rotation(const SettingsType& settings, const ClipHeader& header, const DecompressionContextType& decomp_context, SamplingContextType& sampling_context)
 	{
+		static_assert(SamplingContextType::k_num_samples_to_interpolate == 2 || SamplingContextType::k_num_samples_to_interpolate == 4, "Unsupported number of samples");
+
 		Quat_32 interpolated_rotation;
 
 		const BitSetIndexRef track_index_bit_ref(decomp_context.bitset_desc, sampling_context.track_index);
@@ -757,37 +760,44 @@ namespace acl
 
 				constexpr size_t num_key_frames = SamplingContextType::k_num_samples_to_interpolate;
 
-				Vector4_32 rotations_as_vec[num_key_frames];
-				bool ignore_clip_range[num_key_frames] = { false };
-				bool ignore_segment_range[num_key_frames] = { false };
+				// This part is fairly complex, we'll loop and write to the stack (sampling context)
+				Vector4_32* rotations_as_vec = &sampling_context.vectors[0];
+
+				// Range ignore flags are used to skip range normalization at the clip and/or segment levels
+				// Each sample has two bits like so: sample 0 clip, sample 0 segment, sample 1 clip, sample 1 segment, etc
+				// By default, we never ignore range reduction
+				uint32_t range_ignore_flags = 0;
 
 				if (rotation_format == RotationFormat8::QuatDropW_Variable && settings.is_rotation_format_supported(RotationFormat8::QuatDropW_Variable))
 				{
 					for (size_t i = 0; i < num_key_frames; ++i)
 					{
+						range_ignore_flags <<= 2;
+
 						const uint8_t bit_rate = decomp_context.format_per_track_data[i][sampling_context.format_per_track_data_offset];
-						const uint8_t num_bits_at_bit_rate = get_num_bits_at_bit_rate(bit_rate);
+
+						// Promote to 32bit to avoid zero extending instructions on x64
+						const uint32_t num_bits_at_bit_rate = get_num_bits_at_bit_rate(bit_rate);
 
 						if (is_constant_bit_rate(bit_rate))
 						{
 							rotations_as_vec[i] = unpack_vector3_u48_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset);
-							ignore_segment_range[i] = true;
+							range_ignore_flags |= 0x00000001U;	// Skip segment only
 						}
 						else if (is_raw_bit_rate(bit_rate))
 						{
 							rotations_as_vec[i] = unpack_vector3_96_unsafe(decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
-							ignore_clip_range[i] = true;
-							ignore_segment_range[i] = true;
+							range_ignore_flags |= 0x00000003U;	// Skip clip and segment
 						}
 						else
 						{
 							if (are_clip_rotations_normalized)
-								rotations_as_vec[i] = unpack_vector3_uXX_unsafe(num_bits_at_bit_rate, decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
+								rotations_as_vec[i] = unpack_vector3_uXX_unsafe(uint8_t(num_bits_at_bit_rate), decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
 							else
-								rotations_as_vec[i] = unpack_vector3_sXX_unsafe(num_bits_at_bit_rate, decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
+								rotations_as_vec[i] = unpack_vector3_sXX_unsafe(uint8_t(num_bits_at_bit_rate), decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
 						}
 
-						uint8_t num_bits_read = num_bits_at_bit_rate * 3;
+						uint32_t num_bits_read = num_bits_at_bit_rate * 3;
 
 						if (settings.supports_mixed_packing() && decomp_context.has_mixed_packing)
 							num_bits_read = align_to(num_bits_read, k_mixed_packing_alignment_num_bits);
@@ -839,18 +849,68 @@ namespace acl
 					}
 				}
 
+				// Load our samples to avoid working with the stack now that things can be unrolled.
+				// We unroll because even if we work from the stack, with 2 samples the compiler always
+				// unrolls but it fails to keep the values in registers, working from the stack which
+				// is inefficient.
+				Vector4_32 rotation_as_vec0 = rotations_as_vec[0];
+				Vector4_32 rotation_as_vec1 = rotations_as_vec[1];
+				Vector4_32 rotation_as_vec2;
+				Vector4_32 rotation_as_vec3;
+
+				if (static_condition<num_key_frames == 4>::test())
+				{
+					rotation_as_vec2 = rotations_as_vec[2];
+					rotation_as_vec3 = rotations_as_vec[3];
+				}
+				else
+				{
+					rotation_as_vec2 = rotation_as_vec0;
+					rotation_as_vec3 = rotation_as_vec0;
+				}
+
+				const uint32_t num_rotation_components = decomp_context.num_rotation_components;
+
 				if (are_segment_rotations_normalized)
 				{
+					const uint32_t segment_range_min_offset = sampling_context.segment_range_data_offset;
+					const uint32_t segment_range_extent_offset = sampling_context.segment_range_data_offset + (num_rotation_components * sizeof(uint8_t));
+
 					if (rotation_format == RotationFormat8::QuatDropW_Variable && settings.is_rotation_format_supported(RotationFormat8::QuatDropW_Variable))
 					{
-						for (size_t i = 0; i < num_key_frames; ++i)
+						constexpr uint32_t ignore_mask = 0x00000001U << ((num_key_frames - 1) * 2);
+						if ((range_ignore_flags & (ignore_mask >> 0)) == 0)
 						{
-							if (!ignore_segment_range[i])
-							{
-								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset);
-								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset + (decomp_context.num_rotation_components * sizeof(uint8_t)));
+							const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_min_offset);
+							const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_extent_offset);
 
-								rotations_as_vec[i] = vector_mul_add(rotations_as_vec[i], segment_range_extent, segment_range_min);
+							rotation_as_vec0 = vector_mul_add(rotation_as_vec0, segment_range_extent, segment_range_min);
+						}
+
+						if ((range_ignore_flags & (ignore_mask >> 2)) == 0)
+						{
+							const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_min_offset);
+							const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_extent_offset);
+
+							rotation_as_vec1 = vector_mul_add(rotation_as_vec1, segment_range_extent, segment_range_min);
+						}
+
+						if (static_condition<num_key_frames == 4>::test())
+						{
+							if ((range_ignore_flags & (ignore_mask >> 4)) == 0)
+							{
+								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_min_offset);
+								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_extent_offset);
+
+								rotation_as_vec2 = vector_mul_add(rotation_as_vec2, segment_range_extent, segment_range_min);
+							}
+
+							if ((range_ignore_flags & (ignore_mask >> 8)) == 0)
+							{
+								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_min_offset);
+								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_extent_offset);
+
+								rotation_as_vec3 = vector_mul_add(rotation_as_vec3, segment_range_extent, segment_range_min);
 							}
 						}
 					}
@@ -858,56 +918,123 @@ namespace acl
 					{
 						if (rotation_format == RotationFormat8::Quat_128 && settings.is_rotation_format_supported(RotationFormat8::Quat_128))
 						{
-							for (size_t i = 0; i < num_key_frames; ++i)
 							{
-								const Vector4_32 segment_range_min = unpack_vector4_32(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset, true);
-								const Vector4_32 segment_range_extent = unpack_vector4_32(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset + (decomp_context.num_rotation_components * sizeof(uint8_t)), true);
+								const Vector4_32 segment_range_min = unpack_vector4_32(decomp_context.segment_range_data[0] + segment_range_min_offset, true);
+								const Vector4_32 segment_range_extent = unpack_vector4_32(decomp_context.segment_range_data[0] + segment_range_extent_offset, true);
 
-								rotations_as_vec[i] = vector_mul_add(rotations_as_vec[i], segment_range_extent, segment_range_min);
+								rotation_as_vec0 = vector_mul_add(rotation_as_vec0, segment_range_extent, segment_range_min);
+							}
+
+							{
+								const Vector4_32 segment_range_min = unpack_vector4_32(decomp_context.segment_range_data[1] + segment_range_min_offset, true);
+								const Vector4_32 segment_range_extent = unpack_vector4_32(decomp_context.segment_range_data[1] + segment_range_extent_offset, true);
+
+								rotation_as_vec1 = vector_mul_add(rotation_as_vec1, segment_range_extent, segment_range_min);
+							}
+
+							if (static_condition<num_key_frames == 4>::test())
+							{
+								{
+									const Vector4_32 segment_range_min = unpack_vector4_32(decomp_context.segment_range_data[2] + segment_range_min_offset, true);
+									const Vector4_32 segment_range_extent = unpack_vector4_32(decomp_context.segment_range_data[2] + segment_range_extent_offset, true);
+
+									rotation_as_vec2 = vector_mul_add(rotation_as_vec2, segment_range_extent, segment_range_min);
+								}
+
+								{
+									const Vector4_32 segment_range_min = unpack_vector4_32(decomp_context.segment_range_data[3] + segment_range_min_offset, true);
+									const Vector4_32 segment_range_extent = unpack_vector4_32(decomp_context.segment_range_data[3] + segment_range_extent_offset, true);
+
+									rotation_as_vec3 = vector_mul_add(rotation_as_vec3, segment_range_extent, segment_range_min);
+								}
 							}
 						}
 						else
 						{
-							for (size_t i = 0; i < num_key_frames; ++i)
 							{
-								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset);
-								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset + (decomp_context.num_rotation_components * sizeof(uint8_t)));
+								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_min_offset);
+								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_extent_offset);
 
-								rotations_as_vec[i] = vector_mul_add(rotations_as_vec[i], segment_range_extent, segment_range_min);
+								rotation_as_vec0 = vector_mul_add(rotation_as_vec0, segment_range_extent, segment_range_min);
+							}
+
+							{
+								const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_min_offset);
+								const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_extent_offset);
+
+								rotation_as_vec1 = vector_mul_add(rotation_as_vec1, segment_range_extent, segment_range_min);
+							}
+
+							if (static_condition<num_key_frames == 4>::test())
+							{
+								{
+									const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_min_offset);
+									const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_extent_offset);
+
+									rotation_as_vec2 = vector_mul_add(rotation_as_vec2, segment_range_extent, segment_range_min);
+								}
+
+								{
+									const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_min_offset);
+									const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_extent_offset);
+
+									rotation_as_vec3 = vector_mul_add(rotation_as_vec3, segment_range_extent, segment_range_min);
+								}
 							}
 						}
 					}
 
-					sampling_context.segment_range_data_offset += decomp_context.num_rotation_components * k_segment_range_reduction_num_bytes_per_component * 2;
+					sampling_context.segment_range_data_offset += num_rotation_components * k_segment_range_reduction_num_bytes_per_component * 2;
 				}
 
 				if (are_clip_rotations_normalized)
 				{
 					const Vector4_32 clip_range_min = vector_unaligned_load_32(decomp_context.clip_range_data + sampling_context.clip_range_data_offset);
-					const Vector4_32 clip_range_extent = vector_unaligned_load_32(decomp_context.clip_range_data + sampling_context.clip_range_data_offset + (decomp_context.num_rotation_components * sizeof(float)));
+					const Vector4_32 clip_range_extent = vector_unaligned_load_32(decomp_context.clip_range_data + sampling_context.clip_range_data_offset + (num_rotation_components * sizeof(float)));
 
-					for (size_t i = 0; i < num_key_frames; ++i)
+					constexpr uint32_t ignore_mask = 0x00000002U << ((num_key_frames - 1) * 2);
+					if ((range_ignore_flags & (ignore_mask >> 0)) == 0)
+						rotation_as_vec0 = vector_mul_add(rotation_as_vec0, clip_range_extent, clip_range_min);
+
+					if ((range_ignore_flags & (ignore_mask >> 2)) == 0)
+						rotation_as_vec1 = vector_mul_add(rotation_as_vec1, clip_range_extent, clip_range_min);
+
+					if (static_condition<num_key_frames == 4>::test())
 					{
-						if (!ignore_clip_range[i])
-							rotations_as_vec[i] = vector_mul_add(rotations_as_vec[i], clip_range_extent, clip_range_min);
+						if ((range_ignore_flags & (ignore_mask >> 4)) == 0)
+							rotation_as_vec2 = vector_mul_add(rotation_as_vec2, clip_range_extent, clip_range_min);
+
+						if ((range_ignore_flags & (ignore_mask >> 8)) == 0)
+							rotation_as_vec3 = vector_mul_add(rotation_as_vec3, clip_range_extent, clip_range_min);
 					}
 
-					sampling_context.clip_range_data_offset += decomp_context.num_rotation_components * sizeof(float) * 2;
+					sampling_context.clip_range_data_offset += num_rotation_components * sizeof(float) * 2;
 				}
 
-				Quat_32 rotations[num_key_frames];
-				if (rotation_format == RotationFormat8::Quat_128 && settings.is_rotation_format_supported(RotationFormat8::Quat_128))
+				// No-op conversion
+				Quat_32 rotation0 = vector_to_quat(rotation_as_vec0);
+				Quat_32 rotation1 = vector_to_quat(rotation_as_vec1);
+				Quat_32 rotation2 = vector_to_quat(rotation_as_vec2);
+				Quat_32 rotation3 = vector_to_quat(rotation_as_vec3);
+
+				if (rotation_format != RotationFormat8::Quat_128 || !settings.is_rotation_format_supported(RotationFormat8::Quat_128))
 				{
-					for (size_t i = 0; i < num_key_frames; ++i)
-						rotations[i] = vector_to_quat(rotations_as_vec[i]);
+					// We dropped the W component
+					rotation0 = quat_from_positive_w(rotation_as_vec0);
+					rotation1 = quat_from_positive_w(rotation_as_vec1);
+
+					if (static_condition<num_key_frames == 4>::test())
+					{
+						rotation2 = quat_from_positive_w(rotation_as_vec2);
+						rotation3 = quat_from_positive_w(rotation_as_vec3);
+					}
 				}
+
+				if (static_condition<num_key_frames == 4>::test())
+					interpolated_rotation = SamplingContextType::interpolate_rotation(rotation0, rotation1, rotation2, rotation3, decomp_context.interpolation_alpha);
 				else
-				{
-					for (size_t i = 0; i < num_key_frames; ++i)
-						rotations[i] = quat_from_positive_w(rotations_as_vec[i]);
-				}
+					interpolated_rotation = SamplingContextType::interpolate_rotation(rotation0, rotation1, decomp_context.interpolation_alpha);
 
-				interpolated_rotation = SamplingContextType::interpolate_rotation(rotations, decomp_context.interpolation_alpha);
 				ACL_ASSERT(quat_is_finite(interpolated_rotation), "Rotation is not valid!");
 				ACL_ASSERT(quat_is_normalized(interpolated_rotation), "Rotation is not normalized!");
 			}
@@ -920,6 +1047,8 @@ namespace acl
 	template<class SettingsAdapterType, class DecompressionContextType, class SamplingContextType>
 	inline Vector4_32 ACL_SIMD_CALL decompress_and_interpolate_vector(const SettingsAdapterType& settings, const ClipHeader& header, const DecompressionContextType& decomp_context, SamplingContextType& sampling_context)
 	{
+		static_assert(SamplingContextType::k_num_samples_to_interpolate == 2 || SamplingContextType::k_num_samples_to_interpolate == 4, "Unsupported number of samples");
+
 		Vector4_32 interpolated_vector;
 
 		const BitSetIndexRef track_index_bit_ref(decomp_context.bitset_desc, sampling_context.track_index);
@@ -947,32 +1076,39 @@ namespace acl
 
 				constexpr size_t num_key_frames = SamplingContextType::k_num_samples_to_interpolate;
 
-				Vector4_32 vectors[num_key_frames];
-				bool ignore_clip_range[num_key_frames] = { false };
-				bool ignore_segment_range[num_key_frames] = { false };
+				// This part is fairly complex, we'll loop and write to the stack (sampling context)
+				Vector4_32* vectors = &sampling_context.vectors[0];
+
+				// Range ignore flags are used to skip range normalization at the clip and/or segment levels
+				// Each sample has two bits like so: sample 0 clip, sample 0 segment, sample 1 clip, sample 1 segment, etc
+				// By default, we never ignore range reduction
+				uint32_t range_ignore_flags = 0;
 
 				if (format == VectorFormat8::Vector3_Variable && settings.is_vector_format_supported(VectorFormat8::Vector3_Variable))
 				{
 					for (size_t i = 0; i < num_key_frames; ++i)
 					{
+						range_ignore_flags <<= 2;
+
 						const uint8_t bit_rate = decomp_context.format_per_track_data[i][sampling_context.format_per_track_data_offset];
-						const uint8_t num_bits_at_bit_rate = get_num_bits_at_bit_rate(bit_rate);
+
+						// Promote to 32bit to avoid zero extending instructions on x64
+						const uint32_t num_bits_at_bit_rate = get_num_bits_at_bit_rate(bit_rate);
 
 						if (is_constant_bit_rate(bit_rate))
 						{
 							vectors[i] = unpack_vector3_u48_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset);
-							ignore_segment_range[i] = true;
+							range_ignore_flags |= 0x00000001U;	// Skip segment only
 						}
 						else if (is_raw_bit_rate(bit_rate))
 						{
 							vectors[i] = unpack_vector3_96_unsafe(decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
-							ignore_clip_range[i] = true;
-							ignore_segment_range[i] = true;
+							range_ignore_flags |= 0x00000003U;	// Skip clip and segment
 						}
 						else
-							vectors[i] = unpack_vector3_uXX_unsafe(num_bits_at_bit_rate, decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
+							vectors[i] = unpack_vector3_uXX_unsafe(uint8_t(num_bits_at_bit_rate), decomp_context.animated_track_data[i], sampling_context.key_frame_bit_offsets[i]);
 
-						uint8_t num_bits_read = num_bits_at_bit_rate * 3;
+						uint32_t num_bits_read = num_bits_at_bit_rate * 3;
 
 						if (settings.supports_mixed_packing() && decomp_context.has_mixed_packing)
 							num_bits_read = align_to(num_bits_read, k_mixed_packing_alignment_num_bits);
@@ -1014,17 +1150,65 @@ namespace acl
 					}
 				}
 
+				// Load our samples to avoid working with the stack now that things can be unrolled.
+				// We unroll because even if we work from the stack, with 2 samples the compiler always
+				// unrolls but it fails to keep the values in registers, working from the stack which
+				// is inefficient.
+				Vector4_32 vector0 = vectors[0];
+				Vector4_32 vector1 = vectors[1];
+				Vector4_32 vector2;
+				Vector4_32 vector3;
+
+				if (static_condition<num_key_frames == 4>::test())
+				{
+					vector2 = vectors[2];
+					vector3 = vectors[3];
+				}
+				else
+				{
+					vector2 = vector0;
+					vector3 = vector0;
+				}
+
 				const RangeReductionFlags8 range_reduction_flag = settings.get_range_reduction_flag();
 				if (are_any_enum_flags_set(segment_range_reduction, range_reduction_flag))
 				{
-					for (size_t i = 0; i < num_key_frames; ++i)
-					{
-						if (format != VectorFormat8::Vector3_Variable || !settings.is_vector_format_supported(VectorFormat8::Vector3_Variable) || !ignore_segment_range[i])
-						{
-							const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset);
-							const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[i] + sampling_context.segment_range_data_offset + (3 * sizeof(uint8_t)));
+					const uint32_t segment_range_min_offset = sampling_context.segment_range_data_offset;
+					const uint32_t segment_range_extent_offset = sampling_context.segment_range_data_offset + (3 * sizeof(uint8_t));
 
-							vectors[i] = vector_mul_add(vectors[i], segment_range_extent, segment_range_min);
+					constexpr uint32_t ignore_mask = 0x00000001U << ((num_key_frames - 1) * 2);
+					if ((range_ignore_flags & (ignore_mask >> 0)) == 0)
+					{
+						const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_min_offset);
+						const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[0] + segment_range_extent_offset);
+
+						vector0 = vector_mul_add(vector0, segment_range_extent, segment_range_min);
+					}
+
+					if ((range_ignore_flags & (ignore_mask >> 2)) == 0)
+					{
+						const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_min_offset);
+						const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[1] + segment_range_extent_offset);
+
+						vector1 = vector_mul_add(vector1, segment_range_extent, segment_range_min);
+					}
+
+					if (static_condition<num_key_frames == 4>::test())
+					{
+						if ((range_ignore_flags & (ignore_mask >> 4)) == 0)
+						{
+							const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_min_offset);
+							const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[2] + segment_range_extent_offset);
+
+							vector2 = vector_mul_add(vector2, segment_range_extent, segment_range_min);
+						}
+
+						if ((range_ignore_flags & (ignore_mask >> 8)) == 0)
+						{
+							const Vector4_32 segment_range_min = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_min_offset);
+							const Vector4_32 segment_range_extent = unpack_vector3_u24_unsafe(decomp_context.segment_range_data[3] + segment_range_extent_offset);
+
+							vector3 = vector_mul_add(vector3, segment_range_extent, segment_range_min);
 						}
 					}
 
@@ -1036,16 +1220,30 @@ namespace acl
 					const Vector4_32 clip_range_min = unpack_vector3_96_unsafe(decomp_context.clip_range_data + sampling_context.clip_range_data_offset);
 					const Vector4_32 clip_range_extent = unpack_vector3_96_unsafe(decomp_context.clip_range_data + sampling_context.clip_range_data_offset + (3 * sizeof(float)));
 
-					for (size_t i = 0; i < num_key_frames; ++i)
+					constexpr uint32_t ignore_mask = 0x00000002U << ((num_key_frames - 1) * 2);
+					if ((range_ignore_flags & (ignore_mask >> 0)) == 0)
+						vector0 = vector_mul_add(vector0, clip_range_extent, clip_range_min);
+
+					if ((range_ignore_flags & (ignore_mask >> 2)) == 0)
+						vector1 = vector_mul_add(vector1, clip_range_extent, clip_range_min);
+
+					if (static_condition<num_key_frames == 4>::test())
 					{
-						if (!ignore_clip_range[i])
-							vectors[i] = vector_mul_add(vectors[i], clip_range_extent, clip_range_min);
+						if ((range_ignore_flags & (ignore_mask >> 4)) == 0)
+							vector2 = vector_mul_add(vector2, clip_range_extent, clip_range_min);
+
+						if ((range_ignore_flags & (ignore_mask >> 8)) == 0)
+							vector3 = vector_mul_add(vector3, clip_range_extent, clip_range_min);
 					}
 
 					sampling_context.clip_range_data_offset += k_clip_range_reduction_vector3_range_size;
 				}
 
-				interpolated_vector = SamplingContextType::interpolate_vector4(vectors, decomp_context.interpolation_alpha);
+				if (static_condition<num_key_frames == 4>::test())
+					interpolated_vector = SamplingContextType::interpolate_vector4(vector0, vector1, vector2, vector3, decomp_context.interpolation_alpha);
+				else
+					interpolated_vector = SamplingContextType::interpolate_vector4(vector0, vector1, decomp_context.interpolation_alpha);
+
 				ACL_ASSERT(vector_is_finite3(interpolated_vector), "Vector is not valid!");
 			}
 		}

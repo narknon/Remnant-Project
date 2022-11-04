@@ -96,6 +96,12 @@ namespace acl
 	//////////////////////////////////////////////////////////////////////////
 	struct BitSetIndexRef
 	{
+		BitSetIndexRef()
+			: desc()
+			, offset(0)
+			, mask(0)
+		{}
+
 		BitSetIndexRef(BitSetDescription desc_, uint32_t bit_index)
 			: desc(desc_)
 			, offset(bit_index / 32)
@@ -184,6 +190,8 @@ namespace acl
 	{
 		const uint32_t size = desc.get_size();
 
+		// TODO: Optimize for NEON by using the intrinsic directly and unrolling the loop to
+		// reduce the number of pairwise add instructions.
 		uint32_t num_set_bits = 0;
 		for (uint32_t offset = 0; offset < size; ++offset)
 			num_set_bits += count_set_bits(bitset[offset]);

@@ -108,13 +108,13 @@ namespace acl
 				const uint16_t bone_index = output_bone_mapping[output_index];
 				const BoneStreams& bone_stream = segment.bone_streams[bone_index];
 
-				if (bone_stream.is_rotation_animated())
+				if (!bone_stream.is_rotation_constant)
 					calculate_animated_data_size(bone_stream.rotations, has_mixed_packing, num_animated_data_bits, num_animated_pose_bits);
 
-				if (bone_stream.is_translation_animated())
+				if (!bone_stream.is_translation_constant)
 					calculate_animated_data_size(bone_stream.translations, has_mixed_packing, num_animated_data_bits, num_animated_pose_bits);
 
-				if (clip_context.has_scale && bone_stream.is_scale_animated())
+				if (!bone_stream.is_scale_constant)
 					calculate_animated_data_size(bone_stream.scales, has_mixed_packing, num_animated_data_bits, num_animated_pose_bits);
 			}
 
@@ -139,13 +139,13 @@ namespace acl
 			if (bone_stream.is_stripped_from_output())
 				continue;
 
-			if (bone_stream.is_rotation_animated() && is_rotation_variable)
+			if (!bone_stream.is_rotation_constant && is_rotation_variable)
 				format_per_track_data_size++;
 
-			if (bone_stream.is_translation_animated() && is_translation_variable)
+			if (!bone_stream.is_translation_constant && is_translation_variable)
 				format_per_track_data_size++;
 
-			if (clip_context.has_scale && bone_stream.is_scale_animated() && is_scale_variable)
+			if (!bone_stream.is_scale_constant && is_scale_variable)
 				format_per_track_data_size++;
 		}
 
@@ -173,7 +173,7 @@ namespace acl
 			{
 				const uint8_t* rotation_ptr = bone_stream.rotations.get_raw_sample_ptr(0);
 				uint32_t sample_size = bone_stream.rotations.get_sample_size();
-				memcpy(constant_data, rotation_ptr, sample_size);
+				std::memcpy(constant_data, rotation_ptr, sample_size);
 				constant_data += sample_size;
 			}
 
@@ -181,7 +181,7 @@ namespace acl
 			{
 				const uint8_t* translation_ptr = bone_stream.translations.get_raw_sample_ptr(0);
 				uint32_t sample_size = bone_stream.translations.get_sample_size();
-				memcpy(constant_data, translation_ptr, sample_size);
+				std::memcpy(constant_data, translation_ptr, sample_size);
 				constant_data += sample_size;
 			}
 
@@ -189,7 +189,7 @@ namespace acl
 			{
 				const uint8_t* scale_ptr = bone_stream.scales.get_raw_sample_ptr(0);
 				uint32_t sample_size = bone_stream.scales.get_sample_size();
-				memcpy(constant_data, scale_ptr, sample_size);
+				std::memcpy(constant_data, scale_ptr, sample_size);
 				constant_data += sample_size;
 			}
 
@@ -236,7 +236,7 @@ namespace acl
 		{
 			const uint8_t* raw_sample_ptr = track_stream.get_raw_sample_ptr(sample_index);
 			const uint32_t sample_size = track_stream.get_packed_sample_size();
-			memcpy(out_animated_track_data, raw_sample_ptr, sample_size);
+			std::memcpy(out_animated_track_data, raw_sample_ptr, sample_size);
 			out_animated_track_data += sample_size;
 			out_bit_offset = (out_animated_track_data - animated_track_data_begin) * 8;
 		}
@@ -246,6 +246,7 @@ namespace acl
 	{
 		ACL_ASSERT(animated_track_data != nullptr, "'animated_track_data' cannot be null!");
 		(void)animated_data_size;
+		(void)clip_context;	// TODO: Remove in 2.0
 
 		uint8_t* animated_track_data_begin = animated_track_data;
 
@@ -270,13 +271,13 @@ namespace acl
 				const uint16_t bone_index = output_bone_mapping[output_index];
 				const BoneStreams& bone_stream = segment.bone_streams[bone_index];
 
-				if (bone_stream.is_rotation_animated() && !is_constant_bit_rate(bone_stream.rotations.get_bit_rate()))
+				if (!bone_stream.is_rotation_constant && !is_constant_bit_rate(bone_stream.rotations.get_bit_rate()))
 					write_animated_track_data(bone_stream.rotations, sample_index, has_mixed_packing, animated_track_data_begin, animated_track_data, bit_offset);
 
-				if (bone_stream.is_translation_animated() && !is_constant_bit_rate(bone_stream.translations.get_bit_rate()))
+				if (!bone_stream.is_translation_constant && !is_constant_bit_rate(bone_stream.translations.get_bit_rate()))
 					write_animated_track_data(bone_stream.translations, sample_index, has_mixed_packing, animated_track_data_begin, animated_track_data, bit_offset);
 
-				if (clip_context.has_scale && bone_stream.is_scale_animated() && !is_constant_bit_rate(bone_stream.scales.get_bit_rate()))
+				if (!bone_stream.is_scale_constant && !is_constant_bit_rate(bone_stream.scales.get_bit_rate()))
 					write_animated_track_data(bone_stream.scales, sample_index, has_mixed_packing, animated_track_data_begin, animated_track_data, bit_offset);
 
 				ACL_ASSERT(animated_track_data <= animated_track_data_end, "Invalid animated track data offset. Wrote too much data.");
@@ -293,6 +294,7 @@ namespace acl
 	{
 		ACL_ASSERT(format_per_track_data != nullptr, "'format_per_track_data' cannot be null!");
 		(void)format_per_track_data_size;
+		(void)clip_context;	// TODO: Remove in 2.0
 
 #if defined(ACL_HAS_ASSERT_CHECKS)
 		const uint8_t* format_per_track_data_end = add_offset_to_ptr<uint8_t>(format_per_track_data, format_per_track_data_size);
@@ -303,13 +305,13 @@ namespace acl
 			const uint16_t bone_index = output_bone_mapping[output_index];
 			const BoneStreams& bone_stream = segment.bone_streams[bone_index];
 
-			if (bone_stream.is_rotation_animated() && bone_stream.rotations.is_bit_rate_variable())
+			if (!bone_stream.is_rotation_constant && bone_stream.rotations.is_bit_rate_variable())
 				*format_per_track_data++ = bone_stream.rotations.get_bit_rate();
 
-			if (bone_stream.is_translation_animated() && bone_stream.translations.is_bit_rate_variable())
+			if (!bone_stream.is_translation_constant && bone_stream.translations.is_bit_rate_variable())
 				*format_per_track_data++ = bone_stream.translations.get_bit_rate();
 
-			if (clip_context.has_scale && bone_stream.is_scale_animated() && bone_stream.scales.is_bit_rate_variable())
+			if (!bone_stream.is_scale_constant && bone_stream.scales.is_bit_rate_variable())
 				*format_per_track_data++ = bone_stream.scales.get_bit_rate();
 
 			ACL_ASSERT(format_per_track_data <= format_per_track_data_end, "Invalid format per track data offset. Wrote too much data.");

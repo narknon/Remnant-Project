@@ -5,9 +5,9 @@ import sys
 
 def get_platform_compilers():
 	if platform.system() == 'Windows':
-		return [ 'vs2015', 'vs2017' ]
+		return [ 'vs2015', 'vs2017', 'vs2019' ]
 	elif platform.system() == 'Linux':
-		return [ 'gcc5', 'gcc6', 'gcc7', 'gcc8', 'clang4', 'clang5', 'clang6' ]
+		return [ 'gcc5', 'gcc6', 'gcc7', 'gcc8', 'gcc9', 'clang4', 'clang5', 'clang6', 'clang7' ]
 	elif platform.system() == 'Darwin':
 		return [ 'osx' ]
 	else:
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 	configs = [ 'debug', 'release' ]
 	archs = [ 'x86', 'x64' ]
 	compilers = get_platform_compilers()
-	simd_opts = [ '', '-avx', '-nosimd' ]
+	simd_opts = [ '', '-avx', '-nosimd', '-nosjson' ]
 	python_exe = get_python_exe_name()
 
 	cmd_args = []
@@ -34,6 +34,8 @@ if __name__ == "__main__":
 		for arch in archs:
 			for compiler in compilers:
 				for simd in simd_opts:
+					if compiler == 'clang7' and simd == '-nosimd':
+						continue	# Hack to avoid compiler issue
 					args = [python_exe, 'make.py', '-compiler', compiler, '-cpu', arch, '-config', config, simd, '-build', '-unit_test', '-regression_test', '-clean']
 					cmd_args.append([x for x in args if x])
 

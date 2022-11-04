@@ -80,14 +80,14 @@ namespace acl
 	inline Vector4_64 vector_unaligned_load_64(const uint8_t* input)
 	{
 		Vector4_64 result;
-		memcpy(&result, input, sizeof(Vector4_64));
+		std::memcpy(&result, input, sizeof(Vector4_64));
 		return result;
 	}
 
 	inline Vector4_64 vector_unaligned_load3_64(const uint8_t* input)
 	{
 		double input_f[3];
-		memcpy(&input_f[0], input, sizeof(double) * 3);
+		std::memcpy(&input_f[0], input, sizeof(double) * 3);
 		return vector_set(input_f[0], input_f[1], input_f[2], 0.0);
 	}
 
@@ -213,12 +213,12 @@ namespace acl
 
 	inline void vector_unaligned_write(const Vector4_64& input, uint8_t* output)
 	{
-		memcpy(output, &input, sizeof(Vector4_64));
+		std::memcpy(output, &input, sizeof(Vector4_64));
 	}
 
 	inline void vector_unaligned_write3(const Vector4_64& input, uint8_t* output)
 	{
-		memcpy(output, &input, sizeof(double) * 3);
+		std::memcpy(output, &input, sizeof(double) * 3);
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -407,6 +407,11 @@ namespace acl
 		return vector_sub(offset, vector_mul(input, scale));
 	}
 
+	inline Vector4_64 vector_neg_mul_sub(const Vector4_64& input, double scale, const Vector4_64& offset)
+	{
+		return vector_sub(offset, vector_mul(input, scale));
+	}
+
 	inline Vector4_64 vector_lerp(const Vector4_64& start, const Vector4_64& end, double alpha)
 	{
 		return vector_mul_add(vector_sub(end, start), alpha, start);
@@ -503,6 +508,16 @@ namespace acl
 #endif
 	}
 
+	inline bool vector_all_less_equal2(const Vector4_64& lhs, const Vector4_64& rhs)
+	{
+#if defined(ACL_SSE2_INTRINSICS)
+		__m128d xy_le_pd = _mm_cmple_pd(lhs.xy, rhs.xy);
+		return _mm_movemask_pd(xy_le_pd) == 3;
+#else
+		return lhs.x <= rhs.x && lhs.y <= rhs.y;
+#endif
+	}
+
 	inline bool vector_all_less_equal3(const Vector4_64& lhs, const Vector4_64& rhs)
 	{
 #if defined(ACL_SSE2_INTRINSICS)
@@ -583,6 +598,11 @@ namespace acl
 	inline bool vector_all_near_equal(const Vector4_64& lhs, const Vector4_64& rhs, double threshold = 0.00001)
 	{
 		return vector_all_less_equal(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
+	}
+
+	inline bool vector_all_near_equal2(const Vector4_64& lhs, const Vector4_64& rhs, double threshold = 0.00001)
+	{
+		return vector_all_less_equal2(vector_abs(vector_sub(lhs, rhs)), vector_set(threshold));
 	}
 
 	inline bool vector_all_near_equal3(const Vector4_64& lhs, const Vector4_64& rhs, double threshold = 0.00001)
@@ -725,6 +745,22 @@ namespace acl
 	{
 		Vector4_64 mask = vector_greater_equal(input, vector_zero_64());
 		return vector_blend(mask, vector_set(1.0), vector_set(-1.0));
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Returns per component the rounded input using a symmetric algorithm.
+	// symmetric_round(1.5) = 2.0
+	// symmetric_round(1.2) = 1.0
+	// symmetric_round(-1.5) = -2.0
+	// symmetric_round(-1.2) = -1.0
+	//////////////////////////////////////////////////////////////////////////
+	inline Vector4_64 vector_symmetric_round(const Vector4_64& input)
+	{
+		const Vector4_64 half = vector_set(0.5);
+		const Vector4_64 floored = vector_floor(vector_add(input, half));
+		const Vector4_64 ceiled = vector_ceil(vector_sub(input, half));
+		const Vector4_64 is_greater_equal = vector_greater_equal(input, vector_zero_64());
+		return vector_blend(is_greater_equal, floored, ceiled);
 	}
 }
 

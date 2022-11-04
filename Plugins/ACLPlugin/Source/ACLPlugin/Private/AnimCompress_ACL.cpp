@@ -36,7 +36,6 @@
 #include <acl/compression/skeleton_error_metric.h>
 #include <acl/compression/utils.h>
 
-#include <sjson/writer.h>
 #include <acl/io/clip_writer.h>
 #endif	// WITH_EDITOR
 
@@ -96,8 +95,7 @@ void UAnimCompress_ACL::DoReduction(UAnimSequence* AnimSeq, const TArray<FBoneDa
 	Settings.error_threshold = ErrorThreshold;
 
 	static volatile bool DumpClip = false;
-	if (DumpClip)
-		write_acl_clip(*ACLSkeleton, *ACLClip, AlgorithmType8::UniformlySampled, Settings, "D:\\acl_clip.acl.sjson");
+
 
 	FName CodecFormat = NAME_ACLDefaultCodec;
 
