@@ -125,7 +125,9 @@
 !/Binaries/Win64/*
 !/Plugins/**/Binaries/Win64/*
 *.pdb
-
+*Debug.dll
+*Debug.modules
+*Debug.target
 
 # Ignore content folders
 !/Content/Blueprints/Gimmick/ex/g_ex_SavePoint.uasset
