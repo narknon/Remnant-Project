@@ -4,6 +4,7 @@
 #include "HitLogComponent.h"
 #include "StatsComponent.h"
 #include "ActionComponent.h"
+#include "CharacterMovementComponentGunfire.h"
 #include "ReplicatedMovementComponent.h"
 
 class UShapeComponent;
@@ -254,7 +255,7 @@ void ACharacterGunfire::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(ACharacterGunfire, AimTarget);
 }
 
-ACharacterGunfire::ACharacterGunfire() {
+ACharacterGunfire::ACharacterGunfire() : Super(FObjectInitializer::Get().SetDefaultSubobjectClass<UCharacterMovementComponentGunfire>(TEXT("CharMoveComp"))) {
     this->StatsComp = CreateDefaultSubobject<UStatsComponent>(TEXT("StatsComp"));
     this->ActionComp = CreateDefaultSubobject<UActionComponent>(TEXT("ActionComp"));
     this->HitLogComp = CreateDefaultSubobject<UHitLogComponent>(TEXT("HitLogComp"));

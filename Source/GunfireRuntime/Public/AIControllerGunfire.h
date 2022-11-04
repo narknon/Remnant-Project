@@ -11,7 +11,6 @@
 
 class UNavigationQueryFilter;
 class UAITargetSelector;
-class AAIControllerGunfire;
 class AActor;
 class AAIGoalActor;
 class AAIPathPoint;
